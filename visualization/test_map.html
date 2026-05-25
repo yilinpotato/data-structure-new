@@ -1,0 +1,2993 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4a6c07f0ed6919a2749334983a6b5cf6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_4a6c07f0ed6919a2749334983a6b5cf6" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4a6c07f0ed6919a2749334983a6b5cf6 = L.map(
+                "map_4a6c07f0ed6919a2749334983a6b5cf6",
+                {
+                    center: [23.12, 113.3],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_4a6c07f0ed6919a2749334983a6b5cf6);
+
+            
+
+        
+    
+            var tile_layer_14edfaa208daaa56a19fa0eefec85485 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_14edfaa208daaa56a19fa0eefec85485.addTo(map_4a6c07f0ed6919a2749334983a6b5cf6);
+        
+    
+            var tile_layer_c48626c1d78af706ae39434b29e02a26 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_250e478ebbab0ff03c6c49accee4c170 = new L.Control.MiniMap(
+                tile_layer_c48626c1d78af706ae39434b29e02a26,
+                {"autoToggleDisplay": false, "centerFixed": false, "collapsedHeight": 25, "collapsedWidth": 25, "height": 150, "minimized": false, "position": "bottomright", "toggleDisplay": false, "width": 150, "zoomAnimation": false, "zoomLevelOffset": -5}
+            );
+            map_4a6c07f0ed6919a2749334983a6b5cf6.addControl(mini_map_250e478ebbab0ff03c6c49accee4c170);
+        
+    
+            var feature_group_5b9a71a741d42a32d8095b2b27671ad0 = L.featureGroup(
+                {}
+            );
+        
+    
+            var circle_marker_25c9d7324fd83777e8cd485d97855376 = L.circleMarker(
+                [23.135, 113.33],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_25c9d7324fd83777e8cd485d97855376.bindTooltip(
+                `<div>
+                     节点1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_076aeb8288313c677190525b7bfcd555 = L.marker(
+                [23.135, 113.33],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_a6ba06cf8fa11019eb3f5bb066d2bcb3 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u5929\u6cb3\u4f53\u80b2\u4e2d\u5fc3\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_076aeb8288313c677190525b7bfcd555.setIcon(div_icon_a6ba06cf8fa11019eb3f5bb066d2bcb3);
+        
+    
+            marker_076aeb8288313c677190525b7bfcd555.bindTooltip(
+                `<div>
+                     节点1: 天河体育中心
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f30be3c720b3cac76056d0629bfdce56 = L.circleMarker(
+                [23.13, 113.32],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_f30be3c720b3cac76056d0629bfdce56.bindTooltip(
+                `<div>
+                     节点2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9fbd5a14a838a20264e3213f61ee7c38 = L.marker(
+                [23.13, 113.32],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_6f64e4fe942084a39c39830ab5135628 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u5e7f\u5dde\u4e1c\u7ad9\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_9fbd5a14a838a20264e3213f61ee7c38.setIcon(div_icon_6f64e4fe942084a39c39830ab5135628);
+        
+    
+            marker_9fbd5a14a838a20264e3213f61ee7c38.bindTooltip(
+                `<div>
+                     节点2: 广州东站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_cd3b305fa3a76b45a7a14119cddbba36 = L.circleMarker(
+                [23.125, 113.34],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_cd3b305fa3a76b45a7a14119cddbba36.bindTooltip(
+                `<div>
+                     节点3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_100f8e57677fd057082f6b2d43ee64d0 = L.marker(
+                [23.125, 113.34],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_91be631948e61d4f2d11aec1f5223426 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u73e0\u6c5f\u65b0\u57ce\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_100f8e57677fd057082f6b2d43ee64d0.setIcon(div_icon_91be631948e61d4f2d11aec1f5223426);
+        
+    
+            marker_100f8e57677fd057082f6b2d43ee64d0.bindTooltip(
+                `<div>
+                     节点3: 珠江新城
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c3402afd1511959e726127447f1293ef = L.circleMarker(
+                [23.14, 113.34],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_c3402afd1511959e726127447f1293ef.bindTooltip(
+                `<div>
+                     节点4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_97415de54d3acb7d206652ebfc549c29 = L.marker(
+                [23.14, 113.34],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_0813fba4c17a576a4339a429a957e65e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u5e7f\u5dde\u5929\u6cb3CBD\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_97415de54d3acb7d206652ebfc549c29.setIcon(div_icon_0813fba4c17a576a4339a429a957e65e);
+        
+    
+            marker_97415de54d3acb7d206652ebfc549c29.bindTooltip(
+                `<div>
+                     节点4: 广州天河CBD
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_01e153ee773457849ee55f88a5d6fa74 = L.circleMarker(
+                [23.15, 113.32],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_01e153ee773457849ee55f88a5d6fa74.bindTooltip(
+                `<div>
+                     节点5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0797d079ce22e6809a57294ad30285cc = L.marker(
+                [23.15, 113.32],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_2beb9fa0f903bb488a35bba0c3ba41a4 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u767d\u4e91\u5c71\u5357\u95e8\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_0797d079ce22e6809a57294ad30285cc.setIcon(div_icon_2beb9fa0f903bb488a35bba0c3ba41a4);
+        
+    
+            marker_0797d079ce22e6809a57294ad30285cc.bindTooltip(
+                `<div>
+                     节点5: 白云山南门
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f5a2372fce59533296695a5a497c859b = L.circleMarker(
+                [23.12, 113.28],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_f5a2372fce59533296695a5a497c859b.bindTooltip(
+                `<div>
+                     节点6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_17f3b13f10df452e463d9df12430ff28 = L.marker(
+                [23.12, 113.28],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_b63b486e4e8307f53cb05306a4f19db7 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u5317\u4eac\u8def\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_17f3b13f10df452e463d9df12430ff28.setIcon(div_icon_b63b486e4e8307f53cb05306a4f19db7);
+        
+    
+            marker_17f3b13f10df452e463d9df12430ff28.bindTooltip(
+                `<div>
+                     节点6: 北京路
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6dd1c7b49f65de7f288697a5460eddaf = L.circleMarker(
+                [23.11, 113.27],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_6dd1c7b49f65de7f288697a5460eddaf.bindTooltip(
+                `<div>
+                     节点7
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_17593ad43ef053d60ed237b280b57901 = L.marker(
+                [23.11, 113.27],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_f5b23ae0e8c2522a935b530703fe7511 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u5e7f\u5dde\u706b\u8f66\u7ad9\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_17593ad43ef053d60ed237b280b57901.setIcon(div_icon_f5b23ae0e8c2522a935b530703fe7511);
+        
+    
+            marker_17593ad43ef053d60ed237b280b57901.bindTooltip(
+                `<div>
+                     节点7: 广州火车站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2051f47fab272bee642d241adf4d684d = L.circleMarker(
+                [23.125, 113.29],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_2051f47fab272bee642d241adf4d684d.bindTooltip(
+                `<div>
+                     节点8
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4d3d04e196ed9106a42821ff2460ec0e = L.marker(
+                [23.125, 113.29],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_e5a0e436c0e12135f46ff5775781c95b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u4e2d\u5c71\u7eaa\u5ff5\u5802\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4d3d04e196ed9106a42821ff2460ec0e.setIcon(div_icon_e5a0e436c0e12135f46ff5775781c95b);
+        
+    
+            marker_4d3d04e196ed9106a42821ff2460ec0e.bindTooltip(
+                `<div>
+                     节点8: 中山纪念堂
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6f16a4f1a2ea8ff6c9793cbadfbc0188 = L.circleMarker(
+                [23.115, 113.28],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_6f16a4f1a2ea8ff6c9793cbadfbc0188.bindTooltip(
+                `<div>
+                     节点9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5a957dd530f63e889b5b04a117defe22 = L.marker(
+                [23.115, 113.28],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_d399aee393168913fb1a225666da290b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u5e7f\u5dde\u8d77\u4e49\u7eaa\u5ff5\u9986\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5a957dd530f63e889b5b04a117defe22.setIcon(div_icon_d399aee393168913fb1a225666da290b);
+        
+    
+            marker_5a957dd530f63e889b5b04a117defe22.bindTooltip(
+                `<div>
+                     节点9: 广州起义纪念馆
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_63d11878cd128f4a65caed4f865f0428 = L.circleMarker(
+                [23.08, 113.31],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_63d11878cd128f4a65caed4f865f0428.bindTooltip(
+                `<div>
+                     节点10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_899c23194925d36bf3d1ecbb943ac6f2 = L.marker(
+                [23.08, 113.31],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_302eadf8ed9e7a4203f3bb3635c50724 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u5e7f\u5dde\u5854\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_899c23194925d36bf3d1ecbb943ac6f2.setIcon(div_icon_302eadf8ed9e7a4203f3bb3635c50724);
+        
+    
+            marker_899c23194925d36bf3d1ecbb943ac6f2.bindTooltip(
+                `<div>
+                     节点10: 广州塔
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e3cd6f2013bfb484504499b1d61c3b3f = L.circleMarker(
+                [23.07, 113.32],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_e3cd6f2013bfb484504499b1d61c3b3f.bindTooltip(
+                `<div>
+                     节点11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4b8bec2f97d70cf6352cc96bcb2f7d79 = L.marker(
+                [23.07, 113.32],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_23d238be9df9ab41a27c74dfe026c201 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u7436\u6d32\u4f1a\u5c55\u4e2d\u5fc3\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_4b8bec2f97d70cf6352cc96bcb2f7d79.setIcon(div_icon_23d238be9df9ab41a27c74dfe026c201);
+        
+    
+            marker_4b8bec2f97d70cf6352cc96bcb2f7d79.bindTooltip(
+                `<div>
+                     节点11: 琶洲会展中心
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_61852ab12c7a4772b064967c24d88250 = L.circleMarker(
+                [23.09, 113.3],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_61852ab12c7a4772b064967c24d88250.bindTooltip(
+                `<div>
+                     节点12
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5e52562fcc988c78a20990d0454d07cf = L.marker(
+                [23.09, 113.3],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_18e838354617dc014ec328475ea29d0f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u6d77\u73e0\u5e7f\u573a\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_5e52562fcc988c78a20990d0454d07cf.setIcon(div_icon_18e838354617dc014ec328475ea29d0f);
+        
+    
+            marker_5e52562fcc988c78a20990d0454d07cf.bindTooltip(
+                `<div>
+                     节点12: 海珠广场
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_314e8c0d76ba9e1fc484d4cd8d3dbb2a = L.circleMarker(
+                [23.06, 113.3],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_314e8c0d76ba9e1fc484d4cd8d3dbb2a.bindTooltip(
+                `<div>
+                     节点13
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3dc662029a3ded89ba7122fdc42cc5cd = L.marker(
+                [23.06, 113.3],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_6b32966ae5df80c409fec6de473ec7e1 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u5e7f\u5dde\u5927\u5b66\u57ce\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_3dc662029a3ded89ba7122fdc42cc5cd.setIcon(div_icon_6b32966ae5df80c409fec6de473ec7e1);
+        
+    
+            marker_3dc662029a3ded89ba7122fdc42cc5cd.bindTooltip(
+                `<div>
+                     节点13: 广州大学城
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_47c9c21b882ecfbe746febca96d8bf86 = L.circleMarker(
+                [23.1, 113.26],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_47c9c21b882ecfbe746febca96d8bf86.bindTooltip(
+                `<div>
+                     节点14
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e4ff446bc2940df92d39c45550d788c9 = L.marker(
+                [23.1, 113.26],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_82c7eb13c53fc4d15d45c8af87872b87 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u4e0a\u4e0b\u4e5d\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e4ff446bc2940df92d39c45550d788c9.setIcon(div_icon_82c7eb13c53fc4d15d45c8af87872b87);
+        
+    
+            marker_e4ff446bc2940df92d39c45550d788c9.bindTooltip(
+                `<div>
+                     节点14: 上下九
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c18ac007b3facfa2eecdcaa1674c2fa7 = L.circleMarker(
+                [23.11, 113.25],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_c18ac007b3facfa2eecdcaa1674c2fa7.bindTooltip(
+                `<div>
+                     节点15
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d916e575b70a37304366256adfb7c9b4 = L.marker(
+                [23.11, 113.25],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_3b40d4ae1a45362b14bcaf153614aa0b = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u9648\u5bb6\u7960\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_d916e575b70a37304366256adfb7c9b4.setIcon(div_icon_3b40d4ae1a45362b14bcaf153614aa0b);
+        
+    
+            marker_d916e575b70a37304366256adfb7c9b4.bindTooltip(
+                `<div>
+                     节点15: 陈家祠
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e6766d7031f650871eeb7b7f0965a323 = L.circleMarker(
+                [23.09, 113.25],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_e6766d7031f650871eeb7b7f0965a323.bindTooltip(
+                `<div>
+                     节点16
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5cc8a8c0b4c4cb68052969419e63979 = L.marker(
+                [23.09, 113.25],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_352ef7a705e9821b530a8e05c328de69 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u6c99\u9762\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a5cc8a8c0b4c4cb68052969419e63979.setIcon(div_icon_352ef7a705e9821b530a8e05c328de69);
+        
+    
+            marker_a5cc8a8c0b4c4cb68052969419e63979.bindTooltip(
+                `<div>
+                     节点16: 沙面
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e0ba912d07cf6c058fc340040dc23b07 = L.circleMarker(
+                [23.16, 113.28],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_e0ba912d07cf6c058fc340040dc23b07.bindTooltip(
+                `<div>
+                     节点17
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cf8e017073646e3e37f27f6dc42e6522 = L.marker(
+                [23.16, 113.28],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_5ffa48af25903ffe60fc9f67df894918 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u5e7f\u5dde\u767d\u4e91\u56fd\u9645\u673a\u573a\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_cf8e017073646e3e37f27f6dc42e6522.setIcon(div_icon_5ffa48af25903ffe60fc9f67df894918);
+        
+    
+            marker_cf8e017073646e3e37f27f6dc42e6522.bindTooltip(
+                `<div>
+                     节点17: 广州白云国际机场
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_09a47f87bde0a4e19a5a25c8e65ff133 = L.circleMarker(
+                [23.17, 113.3],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_09a47f87bde0a4e19a5a25c8e65ff133.bindTooltip(
+                `<div>
+                     节点18
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_885113451382fb92f812f4c84488408a = L.marker(
+                [23.17, 113.3],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_f4be8223da1daaffa96ddb2e936a0630 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u5609\u79be\u671b\u5c97\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_885113451382fb92f812f4c84488408a.setIcon(div_icon_f4be8223da1daaffa96ddb2e936a0630);
+        
+    
+            marker_885113451382fb92f812f4c84488408a.bindTooltip(
+                `<div>
+                     节点18: 嘉禾望岗
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_38477525218dc1bce11a624d01902fe7 = L.circleMarker(
+                [23.1, 113.45],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_38477525218dc1bce11a624d01902fe7.bindTooltip(
+                `<div>
+                     节点19
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e14cfa685776f4da9c356ab42cde4b0a = L.marker(
+                [23.1, 113.45],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_be940b2c5c58d6a9eb53a22ecad52671 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u9ec4\u57d4\u6e2f\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_e14cfa685776f4da9c356ab42cde4b0a.setIcon(div_icon_be940b2c5c58d6a9eb53a22ecad52671);
+        
+    
+            marker_e14cfa685776f4da9c356ab42cde4b0a.bindTooltip(
+                `<div>
+                     节点19: 黄埔港
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_fd95dd5b2885421cbcd674c5b8db3705 = L.circleMarker(
+                [23.12, 113.4],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_fd95dd5b2885421cbcd674c5b8db3705.bindTooltip(
+                `<div>
+                     节点20
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_73844b1d37893d168385d80194effbe4 = L.marker(
+                [23.12, 113.4],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_3781726d1cd910e7acfcf1ad301fc697 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u79d1\u5b66\u57ce\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_73844b1d37893d168385d80194effbe4.setIcon(div_icon_3781726d1cd910e7acfcf1ad301fc697);
+        
+    
+            marker_73844b1d37893d168385d80194effbe4.bindTooltip(
+                `<div>
+                     节点20: 科学城
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0f4957a3c33b9ec6da05a19c00ca50d7 = L.circleMarker(
+                [22.94, 113.38],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_0f4957a3c33b9ec6da05a19c00ca50d7.bindTooltip(
+                `<div>
+                     节点21
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a2d92154a94484ca02e7fdfae890a7f1 = L.marker(
+                [22.94, 113.38],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_a0856f66f872ff46b8c7bd8ea9c7b1ad = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u756a\u79ba\u5e7f\u573a\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_a2d92154a94484ca02e7fdfae890a7f1.setIcon(div_icon_a0856f66f872ff46b8c7bd8ea9c7b1ad);
+        
+    
+            marker_a2d92154a94484ca02e7fdfae890a7f1.bindTooltip(
+                `<div>
+                     节点21: 番禺广场
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c1518cb522e384056761b008568bb045 = L.circleMarker(
+                [22.9, 113.33],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_c1518cb522e384056761b008568bb045.bindTooltip(
+                `<div>
+                     节点22
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_56694c5dfe2daee2ac2bf5ae95121a80 = L.marker(
+                [22.9, 113.33],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_9e3e16dddfb4a7ad0df23e83be6fe807 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u5e7f\u5dde\u5357\u7ad9\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_56694c5dfe2daee2ac2bf5ae95121a80.setIcon(div_icon_9e3e16dddfb4a7ad0df23e83be6fe807);
+        
+    
+            marker_56694c5dfe2daee2ac2bf5ae95121a80.bindTooltip(
+                `<div>
+                     节点22: 广州南站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c31649d8f713a2806a0cc85c557879c2 = L.circleMarker(
+                [23.4, 113.22],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_c31649d8f713a2806a0cc85c557879c2.bindTooltip(
+                `<div>
+                     节点23
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_56c53755dc5f11bb3d6b125e6f43b81c = L.marker(
+                [23.4, 113.22],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_131ad1ca02a794e393e35c0d3ce01c33 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u82b1\u90fd\u5e7f\u573a\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_56c53755dc5f11bb3d6b125e6f43b81c.setIcon(div_icon_131ad1ca02a794e393e35c0d3ce01c33);
+        
+    
+            marker_56c53755dc5f11bb3d6b125e6f43b81c.bindTooltip(
+                `<div>
+                     节点23: 花都广场
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_49016decaa54a52c1dcee9636fa48983 = L.circleMarker(
+                [23.15, 113.35],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            circle_marker_49016decaa54a52c1dcee9636fa48983.bindTooltip(
+                `<div>
+                     节点100
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_92715c998146c54b4d921d4d9acc3e7f = L.marker(
+                [23.15, 113.35],
+                {}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            var div_icon_bb2ec05cf0347ec2bb54d2aa67eb341d = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 10pt\"\u003e\u4e2d\u592e\u4ed3\u5e93\u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [150, 36]});
+            marker_92715c998146c54b4d921d4d9acc3e7f.setIcon(div_icon_bb2ec05cf0347ec2bb54d2aa67eb341d);
+        
+    
+            marker_92715c998146c54b4d921d4d9acc3e7f.bindTooltip(
+                `<div>
+                     节点100: 中央仓库
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_f7e6389d07b38bfeb1b0007f4ad1b70b = L.polyline(
+                [[23.135, 113.33], [23.125, 113.34]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_f7e6389d07b38bfeb1b0007f4ad1b70b.bindTooltip(
+                `<div>
+                     广州大道中 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_18677ee7da88082f562ceee66bbeacf5 = L.polyline(
+                [[23.135, 113.33], [23.13, 113.32]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_18677ee7da88082f562ceee66bbeacf5.bindTooltip(
+                `<div>
+                     广州大道北 (1500m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_013a6aa77eb5c182095dba914530a492 = L.polyline(
+                [[23.135, 113.33], [23.14, 113.34]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_013a6aa77eb5c182095dba914530a492.bindTooltip(
+                `<div>
+                     黄埔大道西 (1000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_d7734502ebc043bd3a823ef69b199ba5 = L.polyline(
+                [[23.135, 113.33], [23.12, 113.28]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_d7734502ebc043bd3a823ef69b199ba5.bindTooltip(
+                `<div>
+                     天河路 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_2c8f45cb8883b52362058b52d3ad2dcf = L.polyline(
+                [[23.135, 113.33], [22.94, 113.38]],
+                {"bubblingMouseEvents": true, "color": "#ff8800", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff8800", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_2c8f45cb8883b52362058b52d3ad2dcf.bindTooltip(
+                `<div>
+                     华南快速干线 (15000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_70040ed64edfb37ea5a7e16e62ec6e05 = L.polyline(
+                [[23.13, 113.32], [23.135, 113.33]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_70040ed64edfb37ea5a7e16e62ec6e05.bindTooltip(
+                `<div>
+                     广州大道北 (1500m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_3b191ce97da1980cb34821acdd218efb = L.polyline(
+                [[23.13, 113.32], [23.125, 113.29]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_3b191ce97da1980cb34821acdd218efb.bindTooltip(
+                `<div>
+                     环市东路 (4000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_98215fa8cbc0e5a9e03861e5319461e0 = L.polyline(
+                [[23.13, 113.32], [23.1, 113.45]],
+                {"bubblingMouseEvents": true, "color": "#ff8800", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff8800", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_98215fa8cbc0e5a9e03861e5319461e0.bindTooltip(
+                `<div>
+                     广园快速路 (15000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_d4f3d983b03c1823b16313750d8e6dcf = L.polyline(
+                [[23.13, 113.32], [23.17, 113.3]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_d4f3d983b03c1823b16313750d8e6dcf.bindTooltip(
+                `<div>
+                     机场高速 (15000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_b9a11626eff8a80ad6650631467ba83d = L.polyline(
+                [[23.125, 113.34], [23.135, 113.33]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_b9a11626eff8a80ad6650631467ba83d.bindTooltip(
+                `<div>
+                     广州大道中 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_3c72cc7d116a796235bd279575ac3c85 = L.polyline(
+                [[23.125, 113.34], [23.08, 113.31]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_3c72cc7d116a796235bd279575ac3c85.bindTooltip(
+                `<div>
+                     广州大道南 (3000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_b1058e1b8ddb1126d4eef9b75a1be32a = L.polyline(
+                [[23.14, 113.34], [23.135, 113.33]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_b1058e1b8ddb1126d4eef9b75a1be32a.bindTooltip(
+                `<div>
+                     黄埔大道西 (1000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_9c3213c0bbdc8c573bdba49736a89d59 = L.polyline(
+                [[23.14, 113.34], [23.12, 113.4]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_9c3213c0bbdc8c573bdba49736a89d59.bindTooltip(
+                `<div>
+                     黄埔大道东 (8000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_886526c729c707ca44e2bb9c920a8bbc = L.polyline(
+                [[23.14, 113.34], [23.115, 113.28]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_886526c729c707ca44e2bb9c920a8bbc.bindTooltip(
+                `<div>
+                     东风东路 (4000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_b5425c932ed3649371f9cfc73a33cde1 = L.polyline(
+                [[23.14, 113.34], [23.15, 113.35]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_b5425c932ed3649371f9cfc73a33cde1.bindTooltip(
+                `<div>
+                     仓库连接线 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_12a0796f1a708bfcfc87f97d3c8326ef = L.polyline(
+                [[23.12, 113.28], [23.135, 113.33]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_12a0796f1a708bfcfc87f97d3c8326ef.bindTooltip(
+                `<div>
+                     天河路 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_0b76fc57b90cafc12365810272e9fa1f = L.polyline(
+                [[23.12, 113.28], [23.125, 113.29]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_0b76fc57b90cafc12365810272e9fa1f.bindTooltip(
+                `<div>
+                     中山路 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_6a1912ad4858c81ba0f056758297ac02 = L.polyline(
+                [[23.125, 113.29], [23.12, 113.28]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_6a1912ad4858c81ba0f056758297ac02.bindTooltip(
+                `<div>
+                     中山路 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_8561ebf0eeb67bc11d5d2916d256a873 = L.polyline(
+                [[23.125, 113.29], [23.1, 113.26]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_8561ebf0eeb67bc11d5d2916d256a873.bindTooltip(
+                `<div>
+                     中山路 (3000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_b435214f09625c98c568218b4b8b8c8d = L.polyline(
+                [[23.125, 113.29], [23.13, 113.32]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_b435214f09625c98c568218b4b8b8c8d.bindTooltip(
+                `<div>
+                     环市东路 (4000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_008eddc68c871b7ae4f212cf8affbf1f = L.polyline(
+                [[23.125, 113.29], [23.11, 113.25]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_008eddc68c871b7ae4f212cf8affbf1f.bindTooltip(
+                `<div>
+                     环市西路 (3000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_1c1b4b8ef248c9fa3ae8e4560ef5fbf5 = L.polyline(
+                [[23.115, 113.28], [23.14, 113.34]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_1c1b4b8ef248c9fa3ae8e4560ef5fbf5.bindTooltip(
+                `<div>
+                     东风东路 (4000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_125ae50211e234c937161b7ebc681c13 = L.polyline(
+                [[23.115, 113.28], [23.11, 113.25]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_125ae50211e234c937161b7ebc681c13.bindTooltip(
+                `<div>
+                     东风西路 (3000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_8ca547d5e548066b66f92163e6863ee1 = L.polyline(
+                [[23.08, 113.31], [23.125, 113.34]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_8ca547d5e548066b66f92163e6863ee1.bindTooltip(
+                `<div>
+                     广州大道南 (3000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_5846b0a6ef7772fb8aed4e34b11c0815 = L.polyline(
+                [[23.08, 113.31], [23.06, 113.3]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_5846b0a6ef7772fb8aed4e34b11c0815.bindTooltip(
+                `<div>
+                     广州环城高速 (8000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_243c9f28a76c050c446811c6f8649895 = L.polyline(
+                [[23.08, 113.31], [23.09, 113.3]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_243c9f28a76c050c446811c6f8649895.bindTooltip(
+                `<div>
+                     广州环城高速 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_2fc0cf33c28bef10a33b52d0a894a979 = L.polyline(
+                [[23.08, 113.31], [23.07, 113.32]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_2fc0cf33c28bef10a33b52d0a894a979.bindTooltip(
+                `<div>
+                     阅江路 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_2def575cd2f3dac3d9b37421a3fc75e3 = L.polyline(
+                [[23.07, 113.32], [23.08, 113.31]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_2def575cd2f3dac3d9b37421a3fc75e3.bindTooltip(
+                `<div>
+                     阅江路 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_6fecddf91505a837d04bb177f4d664df = L.polyline(
+                [[23.07, 113.32], [23.06, 113.3]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_6fecddf91505a837d04bb177f4d664df.bindTooltip(
+                `<div>
+                     科韵路 (6000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_11211255ee1123a91646cc4df5640181 = L.polyline(
+                [[23.09, 113.3], [23.08, 113.31]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_11211255ee1123a91646cc4df5640181.bindTooltip(
+                `<div>
+                     广州环城高速 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_fbc0f5e7bb935163a376da2c09bc6667 = L.polyline(
+                [[23.09, 113.3], [23.09, 113.25]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_fbc0f5e7bb935163a376da2c09bc6667.bindTooltip(
+                `<div>
+                     沿江西路 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_040db5139394f47d8833114ab94bfc35 = L.polyline(
+                [[23.06, 113.3], [22.94, 113.38]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_040db5139394f47d8833114ab94bfc35.bindTooltip(
+                `<div>
+                     广州环城高速 (10000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_323df0d7d8cc1e3b59341d9e5a5d1548 = L.polyline(
+                [[23.06, 113.3], [23.08, 113.31]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_323df0d7d8cc1e3b59341d9e5a5d1548.bindTooltip(
+                `<div>
+                     广州环城高速 (8000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_70aadf108d744e035624ba9437fdaa87 = L.polyline(
+                [[23.06, 113.3], [23.07, 113.32]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_70aadf108d744e035624ba9437fdaa87.bindTooltip(
+                `<div>
+                     科韵路 (6000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_41eb2af2f805b3b75dfcae176e8db43c = L.polyline(
+                [[23.1, 113.26], [23.125, 113.29]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_41eb2af2f805b3b75dfcae176e8db43c.bindTooltip(
+                `<div>
+                     中山路 (3000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_00abf58e6fcb236cbd5976a8e2d8cc90 = L.polyline(
+                [[23.1, 113.26], [23.09, 113.25]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_00abf58e6fcb236cbd5976a8e2d8cc90.bindTooltip(
+                `<div>
+                     广州环城高速 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_a0347a8b1086533875dd15fae7e336a8 = L.polyline(
+                [[23.1, 113.26], [23.17, 113.3]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_a0347a8b1086533875dd15fae7e336a8.bindTooltip(
+                `<div>
+                     广州环城高速 (15000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_aefb3bdaf762ab5f532110f7152b28ce = L.polyline(
+                [[23.11, 113.25], [23.125, 113.29]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_aefb3bdaf762ab5f532110f7152b28ce.bindTooltip(
+                `<div>
+                     环市西路 (3000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_61597fb6a04a15c0ef8fd678ca3c243e = L.polyline(
+                [[23.11, 113.25], [23.115, 113.28]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_61597fb6a04a15c0ef8fd678ca3c243e.bindTooltip(
+                `<div>
+                     东风西路 (3000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_2ae85cfc7176d40e3adb4c7797c58035 = L.polyline(
+                [[23.11, 113.25], [23.09, 113.25]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_2ae85cfc7176d40e3adb4c7797c58035.bindTooltip(
+                `<div>
+                     黄沙大道 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_cc05bc4202c5375efcd9cc7e8160a37a = L.polyline(
+                [[23.09, 113.25], [23.09, 113.3]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_cc05bc4202c5375efcd9cc7e8160a37a.bindTooltip(
+                `<div>
+                     沿江西路 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_45e429efa362e7b7df9fb633c895698b = L.polyline(
+                [[23.09, 113.25], [23.1, 113.26]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_45e429efa362e7b7df9fb633c895698b.bindTooltip(
+                `<div>
+                     广州环城高速 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_24bd4d704579d4c7d83e39540a3f509d = L.polyline(
+                [[23.09, 113.25], [23.11, 113.25]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_24bd4d704579d4c7d83e39540a3f509d.bindTooltip(
+                `<div>
+                     黄沙大道 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_4c8ab857d56eca359dca238042f0202a = L.polyline(
+                [[23.16, 113.28], [23.17, 113.3]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_4c8ab857d56eca359dca238042f0202a.bindTooltip(
+                `<div>
+                     机场高速 (10000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_42532b1790c36322457cd92259f5c03a = L.polyline(
+                [[23.16, 113.28], [23.4, 113.22]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_42532b1790c36322457cd92259f5c03a.bindTooltip(
+                `<div>
+                     大广高速 (20000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_42effe8e77a36c9879273357fe47f72b = L.polyline(
+                [[23.17, 113.3], [23.16, 113.28]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_42effe8e77a36c9879273357fe47f72b.bindTooltip(
+                `<div>
+                     机场高速 (10000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_700443a99f46c35c34dad400add68710 = L.polyline(
+                [[23.17, 113.3], [23.13, 113.32]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_700443a99f46c35c34dad400add68710.bindTooltip(
+                `<div>
+                     机场高速 (15000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_7ad2b451681db0e9beed258a34414440 = L.polyline(
+                [[23.17, 113.3], [23.1, 113.26]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_7ad2b451681db0e9beed258a34414440.bindTooltip(
+                `<div>
+                     广州环城高速 (15000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_970c29a0067de7ba75c86915eef5a20c = L.polyline(
+                [[23.1, 113.45], [23.13, 113.32]],
+                {"bubblingMouseEvents": true, "color": "#ff8800", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff8800", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_970c29a0067de7ba75c86915eef5a20c.bindTooltip(
+                `<div>
+                     广园快速路 (15000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_5186c3c15dc9c50e44ead3dac560712f = L.polyline(
+                [[23.1, 113.45], [22.94, 113.38]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_5186c3c15dc9c50e44ead3dac560712f.bindTooltip(
+                `<div>
+                     广州环城高速 (20000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_5a0337b5119f7d9933b0793b6295d480 = L.polyline(
+                [[23.1, 113.45], [23.12, 113.4]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_5a0337b5119f7d9933b0793b6295d480.bindTooltip(
+                `<div>
+                     开创大道 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_974f850bb92cfff6d4a11a1ce39d4649 = L.polyline(
+                [[23.12, 113.4], [23.14, 113.34]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_974f850bb92cfff6d4a11a1ce39d4649.bindTooltip(
+                `<div>
+                     黄埔大道东 (8000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_e3fef3ea2613d280b2461e80518e1b7d = L.polyline(
+                [[23.12, 113.4], [23.1, 113.45]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_e3fef3ea2613d280b2461e80518e1b7d.bindTooltip(
+                `<div>
+                     开创大道 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_384fb9831c607c220a70b201bfde3e30 = L.polyline(
+                [[23.12, 113.4], [23.15, 113.35]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_384fb9831c607c220a70b201bfde3e30.bindTooltip(
+                `<div>
+                     仓库连接线 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_7398e32697a99681c53a6cef3b0aa0b1 = L.polyline(
+                [[22.94, 113.38], [23.135, 113.33]],
+                {"bubblingMouseEvents": true, "color": "#ff8800", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff8800", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_7398e32697a99681c53a6cef3b0aa0b1.bindTooltip(
+                `<div>
+                     华南快速干线 (15000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_c666d38ca81654b8253c858fe8bcd544 = L.polyline(
+                [[22.94, 113.38], [22.9, 113.33]],
+                {"bubblingMouseEvents": true, "color": "#ff8800", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff8800", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_c666d38ca81654b8253c858fe8bcd544.bindTooltip(
+                `<div>
+                     华南快速干线 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_572f2881ce1c5440b77b94a90e0746d5 = L.polyline(
+                [[22.94, 113.38], [23.1, 113.45]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_572f2881ce1c5440b77b94a90e0746d5.bindTooltip(
+                `<div>
+                     广州环城高速 (20000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_10cad550b799311a9b250688daa3a2ea = L.polyline(
+                [[22.94, 113.38], [23.06, 113.3]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_10cad550b799311a9b250688daa3a2ea.bindTooltip(
+                `<div>
+                     广州环城高速 (10000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_046ae09c5abc9238a4477552bb4efa23 = L.polyline(
+                [[22.9, 113.33], [22.94, 113.38]],
+                {"bubblingMouseEvents": true, "color": "#ff8800", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff8800", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_046ae09c5abc9238a4477552bb4efa23.bindTooltip(
+                `<div>
+                     华南快速干线 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_a611eeb6fe98554be1f7892ce6f4ef5d = L.polyline(
+                [[23.4, 113.22], [23.16, 113.28]],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_a611eeb6fe98554be1f7892ce6f4ef5d.bindTooltip(
+                `<div>
+                     大广高速 (20000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_319dd7df3cea77b0d7e246077c26436e = L.polyline(
+                [[23.15, 113.35], [23.14, 113.34]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_319dd7df3cea77b0d7e246077c26436e.bindTooltip(
+                `<div>
+                     仓库连接线 (2000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_862feb0f029d7153e5972f38d5d0e4fe = L.polyline(
+                [[23.15, 113.35], [23.12, 113.4]],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0000ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5b9a71a741d42a32d8095b2b27671ad0);
+        
+    
+            poly_line_862feb0f029d7153e5972f38d5d0e4fe.bindTooltip(
+                `<div>
+                     仓库连接线 (5000m)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            feature_group_5b9a71a741d42a32d8095b2b27671ad0.addTo(map_4a6c07f0ed6919a2749334983a6b5cf6);
+        
+    
+            var feature_group_57a9e46f753d858603a4dcb3b2ba84f8 = L.featureGroup(
+                {}
+            );
+        
+    
+            var marker_3dc566b0775744862d895ce9f98a910a = L.marker(
+                [23.15, 113.35],
+                {}
+            ).addTo(feature_group_57a9e46f753d858603a4dcb3b2ba84f8);
+        
+    
+            var icon_a5a335c739ce46b25a3902b2439deece = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_3dc566b0775744862d895ce9f98a910a.setIcon(icon_a5a335c739ce46b25a3902b2439deece);
+        
+    
+        var popup_85b24fd6d55cab906682fd8d61c03be5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_872b833f453ec78df5168ee832376887 = $(`<div id="html_872b833f453ec78df5168ee832376887" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>车辆1</b><br>                 状态: moving<br>                 电量: 0.0/200 km<br>                 载重: 1500 kg<br>                 总行驶: 124.5 km<br>                 完成任务: 0 个                 </div></div>`)[0];
+                popup_85b24fd6d55cab906682fd8d61c03be5.setContent(html_872b833f453ec78df5168ee832376887);
+            
+        
+
+        marker_3dc566b0775744862d895ce9f98a910a.bindPopup(popup_85b24fd6d55cab906682fd8d61c03be5)
+        ;
+
+        
+    
+    
+            marker_3dc566b0775744862d895ce9f98a910a.bindTooltip(
+                `<div>
+                     车辆1 (moving)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a43f7ac7eb87c46935d06e76919f5004 = L.marker(
+                [23.15, 113.35],
+                {}
+            ).addTo(feature_group_57a9e46f753d858603a4dcb3b2ba84f8);
+        
+    
+            var icon_2dac6a2ad163cce963ed644f537e243d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_a43f7ac7eb87c46935d06e76919f5004.setIcon(icon_2dac6a2ad163cce963ed644f537e243d);
+        
+    
+        var popup_4fd4ab6d889fe2b5d3c639aa6aaf49de = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e44ba5b4aad46f725e99dadcde93780e = $(`<div id="html_e44ba5b4aad46f725e99dadcde93780e" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>车辆2</b><br>                 状态: idle<br>                 电量: 200.0/200 km<br>                 载重: 1500 kg<br>                 总行驶: 0.0 km<br>                 完成任务: 0 个                 </div></div>`)[0];
+                popup_4fd4ab6d889fe2b5d3c639aa6aaf49de.setContent(html_e44ba5b4aad46f725e99dadcde93780e);
+            
+        
+
+        marker_a43f7ac7eb87c46935d06e76919f5004.bindPopup(popup_4fd4ab6d889fe2b5d3c639aa6aaf49de)
+        ;
+
+        
+    
+    
+            marker_a43f7ac7eb87c46935d06e76919f5004.bindTooltip(
+                `<div>
+                     车辆2 (idle)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_13512959aab15f0884696843c2bcfc07 = L.marker(
+                [23.15, 113.35],
+                {}
+            ).addTo(feature_group_57a9e46f753d858603a4dcb3b2ba84f8);
+        
+    
+            var icon_f76e3fdc0be3f810a2207e0cf26e0643 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_13512959aab15f0884696843c2bcfc07.setIcon(icon_f76e3fdc0be3f810a2207e0cf26e0643);
+        
+    
+        var popup_24db40833ce04cf157f9585baaa44bb3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f4fb27837fea6e3d8eb9cd225a25d025 = $(`<div id="html_f4fb27837fea6e3d8eb9cd225a25d025" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>车辆3</b><br>                 状态: idle<br>                 电量: 200.0/200 km<br>                 载重: 1500 kg<br>                 总行驶: 0.0 km<br>                 完成任务: 0 个                 </div></div>`)[0];
+                popup_24db40833ce04cf157f9585baaa44bb3.setContent(html_f4fb27837fea6e3d8eb9cd225a25d025);
+            
+        
+
+        marker_13512959aab15f0884696843c2bcfc07.bindPopup(popup_24db40833ce04cf157f9585baaa44bb3)
+        ;
+
+        
+    
+    
+            marker_13512959aab15f0884696843c2bcfc07.bindTooltip(
+                `<div>
+                     车辆3 (idle)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3dfcce7ea44e8e6022608edec1cef4d2 = L.marker(
+                [23.15, 113.35],
+                {}
+            ).addTo(feature_group_57a9e46f753d858603a4dcb3b2ba84f8);
+        
+    
+            var icon_3c9f3fb3cd2bfa6df9fcf74940eb9015 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_3dfcce7ea44e8e6022608edec1cef4d2.setIcon(icon_3c9f3fb3cd2bfa6df9fcf74940eb9015);
+        
+    
+        var popup_41ea0a1583f0b1f9ed6e8d0c7de4aa21 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_78eb67383ce3cca1d5a2510e7dbba96f = $(`<div id="html_78eb67383ce3cca1d5a2510e7dbba96f" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>车辆4</b><br>                 状态: idle<br>                 电量: 150.0/150 km<br>                 载重: 800 kg<br>                 总行驶: 0.0 km<br>                 完成任务: 0 个                 </div></div>`)[0];
+                popup_41ea0a1583f0b1f9ed6e8d0c7de4aa21.setContent(html_78eb67383ce3cca1d5a2510e7dbba96f);
+            
+        
+
+        marker_3dfcce7ea44e8e6022608edec1cef4d2.bindPopup(popup_41ea0a1583f0b1f9ed6e8d0c7de4aa21)
+        ;
+
+        
+    
+    
+            marker_3dfcce7ea44e8e6022608edec1cef4d2.bindTooltip(
+                `<div>
+                     车辆4 (idle)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6f482ff05e25f613578f4d374580aae7 = L.marker(
+                [23.15, 113.35],
+                {}
+            ).addTo(feature_group_57a9e46f753d858603a4dcb3b2ba84f8);
+        
+    
+            var icon_032546c98beaf69929a8c20dc747f74e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_6f482ff05e25f613578f4d374580aae7.setIcon(icon_032546c98beaf69929a8c20dc747f74e);
+        
+    
+        var popup_92f56e201559168fb1539d9261c82609 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e42f4b5001677a1475b9bd643cf22293 = $(`<div id="html_e42f4b5001677a1475b9bd643cf22293" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>车辆5</b><br>                 状态: idle<br>                 电量: 150.0/150 km<br>                 载重: 800 kg<br>                 总行驶: 0.0 km<br>                 完成任务: 0 个                 </div></div>`)[0];
+                popup_92f56e201559168fb1539d9261c82609.setContent(html_e42f4b5001677a1475b9bd643cf22293);
+            
+        
+
+        marker_6f482ff05e25f613578f4d374580aae7.bindPopup(popup_92f56e201559168fb1539d9261c82609)
+        ;
+
+        
+    
+    
+            marker_6f482ff05e25f613578f4d374580aae7.bindTooltip(
+                `<div>
+                     车辆5 (idle)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_51920f3da4439f78a92a1bcc00d9e215 = L.marker(
+                [23.15, 113.35],
+                {}
+            ).addTo(feature_group_57a9e46f753d858603a4dcb3b2ba84f8);
+        
+    
+            var icon_b9e2b77a5cf84562ac99b7e3f55cfca4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_51920f3da4439f78a92a1bcc00d9e215.setIcon(icon_b9e2b77a5cf84562ac99b7e3f55cfca4);
+        
+    
+        var popup_5e85ba3ba9f3a117aa4684128ca35e4c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6518822f335c0b824cdb857a4123bca9 = $(`<div id="html_6518822f335c0b824cdb857a4123bca9" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>车辆6</b><br>                 状态: idle<br>                 电量: 150.0/150 km<br>                 载重: 800 kg<br>                 总行驶: 0.0 km<br>                 完成任务: 0 个                 </div></div>`)[0];
+                popup_5e85ba3ba9f3a117aa4684128ca35e4c.setContent(html_6518822f335c0b824cdb857a4123bca9);
+            
+        
+
+        marker_51920f3da4439f78a92a1bcc00d9e215.bindPopup(popup_5e85ba3ba9f3a117aa4684128ca35e4c)
+        ;
+
+        
+    
+    
+            marker_51920f3da4439f78a92a1bcc00d9e215.bindTooltip(
+                `<div>
+                     车辆6 (idle)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_28edcfdb7933ce0ce188b514752a4aa0 = L.marker(
+                [23.15, 113.35],
+                {}
+            ).addTo(feature_group_57a9e46f753d858603a4dcb3b2ba84f8);
+        
+    
+            var icon_31b53c81852cc125bad8b17db181f247 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_28edcfdb7933ce0ce188b514752a4aa0.setIcon(icon_31b53c81852cc125bad8b17db181f247);
+        
+    
+        var popup_78220381b6ff419a02f33d42083a38e7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3bc85a0d6fdaada54d25852fc477c8a5 = $(`<div id="html_3bc85a0d6fdaada54d25852fc477c8a5" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>车辆7</b><br>                 状态: idle<br>                 电量: 150.0/150 km<br>                 载重: 800 kg<br>                 总行驶: 0.0 km<br>                 完成任务: 0 个                 </div></div>`)[0];
+                popup_78220381b6ff419a02f33d42083a38e7.setContent(html_3bc85a0d6fdaada54d25852fc477c8a5);
+            
+        
+
+        marker_28edcfdb7933ce0ce188b514752a4aa0.bindPopup(popup_78220381b6ff419a02f33d42083a38e7)
+        ;
+
+        
+    
+    
+            marker_28edcfdb7933ce0ce188b514752a4aa0.bindTooltip(
+                `<div>
+                     车辆7 (idle)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7b7bbab314edb305cb58e8c2997dcb2a = L.marker(
+                [23.15, 113.35],
+                {}
+            ).addTo(feature_group_57a9e46f753d858603a4dcb3b2ba84f8);
+        
+    
+            var icon_ebaecea5212960a9f2e4acd29108aa29 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_7b7bbab314edb305cb58e8c2997dcb2a.setIcon(icon_ebaecea5212960a9f2e4acd29108aa29);
+        
+    
+        var popup_d996ad1dc8426e4bde43871f9865681f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8fb504f4085ff28c8949fbe2f0901acc = $(`<div id="html_8fb504f4085ff28c8949fbe2f0901acc" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>车辆8</b><br>                 状态: idle<br>                 电量: 100.0/100 km<br>                 载重: 500 kg<br>                 总行驶: 0.0 km<br>                 完成任务: 0 个                 </div></div>`)[0];
+                popup_d996ad1dc8426e4bde43871f9865681f.setContent(html_8fb504f4085ff28c8949fbe2f0901acc);
+            
+        
+
+        marker_7b7bbab314edb305cb58e8c2997dcb2a.bindPopup(popup_d996ad1dc8426e4bde43871f9865681f)
+        ;
+
+        
+    
+    
+            marker_7b7bbab314edb305cb58e8c2997dcb2a.bindTooltip(
+                `<div>
+                     车辆8 (idle)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9ecc58f578f0fdb448ebea36c2e81f9f = L.marker(
+                [23.15, 113.35],
+                {}
+            ).addTo(feature_group_57a9e46f753d858603a4dcb3b2ba84f8);
+        
+    
+            var icon_85091c25199a71616f9418dcb5f267d5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_9ecc58f578f0fdb448ebea36c2e81f9f.setIcon(icon_85091c25199a71616f9418dcb5f267d5);
+        
+    
+        var popup_d3a6b635ad5d9cc1439c7aa0d01cf436 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_81e479120e777084e890640acfe6479b = $(`<div id="html_81e479120e777084e890640acfe6479b" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>车辆9</b><br>                 状态: idle<br>                 电量: 100.0/100 km<br>                 载重: 500 kg<br>                 总行驶: 0.0 km<br>                 完成任务: 0 个                 </div></div>`)[0];
+                popup_d3a6b635ad5d9cc1439c7aa0d01cf436.setContent(html_81e479120e777084e890640acfe6479b);
+            
+        
+
+        marker_9ecc58f578f0fdb448ebea36c2e81f9f.bindPopup(popup_d3a6b635ad5d9cc1439c7aa0d01cf436)
+        ;
+
+        
+    
+    
+            marker_9ecc58f578f0fdb448ebea36c2e81f9f.bindTooltip(
+                `<div>
+                     车辆9 (idle)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_35f13cd5d1d637fc5a3059be8cbed080 = L.marker(
+                [23.15, 113.35],
+                {}
+            ).addTo(feature_group_57a9e46f753d858603a4dcb3b2ba84f8);
+        
+    
+            var icon_33086651508c7f6347eef9d8cc8b7740 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_35f13cd5d1d637fc5a3059be8cbed080.setIcon(icon_33086651508c7f6347eef9d8cc8b7740);
+        
+    
+        var popup_8c8de33e748aacf87105d99cbeff1f59 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c44e5435d4f8d0a83106e78e980c3a00 = $(`<div id="html_c44e5435d4f8d0a83106e78e980c3a00" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>车辆10</b><br>                 状态: idle<br>                 电量: 100.0/100 km<br>                 载重: 500 kg<br>                 总行驶: 0.0 km<br>                 完成任务: 0 个                 </div></div>`)[0];
+                popup_8c8de33e748aacf87105d99cbeff1f59.setContent(html_c44e5435d4f8d0a83106e78e980c3a00);
+            
+        
+
+        marker_35f13cd5d1d637fc5a3059be8cbed080.bindPopup(popup_8c8de33e748aacf87105d99cbeff1f59)
+        ;
+
+        
+    
+    
+            marker_35f13cd5d1d637fc5a3059be8cbed080.bindTooltip(
+                `<div>
+                     车辆10 (idle)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            feature_group_57a9e46f753d858603a4dcb3b2ba84f8.addTo(map_4a6c07f0ed6919a2749334983a6b5cf6);
+        
+    
+            var feature_group_854fe9037b18583bbe1edac05bf600ad = L.featureGroup(
+                {}
+            );
+        
+    
+            var circle_marker_b71415e0786f742c04d38271601356b1 = L.circleMarker(
+                [23.15, 113.32],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_2ec42d241ae5dd084a04dee611604991 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e768302a0ac23881c1b90e7543b3676f = $(`<div id="html_e768302a0ac23881c1b90e7543b3676f" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务8</b><br>                 状态: pending<br>                 重量: 459.1 kg<br>                 位置: 白云山南门                 <br>截止时间: 5.4小时</div></div>`)[0];
+                popup_2ec42d241ae5dd084a04dee611604991.setContent(html_e768302a0ac23881c1b90e7543b3676f);
+            
+        
+
+        circle_marker_b71415e0786f742c04d38271601356b1.bindPopup(popup_2ec42d241ae5dd084a04dee611604991)
+        ;
+
+        
+    
+    
+            circle_marker_b71415e0786f742c04d38271601356b1.bindTooltip(
+                `<div>
+                     任务8 (pending)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9a97e730d5823f9d1a95c1dc4ff0cf02 = L.circleMarker(
+                [23.115, 113.28],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_385c32dfd605f0795aac236a76640bb7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5884c1e52512387c497f15fe1269deee = $(`<div id="html_5884c1e52512387c497f15fe1269deee" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务0</b><br>                 状态: completed<br>                 重量: 347.0 kg<br>                 位置: 广州起义纪念馆                 <br>截止时间: 4.3小时<br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 147.4</div></div>`)[0];
+                popup_385c32dfd605f0795aac236a76640bb7.setContent(html_5884c1e52512387c497f15fe1269deee);
+            
+        
+
+        circle_marker_9a97e730d5823f9d1a95c1dc4ff0cf02.bindPopup(popup_385c32dfd605f0795aac236a76640bb7)
+        ;
+
+        
+    
+    
+            circle_marker_9a97e730d5823f9d1a95c1dc4ff0cf02.bindTooltip(
+                `<div>
+                     任务0 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4b6d252655a1bc18fea87161253d845d = L.circleMarker(
+                [23.17, 113.3],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_c170155288a546ac0d047d79175efdad = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5342b21920bc283a906684a9c33d1d7f = $(`<div id="html_5342b21920bc283a906684a9c33d1d7f" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务1</b><br>                 状态: completed<br>                 重量: 435.3 kg<br>                 位置: 嘉禾望岗                 <br>截止时间: 5.8小时<br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 134.8</div></div>`)[0];
+                popup_c170155288a546ac0d047d79175efdad.setContent(html_5342b21920bc283a906684a9c33d1d7f);
+            
+        
+
+        circle_marker_4b6d252655a1bc18fea87161253d845d.bindPopup(popup_c170155288a546ac0d047d79175efdad)
+        ;
+
+        
+    
+    
+            circle_marker_4b6d252655a1bc18fea87161253d845d.bindTooltip(
+                `<div>
+                     任务1 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3a605ed99ee2ac0c501bc5c75d933ee6 = L.circleMarker(
+                [23.135, 113.33],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.069099999999999, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_5a0e716f171aa14e769bfa6a1d42281f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_09404aab9f2044d7187bd8493ee4b2c1 = $(`<div id="html_09404aab9f2044d7187bd8493ee4b2c1" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务2</b><br>                 状态: completed<br>                 重量: 806.9 kg<br>                 位置: 天河体育中心                 <br>截止时间: 5.1小时<br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 155.0</div></div>`)[0];
+                popup_5a0e716f171aa14e769bfa6a1d42281f.setContent(html_09404aab9f2044d7187bd8493ee4b2c1);
+            
+        
+
+        circle_marker_3a605ed99ee2ac0c501bc5c75d933ee6.bindPopup(popup_5a0e716f171aa14e769bfa6a1d42281f)
+        ;
+
+        
+    
+    
+            circle_marker_3a605ed99ee2ac0c501bc5c75d933ee6.bindTooltip(
+                `<div>
+                     任务2 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f5e7afff3851e53553033668bd5bbbdc = L.circleMarker(
+                [23.12, 113.4],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.687999999999999, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_014a41213f053ac66395ebca01ad605c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_76fbffedfa58aa16a765262e2a9bb243 = $(`<div id="html_76fbffedfa58aa16a765262e2a9bb243" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务3</b><br>                 状态: completed<br>                 重量: 868.8 kg<br>                 位置: 科学城                 <br>截止时间: 2.3小时<br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 153.6</div></div>`)[0];
+                popup_014a41213f053ac66395ebca01ad605c.setContent(html_76fbffedfa58aa16a765262e2a9bb243);
+            
+        
+
+        circle_marker_f5e7afff3851e53553033668bd5bbbdc.bindPopup(popup_014a41213f053ac66395ebca01ad605c)
+        ;
+
+        
+    
+    
+            circle_marker_f5e7afff3851e53553033668bd5bbbdc.bindTooltip(
+                `<div>
+                     任务3 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_70dd7e2171b9bbbd73822e5a5afb4112 = L.circleMarker(
+                [23.13, 113.32],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_72e02e3fc560d8bedcad24f588517e73 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bae167b1f3df5be94bd334e5dce4e187 = $(`<div id="html_bae167b1f3df5be94bd334e5dce4e187" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务4</b><br>                 状态: completed<br>                 重量: 362.8 kg<br>                 位置: 广州东站                 <br>截止时间: 5.6小时<br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 149.1</div></div>`)[0];
+                popup_72e02e3fc560d8bedcad24f588517e73.setContent(html_bae167b1f3df5be94bd334e5dce4e187);
+            
+        
+
+        circle_marker_70dd7e2171b9bbbd73822e5a5afb4112.bindPopup(popup_72e02e3fc560d8bedcad24f588517e73)
+        ;
+
+        
+    
+    
+            circle_marker_70dd7e2171b9bbbd73822e5a5afb4112.bindTooltip(
+                `<div>
+                     任务4 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0858bd0989c7a04e6b7b0ba9b5fc208e = L.circleMarker(
+                [23.11, 113.25],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.472899999999999, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_c1ec8a4a955ad479af97b44cf21ffb01 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_123291764cacfac11ebc32471ebb2a76 = $(`<div id="html_123291764cacfac11ebc32471ebb2a76" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务5</b><br>                 状态: completed<br>                 重量: 547.3 kg<br>                 位置: 陈家祠                 <br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 146.5</div></div>`)[0];
+                popup_c1ec8a4a955ad479af97b44cf21ffb01.setContent(html_123291764cacfac11ebc32471ebb2a76);
+            
+        
+
+        circle_marker_0858bd0989c7a04e6b7b0ba9b5fc208e.bindPopup(popup_c1ec8a4a955ad479af97b44cf21ffb01)
+        ;
+
+        
+    
+    
+            circle_marker_0858bd0989c7a04e6b7b0ba9b5fc208e.bindTooltip(
+                `<div>
+                     任务5 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_421951644bb864b711802041aab18149 = L.circleMarker(
+                [23.08, 113.31],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_db1e8baf715fc81b6baeff249c07c650 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_468457cda0cb77d4a732d6113d6915de = $(`<div id="html_468457cda0cb77d4a732d6113d6915de" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务6</b><br>                 状态: completed<br>                 重量: 264.2 kg<br>                 位置: 广州塔                 <br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 144.6</div></div>`)[0];
+                popup_db1e8baf715fc81b6baeff249c07c650.setContent(html_468457cda0cb77d4a732d6113d6915de);
+            
+        
+
+        circle_marker_421951644bb864b711802041aab18149.bindPopup(popup_db1e8baf715fc81b6baeff249c07c650)
+        ;
+
+        
+    
+    
+            circle_marker_421951644bb864b711802041aab18149.bindTooltip(
+                `<div>
+                     任务6 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2472456d58662a1c3a4e5eed2ff79e0c = L.circleMarker(
+                [23.17, 113.3],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.7749, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_104a295504145ef30c28557b4062ba2a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_99a451b12c4a461e231b714e2899ceeb = $(`<div id="html_99a451b12c4a461e231b714e2899ceeb" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务7</b><br>                 状态: completed<br>                 重量: 577.5 kg<br>                 位置: 嘉禾望岗                 <br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 136.3</div></div>`)[0];
+                popup_104a295504145ef30c28557b4062ba2a.setContent(html_99a451b12c4a461e231b714e2899ceeb);
+            
+        
+
+        circle_marker_2472456d58662a1c3a4e5eed2ff79e0c.bindPopup(popup_104a295504145ef30c28557b4062ba2a)
+        ;
+
+        
+    
+    
+            circle_marker_2472456d58662a1c3a4e5eed2ff79e0c.bindTooltip(
+                `<div>
+                     任务7 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_361fa53ad1b790cb017672305f704a81 = L.circleMarker(
+                [23.12, 113.4],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_8860693d2e5ad37088f773c3f80fc56c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_662caee86e8ae96770264d4696aab7f2 = $(`<div id="html_662caee86e8ae96770264d4696aab7f2" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务9</b><br>                 状态: completed<br>                 重量: 467.5 kg<br>                 位置: 科学城                 <br>截止时间: 4.7小时<br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 149.6</div></div>`)[0];
+                popup_8860693d2e5ad37088f773c3f80fc56c.setContent(html_662caee86e8ae96770264d4696aab7f2);
+            
+        
+
+        circle_marker_361fa53ad1b790cb017672305f704a81.bindPopup(popup_8860693d2e5ad37088f773c3f80fc56c)
+        ;
+
+        
+    
+    
+            circle_marker_361fa53ad1b790cb017672305f704a81.bindTooltip(
+                `<div>
+                     任务9 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_07d42239d5c011fae1f415dd89e03558 = L.circleMarker(
+                [23.13, 113.32],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.0463, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_699932321b337fa1ba11caf6d4623082 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_02bf27c7390c340e6073f3c4cf8b86bb = $(`<div id="html_02bf27c7390c340e6073f3c4cf8b86bb" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务10</b><br>                 状态: completed<br>                 重量: 704.6 kg<br>                 位置: 广州东站                 <br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 152.5</div></div>`)[0];
+                popup_699932321b337fa1ba11caf6d4623082.setContent(html_02bf27c7390c340e6073f3c4cf8b86bb);
+            
+        
+
+        circle_marker_07d42239d5c011fae1f415dd89e03558.bindPopup(popup_699932321b337fa1ba11caf6d4623082)
+        ;
+
+        
+    
+    
+            circle_marker_07d42239d5c011fae1f415dd89e03558.bindTooltip(
+                `<div>
+                     任务10 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8b1112c2d86e07eae57026205fc00cbc = L.circleMarker(
+                [23.1, 113.26],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.938099999999999, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_5e4973341ad50a82c640be2aa2be3b79 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bc4b816c3a241fd10b6fd059c0df9462 = $(`<div id="html_bc4b816c3a241fd10b6fd059c0df9462" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务11</b><br>                 状态: completed<br>                 重量: 993.8 kg<br>                 位置: 上下九                 <br>截止时间: 6.9小时<br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 146.9</div></div>`)[0];
+                popup_5e4973341ad50a82c640be2aa2be3b79.setContent(html_bc4b816c3a241fd10b6fd059c0df9462);
+            
+        
+
+        circle_marker_8b1112c2d86e07eae57026205fc00cbc.bindPopup(popup_5e4973341ad50a82c640be2aa2be3b79)
+        ;
+
+        
+    
+    
+            circle_marker_8b1112c2d86e07eae57026205fc00cbc.bindTooltip(
+                `<div>
+                     任务11 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c47e0b0cb6ec4ab2dd25dd6fd1865234 = L.circleMarker(
+                [23.12, 113.4],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_47ff2365f0118365752423e6daf5ab41 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_acd9934c9663f5c2b296e619cae24d75 = $(`<div id="html_acd9934c9663f5c2b296e619cae24d75" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务12</b><br>                 状态: completed<br>                 重量: 483.6 kg<br>                 位置: 科学城                 <br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 149.8</div></div>`)[0];
+                popup_47ff2365f0118365752423e6daf5ab41.setContent(html_acd9934c9663f5c2b296e619cae24d75);
+            
+        
+
+        circle_marker_c47e0b0cb6ec4ab2dd25dd6fd1865234.bindPopup(popup_47ff2365f0118365752423e6daf5ab41)
+        ;
+
+        
+    
+    
+            circle_marker_c47e0b0cb6ec4ab2dd25dd6fd1865234.bindTooltip(
+                `<div>
+                     任务12 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9a91349e33af73a3ee28eb91f43d23e1 = L.circleMarker(
+                [23.13, 113.32],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_98340874ffd5972273e2b8a612f4ae96 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f0be9aacbba06c892cc01cea1c8bc1cd = $(`<div id="html_f0be9aacbba06c892cc01cea1c8bc1cd" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务13</b><br>                 状态: completed<br>                 重量: 64.6 kg<br>                 位置: 广州东站                 <br>截止时间: 6.9小时<br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 146.1</div></div>`)[0];
+                popup_98340874ffd5972273e2b8a612f4ae96.setContent(html_f0be9aacbba06c892cc01cea1c8bc1cd);
+            
+        
+
+        circle_marker_9a91349e33af73a3ee28eb91f43d23e1.bindPopup(popup_98340874ffd5972273e2b8a612f4ae96)
+        ;
+
+        
+    
+    
+            circle_marker_9a91349e33af73a3ee28eb91f43d23e1.bindTooltip(
+                `<div>
+                     任务13 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6c9e6a0e340edd858bf4e2e7e05824be = L.circleMarker(
+                [22.94, 113.38],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_854fe9037b18583bbe1edac05bf600ad);
+        
+    
+        var popup_894aade69e3581107e30dd809fb6c329 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bb6d13c77a8c207dfb662c610a3b3a04 = $(`<div id="html_bb6d13c77a8c207dfb662c610a3b3a04" style="width: 100.0%; height: 100.0%;">                 <div style="font-size: 12pt">                 <b>任务14</b><br>                 状态: completed<br>                 重量: 359.6 kg<br>                 位置: 番禺广场                 <br>截止时间: 4.2小时<br>分配车辆: 1<br>完成时间: 0.2分钟<br>评分: 135.5</div></div>`)[0];
+                popup_894aade69e3581107e30dd809fb6c329.setContent(html_bb6d13c77a8c207dfb662c610a3b3a04);
+            
+        
+
+        circle_marker_6c9e6a0e340edd858bf4e2e7e05824be.bindPopup(popup_894aade69e3581107e30dd809fb6c329)
+        ;
+
+        
+    
+    
+            circle_marker_6c9e6a0e340edd858bf4e2e7e05824be.bindTooltip(
+                `<div>
+                     任务14 (completed)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            feature_group_854fe9037b18583bbe1edac05bf600ad.addTo(map_4a6c07f0ed6919a2749334983a6b5cf6);
+        
+    
+            var feature_group_f92ffa93c3efb71a71bb1e0f193c5a97 = L.featureGroup(
+                {}
+            );
+        
+    
+            var circle_marker_44697e52d2d2f59313f687c5a9b8ea87 = L.circleMarker(
+                [23.135, 113.33],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_1216eae4998a032665dfc10c47dbb66a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_119a34202ed0f9c27384b9915005f5a7 = $(`<div id="html_119a34202ed0f9c27384b9915005f5a7" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>天河体育中心充电站</b><br>             ID: 1<br>             充电桩: 10个<br>             充电速率: 2.0 km/分钟             </div>             </div>`)[0];
+                popup_1216eae4998a032665dfc10c47dbb66a.setContent(html_119a34202ed0f9c27384b9915005f5a7);
+            
+        
+
+        circle_marker_44697e52d2d2f59313f687c5a9b8ea87.bindPopup(popup_1216eae4998a032665dfc10c47dbb66a)
+        ;
+
+        
+    
+    
+            circle_marker_44697e52d2d2f59313f687c5a9b8ea87.bindTooltip(
+                `<div>
+                     天河体育中心充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6b8d84ab07e845c34a1a034e4e1d1c3f = L.circleMarker(
+                [23.125, 113.34],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_8972348b684d147a1db8162a62e4666a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0b1c1cd53d0b1cf1508e73b0f51d4954 = $(`<div id="html_0b1c1cd53d0b1cf1508e73b0f51d4954" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>珠江新城充电站</b><br>             ID: 2<br>             充电桩: 8个<br>             充电速率: 2.0 km/分钟             </div>             </div>`)[0];
+                popup_8972348b684d147a1db8162a62e4666a.setContent(html_0b1c1cd53d0b1cf1508e73b0f51d4954);
+            
+        
+
+        circle_marker_6b8d84ab07e845c34a1a034e4e1d1c3f.bindPopup(popup_8972348b684d147a1db8162a62e4666a)
+        ;
+
+        
+    
+    
+            circle_marker_6b8d84ab07e845c34a1a034e4e1d1c3f.bindTooltip(
+                `<div>
+                     珠江新城充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_427f911d4ccf3876c37ef137a7d44d01 = L.circleMarker(
+                [23.12, 113.28],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_157779854623b8f055f73b8da41ae2d3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9f95c1036a97a09ce6c4a87d52561766 = $(`<div id="html_9f95c1036a97a09ce6c4a87d52561766" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>北京路充电站</b><br>             ID: 3<br>             充电桩: 6个<br>             充电速率: 1.5 km/分钟             </div>             </div>`)[0];
+                popup_157779854623b8f055f73b8da41ae2d3.setContent(html_9f95c1036a97a09ce6c4a87d52561766);
+            
+        
+
+        circle_marker_427f911d4ccf3876c37ef137a7d44d01.bindPopup(popup_157779854623b8f055f73b8da41ae2d3)
+        ;
+
+        
+    
+    
+            circle_marker_427f911d4ccf3876c37ef137a7d44d01.bindTooltip(
+                `<div>
+                     北京路充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_90d9af00f7677588953921a39a3072f3 = L.circleMarker(
+                [23.08, 113.31],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_f6f81327e27eeadde385df954170db4d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_05d2bbc71d08241f3effe33dbcab73fb = $(`<div id="html_05d2bbc71d08241f3effe33dbcab73fb" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>广州塔充电站</b><br>             ID: 4<br>             充电桩: 12个<br>             充电速率: 2.5 km/分钟             </div>             </div>`)[0];
+                popup_f6f81327e27eeadde385df954170db4d.setContent(html_05d2bbc71d08241f3effe33dbcab73fb);
+            
+        
+
+        circle_marker_90d9af00f7677588953921a39a3072f3.bindPopup(popup_f6f81327e27eeadde385df954170db4d)
+        ;
+
+        
+    
+    
+            circle_marker_90d9af00f7677588953921a39a3072f3.bindTooltip(
+                `<div>
+                     广州塔充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_098f44ad95ecf89f2eab091adcb805a6 = L.circleMarker(
+                [23.1, 113.26],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_dba13cbb4b3bca0c2f3e94eba928be5c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_39e069fd2078eac13a0716193e9d8dce = $(`<div id="html_39e069fd2078eac13a0716193e9d8dce" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>上下九充电站</b><br>             ID: 5<br>             充电桩: 6个<br>             充电速率: 1.5 km/分钟             </div>             </div>`)[0];
+                popup_dba13cbb4b3bca0c2f3e94eba928be5c.setContent(html_39e069fd2078eac13a0716193e9d8dce);
+            
+        
+
+        circle_marker_098f44ad95ecf89f2eab091adcb805a6.bindPopup(popup_dba13cbb4b3bca0c2f3e94eba928be5c)
+        ;
+
+        
+    
+    
+            circle_marker_098f44ad95ecf89f2eab091adcb805a6.bindTooltip(
+                `<div>
+                     上下九充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1a7a566840e183b05ac7a53f906eba66 = L.circleMarker(
+                [23.16, 113.28],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_6924f1e5d6f5a8bba4439c489ba1b202 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cd30eeb982c866ae130fc33dc4301f8e = $(`<div id="html_cd30eeb982c866ae130fc33dc4301f8e" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>广州白云国际机场充电站</b><br>             ID: 6<br>             充电桩: 20个<br>             充电速率: 3.0 km/分钟             </div>             </div>`)[0];
+                popup_6924f1e5d6f5a8bba4439c489ba1b202.setContent(html_cd30eeb982c866ae130fc33dc4301f8e);
+            
+        
+
+        circle_marker_1a7a566840e183b05ac7a53f906eba66.bindPopup(popup_6924f1e5d6f5a8bba4439c489ba1b202)
+        ;
+
+        
+    
+    
+            circle_marker_1a7a566840e183b05ac7a53f906eba66.bindTooltip(
+                `<div>
+                     广州白云国际机场充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a0daf89a6c9cb97a8ee1e1e9c6f27386 = L.circleMarker(
+                [23.1, 113.45],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_1e6f3ac39d8761ce90af3cec4ea122d0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f9f604f330a3179ca722515c5cacf2f4 = $(`<div id="html_f9f604f330a3179ca722515c5cacf2f4" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>黄埔港充电站</b><br>             ID: 7<br>             充电桩: 8个<br>             充电速率: 2.0 km/分钟             </div>             </div>`)[0];
+                popup_1e6f3ac39d8761ce90af3cec4ea122d0.setContent(html_f9f604f330a3179ca722515c5cacf2f4);
+            
+        
+
+        circle_marker_a0daf89a6c9cb97a8ee1e1e9c6f27386.bindPopup(popup_1e6f3ac39d8761ce90af3cec4ea122d0)
+        ;
+
+        
+    
+    
+            circle_marker_a0daf89a6c9cb97a8ee1e1e9c6f27386.bindTooltip(
+                `<div>
+                     黄埔港充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8324cf9713b2965121e933391027eba0 = L.circleMarker(
+                [22.94, 113.38],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_ac52a34870e2721d95fb5ec3c556e129 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_033f9dc43df9a84265e6865102c41ec5 = $(`<div id="html_033f9dc43df9a84265e6865102c41ec5" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>番禺广场充电站</b><br>             ID: 8<br>             充电桩: 10个<br>             充电速率: 2.0 km/分钟             </div>             </div>`)[0];
+                popup_ac52a34870e2721d95fb5ec3c556e129.setContent(html_033f9dc43df9a84265e6865102c41ec5);
+            
+        
+
+        circle_marker_8324cf9713b2965121e933391027eba0.bindPopup(popup_ac52a34870e2721d95fb5ec3c556e129)
+        ;
+
+        
+    
+    
+            circle_marker_8324cf9713b2965121e933391027eba0.bindTooltip(
+                `<div>
+                     番禺广场充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0dc8609b68a4dfafb7a4884e2232f250 = L.circleMarker(
+                [22.9, 113.33],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_e5aade66a45b5d1c260264ff701c93ba = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b9d5507b31054c03d5131c0e7cfaf706 = $(`<div id="html_b9d5507b31054c03d5131c0e7cfaf706" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>广州南站充电站</b><br>             ID: 9<br>             充电桩: 15个<br>             充电速率: 2.5 km/分钟             </div>             </div>`)[0];
+                popup_e5aade66a45b5d1c260264ff701c93ba.setContent(html_b9d5507b31054c03d5131c0e7cfaf706);
+            
+        
+
+        circle_marker_0dc8609b68a4dfafb7a4884e2232f250.bindPopup(popup_e5aade66a45b5d1c260264ff701c93ba)
+        ;
+
+        
+    
+    
+            circle_marker_0dc8609b68a4dfafb7a4884e2232f250.bindTooltip(
+                `<div>
+                     广州南站充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_28e89ff05f20c05929a5e488a8afc970 = L.circleMarker(
+                [23.4, 113.22],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_7d0bcbd8b2296e53fb14e17418b1d049 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d23722d877b76a7d7d3b5d13264c27b2 = $(`<div id="html_d23722d877b76a7d7d3b5d13264c27b2" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>花都广场充电站</b><br>             ID: 10<br>             充电桩: 8个<br>             充电速率: 1.5 km/分钟             </div>             </div>`)[0];
+                popup_7d0bcbd8b2296e53fb14e17418b1d049.setContent(html_d23722d877b76a7d7d3b5d13264c27b2);
+            
+        
+
+        circle_marker_28e89ff05f20c05929a5e488a8afc970.bindPopup(popup_7d0bcbd8b2296e53fb14e17418b1d049)
+        ;
+
+        
+    
+    
+            circle_marker_28e89ff05f20c05929a5e488a8afc970.bindTooltip(
+                `<div>
+                     花都广场充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_fe33d22080f562742b5422ea29ef37a0 = L.circleMarker(
+                [23.15, 113.35],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_33a1424a2516e13ec5953f7ef4daaf86 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7cee1900c7a1a37428f25697905bff2b = $(`<div id="html_7cee1900c7a1a37428f25697905bff2b" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>中央仓库充电站</b><br>             ID: 11<br>             充电桩: 5个<br>             充电速率: 2.0 km/分钟             </div>             </div>`)[0];
+                popup_33a1424a2516e13ec5953f7ef4daaf86.setContent(html_7cee1900c7a1a37428f25697905bff2b);
+            
+        
+
+        circle_marker_fe33d22080f562742b5422ea29ef37a0.bindPopup(popup_33a1424a2516e13ec5953f7ef4daaf86)
+        ;
+
+        
+    
+    
+            circle_marker_fe33d22080f562742b5422ea29ef37a0.bindTooltip(
+                `<div>
+                     中央仓库充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_93ffaa1ccaf7f6bbbfcc66b0d8191d65 = L.circleMarker(
+                [23.14, 113.34],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_6d7d11b7cbc88e93de97ffb2ba4653d7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_569efce2e48f1ee63ced829c57e8f96b = $(`<div id="html_569efce2e48f1ee63ced829c57e8f96b" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>广州天河CBD充电站</b><br>             ID: 12<br>             充电桩: 8个<br>             充电速率: 2.0 km/分钟             </div>             </div>`)[0];
+                popup_6d7d11b7cbc88e93de97ffb2ba4653d7.setContent(html_569efce2e48f1ee63ced829c57e8f96b);
+            
+        
+
+        circle_marker_93ffaa1ccaf7f6bbbfcc66b0d8191d65.bindPopup(popup_6d7d11b7cbc88e93de97ffb2ba4653d7)
+        ;
+
+        
+    
+    
+            circle_marker_93ffaa1ccaf7f6bbbfcc66b0d8191d65.bindTooltip(
+                `<div>
+                     广州天河CBD充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f98de03b0e322815b6407fd0eedc44b6 = L.circleMarker(
+                [23.07, 113.32],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_2c6b5be6384f1977f8b5e2a0c096e4ff = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0f11717516bb8d6ddad4cd7aeb8db691 = $(`<div id="html_0f11717516bb8d6ddad4cd7aeb8db691" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>琶洲会展中心充电站</b><br>             ID: 13<br>             充电桩: 10个<br>             充电速率: 2.0 km/分钟             </div>             </div>`)[0];
+                popup_2c6b5be6384f1977f8b5e2a0c096e4ff.setContent(html_0f11717516bb8d6ddad4cd7aeb8db691);
+            
+        
+
+        circle_marker_f98de03b0e322815b6407fd0eedc44b6.bindPopup(popup_2c6b5be6384f1977f8b5e2a0c096e4ff)
+        ;
+
+        
+    
+    
+            circle_marker_f98de03b0e322815b6407fd0eedc44b6.bindTooltip(
+                `<div>
+                     琶洲会展中心充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2d9d6cc0d7fa64635cbecfbb66247433 = L.circleMarker(
+                [23.12, 113.4],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_685034126c42323586f76dd50031e3e5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1c8ac04dfc78d3964608ce501b9b84fd = $(`<div id="html_1c8ac04dfc78d3964608ce501b9b84fd" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>科学城充电站</b><br>             ID: 14<br>             充电桩: 6个<br>             充电速率: 1.5 km/分钟             </div>             </div>`)[0];
+                popup_685034126c42323586f76dd50031e3e5.setContent(html_1c8ac04dfc78d3964608ce501b9b84fd);
+            
+        
+
+        circle_marker_2d9d6cc0d7fa64635cbecfbb66247433.bindPopup(popup_685034126c42323586f76dd50031e3e5)
+        ;
+
+        
+    
+    
+            circle_marker_2d9d6cc0d7fa64635cbecfbb66247433.bindTooltip(
+                `<div>
+                     科学城充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2ca140e12a7705cae658d7d54b1ab36b = L.circleMarker(
+                [23.17, 113.3],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f92ffa93c3efb71a71bb1e0f193c5a97);
+        
+    
+        var popup_c8b0795465788c7732a80e1aebc2cd66 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_04cd0c04c826e7019a4c0235eaf679db = $(`<div id="html_04cd0c04c826e7019a4c0235eaf679db" style="width: 100.0%; height: 100.0%;">             <div style="font-size: 12pt">             <b>嘉禾望岗充电站</b><br>             ID: 15<br>             充电桩: 8个<br>             充电速率: 2.0 km/分钟             </div>             </div>`)[0];
+                popup_c8b0795465788c7732a80e1aebc2cd66.setContent(html_04cd0c04c826e7019a4c0235eaf679db);
+            
+        
+
+        circle_marker_2ca140e12a7705cae658d7d54b1ab36b.bindPopup(popup_c8b0795465788c7732a80e1aebc2cd66)
+        ;
+
+        
+    
+    
+            circle_marker_2ca140e12a7705cae658d7d54b1ab36b.bindTooltip(
+                `<div>
+                     嘉禾望岗充电站
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            feature_group_f92ffa93c3efb71a71bb1e0f193c5a97.addTo(map_4a6c07f0ed6919a2749334983a6b5cf6);
+        
+    
+            var layer_control_67da9b75e4bcd5499330dd95902ffc05_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_14edfaa208daaa56a19fa0eefec85485,
+                },
+                overlays :  {
+                    "\u9053\u8def\u7f51\u7edc" : feature_group_5b9a71a741d42a32d8095b2b27671ad0,
+                    "\u8f66\u8f86" : feature_group_57a9e46f753d858603a4dcb3b2ba84f8,
+                    "\u4efb\u52a1" : feature_group_854fe9037b18583bbe1edac05bf600ad,
+                    "\u5145\u7535\u7ad9" : feature_group_f92ffa93c3efb71a71bb1e0f193c5a97,
+                },
+            };
+            let layer_control_67da9b75e4bcd5499330dd95902ffc05 = L.control.layers(
+                layer_control_67da9b75e4bcd5499330dd95902ffc05_layers.base_layers,
+                layer_control_67da9b75e4bcd5499330dd95902ffc05_layers.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_4a6c07f0ed6919a2749334983a6b5cf6);
+
+        
+</script>
+</html>

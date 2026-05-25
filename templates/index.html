@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新能源物流车队协同调度系统</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); min-height: 100vh; overflow: hidden; }
+        .container { display: flex; height: 100vh; }
+        .sidebar { width: 320px; background: rgba(30, 58, 95, 0.95); backdrop-filter: blur(10px); padding: 20px; color: white; overflow-y: auto; }
+        .sidebar h1 { font-size: 18px; font-weight: 600; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 10px; }
+        .sidebar h1::before { content: '🚛'; font-size: 24px; }
+        .section { margin-bottom: 24px; }
+        .section h3 { font-size: 13px; font-weight: 500; color: #94a3b8; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 6px; color: #cbd5e1; }
+        .form-group input, .form-group select { width: 100%; padding: 10px 12px; border: none; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; font-size: 13px; outline: none; }
+        .form-group input:focus, .form-group select:focus { background: rgba(255,255,255,0.15); }
+        .form-group select option { background: #1e3a5f; color: white; }
+        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; margin-bottom: 10px; }
+        .btn-primary { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; }
+        .btn-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.4); }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: white; }
+        .btn-secondary:hover:not(:disabled) { background: rgba(255,255,255,0.15); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .stat-card { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 14px; text-align: center; }
+        .stat-card .value { font-size: 24px; font-weight: 700; color: #22d3ee; display: block; }
+        .stat-card .label { font-size: 11px; color: #94a3b8; margin-top: 4px; display: block; }
+        .main-content { flex: 1; position: relative; }
+        .header-bar { position: absolute; top: 0; left: 0; right: 0; height: 60px; background: rgba(15,23,42,0.8); backdrop-filter: blur(10px); display: flex; align-items: center; padding: 0 20px; z-index: 200; }
+        .header-bar .title { font-size: 16px; font-weight: 600; color: white; }
+        .header-bar .time-display { margin-left: auto; font-size: 20px; font-weight: 700; color: #22d3ee; font-family: 'Courier New', monospace; }
+        .map-container { width: 100%; height: 100%; position: relative; }
+        #map { width: 100%; height: 100%; }
+        .map-fallback-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: white; text-align: center; }
+        .loading-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,23,42,0.8); display: flex; align-items: center; justify-content: center; z-index: 300; }
+        .loading-overlay.hidden { display: none; }
+        .loading-spinner { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1); border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.6; } 100% { transform: scale(1); opacity: 1; } }
+        .vehicle-panel { position: absolute; bottom: 20px; left: 340px; background: rgba(255,255,255,0.95); padding: 14px; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); min-width: 240px; max-height: 280px; overflow-y: auto; z-index: 100; cursor: move; user-select: none; }
+        .vehicle-panel.dragging { opacity: 0.8; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+        .vehicle-panel h4 { font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0; }
+        .vehicle-item { display: flex; align-items: center; gap: 10px; padding: 8px; margin-bottom: 8px; background: #f8fafc; border-radius: 8px; }
+        .vehicle-item .icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white; }
+        .vehicle-item.idle .icon { background: #64748b; }
+        .vehicle-item.moving .icon { background: #22c55e; }
+        .vehicle-item.charging .icon { background: #f59e0b; }
+        .vehicle-item.delivering .icon { background: #0ea5e9; }
+        .vehicle-item.cooperative .icon { background: #2563eb; }
+        .vehicle-item.returning .icon { background: #7c3aed; }
+        .vehicle-item .vehicle-info { flex: 1; }
+        .vehicle-item .vehicle-info .name { display: block; font-size: 13px; font-weight: 500; color: #1e293b; }
+        .vehicle-item .vehicle-info .status { display: block; font-size: 11px; color: #64748b; }
+        .vehicle-item .battery-bar { width: 60px; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+        .vehicle-item .battery-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+        .vehicle-item .battery-fill.high { background: #22c55e; }
+        .vehicle-item .battery-fill.medium { background: #f59e0b; }
+        .vehicle-item .battery-fill.low { background: #ef4444; }
+        .task-list { position: absolute; bottom: 20px; right: 20px; background: rgba(255,255,255,0.95); padding: 14px; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); cursor: move; user-select: none; }
+        .task-list.dragging { opacity: 0.8; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+        .task-list-content { min-width: 260px; max-height: 320px; overflow-y: auto; }
+        .task-list h4 { font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0; }
+        .task-item { padding: 10px; margin-bottom: 8px; background: #f8fafc; border-radius: 8px; border-left: 4px solid; }
+        .task-item.pending { border-color: #ef4444; }
+        .task-item.assigned { border-color: #0ea5e9; }
+        .task-item.in_progress { border-color: #f59e0b; }
+        .task-item.completed { border-color: #22c55e; }
+        .task-item.failed { border-color: #ef4444; }
+        .task-item .task-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .task-item .task-header .task-id { font-size: 13px; font-weight: 600; color: #1e293b; }
+        .task-item .task-header .status-tag { font-size: 10px; padding: 2px 8px; border-radius: 10px; color: white; }
+        .task-item .task-info { font-size: 12px; color: #64748b; margin-bottom: 3px; }
+        .task-item .task-info span { color: #334155; font-weight: 500; }
+        .legend { position: absolute; top: 80px; right: 20px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 11px; z-index: 50; }
+        .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .legend-item:last-child { margin-bottom: 0; }
+        .legend-color { width: 16px; height: 16px; border-radius: 50%; }
+        .legend-color.vehicle { background: #22c55e; }
+        .legend-color.task { background: #ef4444; }
+        .legend-color.charging { background: #f59e0b; }
+        .legend-color.depot { background: #2563eb; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>新能源物流调度</h1>
+            <div class="section">
+                <h3>模拟参数设置</h3>
+                <div class="form-group"><label>车队规模 (车辆数)</label><input type="number" id="fleet_size" value="8" min="3" max="20"></div>
+                <div class="form-group"><label>模拟时间 (秒)</label><input type="number" id="simulation_time" value="3600" min="60" max="7200"></div>
+                <div class="form-group"><label>任务生成率 (每秒)</label><input type="number" id="task_rate" value="0.15" step="0.01" min="0.01" max="1"></div>
+                <div class="form-group"><label>调度策略</label><select id="strategy"><option value="nearest">最近任务优先</option><option value="max_weight">最大任务优先</option><option value="urgency">紧急任务优先</option></select></div>
+                <button class="btn btn-primary" id="btn_start">▶ 开始模拟</button>
+                <button class="btn btn-secondary" id="btn_stop" disabled>■ 停止模拟</button>
+            </div>
+            <div class="section">
+                <h3>实时统计</h3>
+                <div class="stats-grid">
+                    <div class="stat-card"><span class="value" id="stat_completed">0</span><span class="label">已完成</span></div>
+                    <div class="stat-card"><span class="value" id="stat_failed">0</span><span class="label">失败</span></div>
+                    <div class="stat-card"><span class="value" id="stat_pending">0</span><span class="label">待处理</span></div>
+                    <div class="stat-card"><span class="value" id="stat_score">0</span><span class="label">总评分</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="header-bar"><div class="title">Electric Vehicle Fleet Scheduling</div><div class="time-display" id="sim_time">00:00:00</div></div>
+            <div class="map-container">
+                <div id="map"></div>
+                <div id="map_fallback"></div>
+                <div class="legend">
+                    <div class="legend-item"><div class="legend-color vehicle"></div><span>配送车辆</span></div>
+                    <div class="legend-item"><div class="legend-color task"></div><span>任务点</span></div>
+                    <div class="legend-item"><div class="legend-color charging"></div><span>充电站</span></div>
+                    <div class="legend-item"><div class="legend-color depot"></div><span>仓库</span></div>
+                </div>
+                <div class="vehicle-panel" id="vehicle_panel"><h4>🚛 车辆状态</h4><div id="vehicle_list"><p style="color: #94a3b8; text-align: center; font-size: 12px;">等待模拟开始...</p></div></div>
+                <div class="task-list" id="task_panel"><h4>📋 当前任务</h4><div id="task_list"><p style="color: #94a3b8; text-align: center; font-size: 12px;">等待任务生成...</p></div></div>
+                <div class="loading-overlay hidden" id="loading"><div class="loading-spinner"></div></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let simulationRunning = false;
+        let updateInterval = null;
+        let vehicleMarkers = {};
+        let taskMarkers = {};
+        let map = null;
+        let dragData = { isDragging: false, target: null, startX: 0, startY: 0, offsetX: 0, offsetY: 0 };
+
+        function initDrag(panelId) {
+            const panel = document.getElementById(panelId);
+            if (!panel) return;
+            panel.addEventListener('mousedown', function(e) {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'BUTTON') return;
+                dragData.isDragging = true; dragData.target = panel; dragData.startX = e.clientX; dragData.startY = e.clientY; dragData.offsetX = panel.offsetLeft; dragData.offsetY = panel.offsetTop;
+                panel.classList.add('dragging'); document.addEventListener('mousemove', onDrag); document.addEventListener('mouseup', stopDrag);
+            });
+        }
+        function onDrag(e) {
+            if (!dragData.isDragging || !dragData.target) return;
+            const dx = e.clientX - dragData.startX; const dy = e.clientY - dragData.startY;
+            const container = document.querySelector('.map-container');
+            let newX = Math.max(10, Math.min(dragData.offsetX + dx, container.clientWidth - dragData.target.offsetWidth - 20));
+            let newY = Math.max(10, Math.min(dragData.offsetY + dy, container.clientHeight - dragData.target.offsetHeight - 20));
+            dragData.target.style.left = newX + 'px'; dragData.target.style.top = newY + 'px'; dragData.target.style.bottom = 'auto'; dragData.target.style.right = 'auto';
+        }
+        function stopDrag() { dragData.isDragging = false; if (dragData.target) dragData.target.classList.remove('dragging'); dragData.target = null; document.removeEventListener('mousemove', onDrag); document.removeEventListener('mouseup', stopDrag); }
+
+        const PI = Math.PI; const A = 6378245.0; const EE = 0.00669342162296594323;
+        function transformLat(x, y) { let ret = -100.0 + 2.0*x + 3.0*y + 0.2*y*y + 0.1*x*y + 0.2*Math.sqrt(Math.abs(x)); ret += (20.0*Math.sin(6.0*x*PI) + 20.0*Math.sin(2.0*x*PI))*2.0/3.0; ret += (20.0*Math.sin(y*PI) + 40.0*Math.sin(y/3.0*PI))*2.0/3.0; ret += (160.0*Math.sin(y/12.0*PI) + 320*Math.sin(y*PI/30.0))*2.0/3.0; return ret; }
+        function transformLng(x, y) { let ret = 300.0 + x + 2.0*y + 0.1*x*x + 0.1*x*y + 0.1*Math.sqrt(Math.abs(x)); ret += (20.0*Math.sin(6.0*x*PI) + 20.0*Math.sin(2.0*x*PI))*2.0/3.0; ret += (20.0*Math.sin(x*PI) + 40.0*Math.sin(x/3.0*PI))*2.0/3.0; ret += (150.0*Math.sin(x/12.0*PI) + 300.0*Math.sin(x/30.0*PI))*2.0/3.0; return ret; }
+        function wgs84ToGcj02(lng, lat) { let dlat = transformLat(lng-105.0, lat-35.0); let dlng = transformLng(lng-105.0, lat-35.0); const radlat = lat/180.0*PI; let magic = Math.sin(radlat); magic = 1 - EE*magic*magic; const sqrtmagic = Math.sqrt(magic); dlat = (dlat*180.0)/((A*(1-EE))/(magic*sqrtmagic)*PI); dlng = (dlng*180.0)/(A/sqrtmagic*Math.cos(radlat)*PI); return [lng+dlng, lat+dlat]; }
+
+        const mapNodesWGS84 = { 1:{"name":"天河体育中心","coord":[113.3308,23.1349]}, 2:{"name":"广州东站","coord":[113.3215,23.1297]}, 3:{"name":"珠江新城","coord":[113.3394,23.1233]}, 4:{"name":"天河CBD","coord":[113.3366,23.1405]}, 5:{"name":"白云山南门","coord":[113.3240,23.1520]}, 6:{"name":"北京路","coord":[113.2824,23.1187]}, 7:{"name":"广州火车站","coord":[113.2658,23.1066]}, 8:{"name":"中山纪念堂","coord":[113.2878,23.1239]}, 9:{"name":"广州起义纪念馆","coord":[113.2785,23.1153]}, 10:{"name":"广州塔","coord":[113.3245,23.1060]}, 11:{"name":"琶洲会展中心","coord":[113.3350,23.0669]}, 12:{"name":"海珠广场","coord":[113.2998,23.0942]}, 13:{"name":"大学城","coord":[113.3237,23.0569]}, 14:{"name":"上下九","coord":[113.2564,23.1027]}, 15:{"name":"陈家祠","coord":[113.2518,23.1120]}, 16:{"name":"沙面","coord":[113.2527,23.0924]}, 100:{"name":"中央仓库","coord":[113.3500,23.1550]} };
+        const mapNodes = {};
+        Object.keys(mapNodesWGS84).forEach(id => { const node = mapNodesWGS84[id]; const gcj = wgs84ToGcj02(node.coord[0], node.coord[1]); mapNodes[id] = {"name": node.name, "coord": gcj}; });
+        const stationNodeIds = new Set([1, 3, 6, 10, 14, 100]);
+        const routeCache = {}; const vehicleAnimState = {}; const vehicleRoutePolylines = {}; const vehicleTrailTimers = {};
+
+        function createTruckIcon(color, id) { return `<div style="position:relative;width:40px;height:40px;"><div style="width:40px;height:40px;background:${color};border:3px solid white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,0.5);"><svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3 3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div><div style="position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.8);color:white;font-size:10px;padding:2px 6px;border-radius:4px;white-space:nowrap;font-weight:bold;">${id}号车</div></div>`; }
+        function createDepotIcon() { return `<div style="width:48px;height:48px;background:#2563eb;border:3px solid white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,0.5);font-size:22px;">🏭</div>`; }
+        function createStationIcon() { return `<div style="width:36px;height:36px;background:#f59e0b;border:2px solid white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.4);font-size:16px;">⚡</div>`; }
+        function createTaskIcon(color, id) { return `<div style="position:relative;width:24px;height:24px;"><div style="width:24px;height:24px;background:${color};border:2px solid white;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.4);animation:pulse 2s infinite;"></div><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-size:9px;font-weight:bold;">${id}</div></div>`; }
+        function createStartIcon() { return `<div style="width:28px;height:28px;background:#22c55e;border:2px solid white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.4);"><svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M8 5v14l11-7z"/></svg></div>`; }
+        function createEndIcon() { return `<div style="width:28px;height:28px;background:#ef4444;border:2px solid white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.4);"><svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M6 6h12v12H6z"/></svg></div>`; }
+
+        async function loadAMap() {
+            return new Promise((resolve, reject) => {
+                if (window.AMap) { resolve(window.AMap); return; }
+                window._AMapSecurityConfig = { securityJsCode: '9111e6842daaabb9a07e4ab298062446' };
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://webapi.amap.com/maps?v=2.0&key=eef1b4aeb4624474a2245c76b94f7fcc';
+                script.onload = () => {
+                    console.log('AMap core loaded');
+                    AMap.plugin(['AMap.Driving', 'AMap.MoveAnimation', 'AMap.ToolBar', 'AMap.Scale'], function() {
+                        console.log('AMap plugins loaded: Driving=', !!AMap.Driving, 'MoveAnimation=', !!AMap.MoveAnimation);
+                        resolve(window.AMap);
+                    });
+                };
+                script.onerror = () => reject(new Error('AMap load failed'));
+                document.head.appendChild(script);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() { setupEventListeners(); loadMap(); initDrag('vehicle_panel'); initDrag('task_panel'); });
+
+        async function loadMap() {
+            try {
+                document.getElementById('map_fallback').innerHTML = '<div class="map-fallback-content"><div style="font-size:48px;margin-bottom:10px;">🗺️</div><p>正在加载高德地图...</p></div>';
+                await loadAMap();
+                map = new AMap.Map('map', { center: [113.32, 23.13], zoom: 12, mapStyle: 'amap://styles/normal', showBuildingBlock: true });
+                map.addControl(new AMap.ToolBar()); map.addControl(new AMap.Scale());
+                document.getElementById('map_fallback').style.display = 'none';
+                drawStationMarkers();
+                testDrivingAPI();
+            } catch (error) { console.error('加载高德地图失败:', error); document.getElementById('map_fallback').innerHTML = '<div class="map-fallback-content"><div style="font-size:48px;margin-bottom:10px;">⚠️</div><p>高德地图加载失败</p></div>'; }
+        }
+
+        function testDrivingAPI() {
+            if (!AMap.Driving) { console.error('Driving plugin NOT available!'); return; }
+            console.log('Testing Driving API...');
+            const driving = new AMap.Driving({ policy: 0 });
+            const from = mapNodes[100].coord;
+            const to = mapNodes[1].coord;
+            driving.search(new AMap.LngLat(from[0], from[1]), new AMap.LngLat(to[0], to[1]), function(status, result) {
+                console.log('Driving test: status=', status, 'routes=', result.routes ? result.routes.length : 0);
+                if (status === 'complete' && result.routes && result.routes.length > 0) {
+                    const route = result.routes[0];
+                    let pathCount = 0;
+                    route.steps.forEach(step => { if (step.path) pathCount += step.path.length; });
+                    console.log('Driving test OK: distance=' + route.distance + 'm, points=' + pathCount);
+                } else {
+                    console.error('Driving test FAILED:', status, JSON.stringify(result).substring(0, 200));
+                }
+            });
+        }
+
+        function drawStationMarkers() {
+            if (!map) return;
+            Object.entries(mapNodes).forEach(([id, node]) => {
+                const isDepot = id === '100'; const isStation = stationNodeIds.has(parseInt(id));
+                if (isDepot) { new AMap.Marker({ position: node.coord, offset: new AMap.Pixel(-24, -24), content: createDepotIcon(), title: node.name, zIndex: 10, map: map }); }
+                else if (isStation) { new AMap.Marker({ position: node.coord, offset: new AMap.Pixel(-18, -18), content: createStationIcon(), title: node.name + ' 充电站', zIndex: 9, map: map }); }
+            });
+        }
+
+        function calcDrivingRoute(fromCoord, toCoord) {
+            const cacheKey = `${fromCoord[0].toFixed(5)},${fromCoord[1].toFixed(5)}-${toCoord[0].toFixed(5)},${toCoord[1].toFixed(5)}`;
+            if (routeCache[cacheKey]) return Promise.resolve(routeCache[cacheKey]);
+            return new Promise((resolve) => {
+                if (!AMap.Driving) {
+                    console.error('AMap.Driving not available');
+                    resolve([fromCoord, toCoord]); return;
+                }
+                const driving = new AMap.Driving({ policy: 0, ferry: 0 });
+                driving.search(new AMap.LngLat(fromCoord[0], fromCoord[1]), new AMap.LngLat(toCoord[0], toCoord[1]), function(status, result) {
+                    if (status === 'complete' && result.routes && result.routes.length > 0) {
+                        const route = result.routes[0]; const path = [];
+                        route.steps.forEach(step => { if (step.path && step.path.length > 0) { step.path.forEach(p => path.push([p.lng, p.lat])); } });
+                        if (path.length >= 2) { console.log(`Driving OK: ${path.length}pts ${route.distance}m`); routeCache[cacheKey] = path; resolve(path); return; }
+                    }
+                    console.warn('Driving failed:', status, result.info || '');
+                    resolve([fromCoord, toCoord]);
+                });
+            });
+        }
+
+        async function calcFullRoute(nodeIds) {
+            const allCoords = [];
+            for (let i = 0; i < nodeIds.length - 1; i++) {
+                const from = mapNodes[nodeIds[i]]; const to = mapNodes[nodeIds[i + 1]];
+                if (!from || !to) continue;
+                try { const segment = await calcDrivingRoute(from.coord, to.coord); if (i === 0) { allCoords.push(...segment); } else { allCoords.push(...segment.slice(1)); } }
+                catch (e) { console.error('calcFullRoute error:', e); if (i === 0) allCoords.push(from.coord); allCoords.push(to.coord); }
+            }
+            return allCoords;
+        }
+
+        function interpolatePath(path, numPoints) {
+            if (path.length < 2 || numPoints <= path.length) return path;
+            const totalLen = path.length - 1; const result = [path[0]];
+            for (let i = 1; i < numPoints - 1; i++) {
+                const t = i / (numPoints - 1); const segFloat = t * totalLen; const segIdx = Math.floor(segFloat); const segT = segFloat - segIdx;
+                if (segIdx < path.length - 1) { const lng = path[segIdx][0] + (path[segIdx+1][0] - path[segIdx][0]) * segT; const lat = path[segIdx][1] + (path[segIdx+1][1] - path[segIdx][1]) * segT; result.push([lng, lat]); }
+            }
+            result.push(path[path.length - 1]); return result;
+        }
+
+        function setupEventListeners() { document.getElementById('btn_start').addEventListener('click', startSimulation); document.getElementById('btn_stop').addEventListener('click', stopSimulation); }
+
+        function startSimulation() {
+            if (simulationRunning) return;
+            const params = { fleet_size: parseInt(document.getElementById('fleet_size').value), simulation_time: parseInt(document.getElementById('simulation_time').value), task_rate: parseFloat(document.getElementById('task_rate').value), strategy: document.getElementById('strategy').value };
+            document.getElementById('loading').classList.remove('hidden');
+            fetch('/start_simulation', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(params) })
+            .then(r => r.json()).then(data => { document.getElementById('loading').classList.add('hidden'); if (data.status === 'success') { simulationRunning = true; document.getElementById('btn_start').disabled = true; document.getElementById('btn_stop').disabled = false; updateInterval = setInterval(updateSimulation, 200); } });
+        }
+
+        function stopSimulation() {
+            fetch('/stop_simulation', {method: 'POST'}).then(() => {
+                simulationRunning = false; document.getElementById('btn_start').disabled = false; document.getElementById('btn_stop').disabled = true; clearInterval(updateInterval);
+                Object.keys(vehicleMarkers).forEach(key => { if (vehicleMarkers[key]) map.remove(vehicleMarkers[key]); }); vehicleMarkers = {};
+                Object.keys(taskMarkers).forEach(key => { if (taskMarkers[key]) map.remove(taskMarkers[key]); }); taskMarkers = {};
+                Object.keys(vehicleRoutePolylines).forEach(key => { if (vehicleRoutePolylines[key]) map.remove(vehicleRoutePolylines[key]); }); vehicleRoutePolylines = {};
+                Object.keys(vehicleTrailTimers).forEach(key => { clearInterval(vehicleTrailTimers[key]); delete vehicleTrailTimers[key]; });
+                Object.keys(vehicleAnimState).forEach(key => delete vehicleAnimState[key]);
+            });
+        }
+
+        function updateSimulation() {
+            fetch('/get_state').then(r => r.json()).then(state => {
+                if (!state.current_time) return;
+                updateTimeDisplay(state.current_time); updateStatistics(state.statistics); updateVehicles(state.vehicles); updateTasks(state.tasks); updateMapVehicles(state.vehicles); updateMapTasks(state.tasks);
+            }).catch(e => console.error('Fetch error:', e));
+        }
+
+        function updateTimeDisplay(seconds) { const h = Math.floor(seconds/3600); const m = Math.floor((seconds%3600)/60); const s = seconds%60; document.getElementById('sim_time').textContent = String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0'); }
+        function updateStatistics(stats) { document.getElementById('stat_completed').textContent = stats.completed_tasks; document.getElementById('stat_failed').textContent = stats.failed_tasks; document.getElementById('stat_pending').textContent = stats.total_tasks - stats.completed_tasks - stats.failed_tasks; document.getElementById('stat_score').textContent = Math.round(stats.total_score); }
+        function updateVehicles(vehicles) { const container = document.getElementById('vehicle_list'); container.innerHTML = ''; vehicles.forEach(v => { const item = document.createElement('div'); item.className = 'vehicle-item ' + v.status; const batteryClass = v.battery > 60 ? 'high' : (v.battery > 30 ? 'medium' : 'low'); item.innerHTML = `<div class="icon">${v.id}</div><div class="vehicle-info"><span class="name">车辆 ${v.id}</span><span class="status">${getStatusText(v.status)}</span></div><div class="battery-bar"><div class="battery-fill ${batteryClass}" style="width: ${v.battery}%"></div></div>`; container.appendChild(item); }); }
+        function getStatusText(status) { const m = {'idle':'空闲','moving':'配送中','charging':'充电中','delivering':'送货中','cooperative':'协同配送','returning':'回仓中'}; return m[status] || status; }
+        function updateTasks(tasks) { const container = document.getElementById('task_list'); container.innerHTML = ''; const recent = tasks.filter(t => t.status !== 'completed').slice(0, 10); recent.forEach(task => { const locName = mapNodes[task.location] ? mapNodes[task.location].name : '未知'; const item = document.createElement('div'); item.className = 'task-item ' + task.status; item.innerHTML = `<div class="task-header"><span class="task-id">任务 #${task.id}</span><span class="status-tag" style="background:${getTaskStatusColor(task.status)}">${getTaskStatusText(task.status)}</span></div><div class="task-info">位置: <span>${locName}</span></div><div class="task-info">重量: <span>${task.weight.toFixed(1)} kg</span></div>`; container.appendChild(item); }); if (!recent.length) container.innerHTML = '<p style="color:#94a3b8;text-align:center;font-size:12px;">暂无任务</p>'; }
+        function getTaskStatusText(s) { const m = {'pending':'待分配','assigned':'已分配','in_progress':'进行中','completed':'已完成','failed':'失败','cooperative':'协同配送'}; return m[s] || s; }
+        function getTaskStatusColor(s) { const m = {'pending':'#ef4444','assigned':'#0ea5e9','in_progress':'#f59e0b','completed':'#22c55e','failed':'#ef4444','cooperative':'#3b82f6'}; return m[s] || '#64748b'; }
+        function getVehicleColor(status) { const m = {'idle':'#64748b','moving':'#22c55e','charging':'#f59e0b','delivering':'#0ea5e9','cooperative':'#2563eb','returning':'#7c3aed'}; return m[status] || '#64748b'; }
+
+        async function updateMapVehicles(vehicles) {
+            if (!map) return;
+            for (const vehicle of vehicles) {
+                const node = mapNodes[vehicle.location]; if (!node) continue;
+                const color = getVehicleColor(vehicle.status); const pos = node.coord;
+                const pathKey = vehicle.path && vehicle.path.length > 1 ? vehicle.path.join(',') : '';
+                const prev = vehicleAnimState[vehicle.id]; const pathChanged = pathKey && pathKey !== (prev ? prev.pathKey : ''); const statusChanged = vehicle.status !== (prev ? prev.status : '');
+                if (vehicle.status === 'moving' && vehicle.path && vehicle.path.length > 1 && pathChanged) { await startVehicleRouteAnimation(vehicle.id, vehicle.path, color); }
+                else if (statusChanged || (!prev)) {
+                    if (vehicleMarkers[vehicle.id]) { try { vehicleMarkers[vehicle.id].stopMove(); } catch(e) {} }
+                    if (vehicleMarkers[vehicle.id]) { vehicleMarkers[vehicle.id].setPosition(pos); vehicleMarkers[vehicle.id].setContent(createTruckIcon(color, vehicle.id)); }
+                    else { const marker = new AMap.Marker({ position: pos, offset: new AMap.Pixel(-20, -20), content: createTruckIcon(color, vehicle.id), zIndex: 100, map: map }); vehicleMarkers[vehicle.id] = marker; }
+                    if (vehicle.status !== 'moving') { ['_bg','_trail','_dash','_start','_end'].forEach(suffix => { const key = vehicle.id + suffix; if (vehicleRoutePolylines[key]) { map.remove(vehicleRoutePolylines[key]); delete vehicleRoutePolylines[key]; } }); if (vehicleTrailTimers[vehicle.id]) { clearInterval(vehicleTrailTimers[vehicle.id]); delete vehicleTrailTimers[vehicle.id]; } }
+                }
+                vehicleAnimState[vehicle.id] = { pathKey: pathKey, status: vehicle.status };
+            }
+        }
+
+        async function startVehicleRouteAnimation(vehicleId, nodePath, color) {
+            try {
+                const routeCoords = await calcFullRoute(nodePath); if (routeCoords.length < 2) return;
+                ['_bg','_trail','_dash','_start','_end'].forEach(suffix => { const key = vehicleId + suffix; if (vehicleRoutePolylines[key]) { map.remove(vehicleRoutePolylines[key]); delete vehicleRoutePolylines[key]; } });
+                if (vehicleTrailTimers[vehicleId]) { clearInterval(vehicleTrailTimers[vehicleId]); delete vehicleTrailTimers[vehicleId]; }
+                const smoothPath = interpolatePath(routeCoords, Math.max(routeCoords.length * 3, 200));
+                const bgLine = new AMap.Polyline({ path: smoothPath, strokeColor: '#c8d6e0', strokeOpacity: 0.5, strokeWeight: 12, lineJoin: 'round', lineCap: 'round', zIndex: 28 }); map.add(bgLine); vehicleRoutePolylines[vehicleId + '_bg'] = bgLine;
+                const dashLine = new AMap.Polyline({ path: smoothPath, strokeColor: color, strokeOpacity: 0.25, strokeWeight: 6, lineJoin: 'round', lineCap: 'round', zIndex: 29, strokeStyle: 'dashed', strokeDasharray: [10, 6] }); map.add(dashLine); vehicleRoutePolylines[vehicleId + '_dash'] = dashLine;
+                const trailLine = new AMap.Polyline({ path: [smoothPath[0]], strokeColor: color, strokeOpacity: 0.95, strokeWeight: 6, lineJoin: 'round', lineCap: 'round', zIndex: 30, showDir: true }); map.add(trailLine); vehicleRoutePolylines[vehicleId + '_trail'] = trailLine;
+                const startNode = mapNodes[nodePath[0]]; const endNode = mapNodes[nodePath[nodePath.length - 1]];
+                if (startNode) { const startMarker = new AMap.Marker({ position: startNode.coord, offset: new AMap.Pixel(-14, -14), content: createStartIcon(), zIndex: 90, map: map }); vehicleRoutePolylines[vehicleId + '_start'] = startMarker; }
+                if (endNode) { const endMarker = new AMap.Marker({ position: endNode.coord, offset: new AMap.Pixel(-14, -14), content: createEndIcon(), zIndex: 90, map: map }); vehicleRoutePolylines[vehicleId + '_end'] = endMarker; }
+                if (vehicleMarkers[vehicleId]) { try { vehicleMarkers[vehicleId].stopMove(); } catch(e) {} vehicleMarkers[vehicleId].setContent(createTruckIcon(color, vehicleId)); vehicleMarkers[vehicleId].setPosition(smoothPath[0]); }
+                else { const marker = new AMap.Marker({ position: smoothPath[0], offset: new AMap.Pixel(-20, -20), content: createTruckIcon(color, vehicleId), zIndex: 100, map: map }); vehicleMarkers[vehicleId] = marker; }
+                let trailIndex = 0; let trailPoints = [smoothPath[0]]; const stepSize = Math.max(1, Math.floor(smoothPath.length / 120));
+                vehicleTrailTimers[vehicleId] = setInterval(() => {
+                    trailIndex += stepSize;
+                    if (trailIndex >= smoothPath.length) { trailIndex = smoothPath.length - 1; clearInterval(vehicleTrailTimers[vehicleId]); delete vehicleTrailTimers[vehicleId]; }
+                    trailPoints.push(smoothPath[trailIndex]); trailLine.setPath(trailPoints);
+                    if (vehicleMarkers[vehicleId]) { vehicleMarkers[vehicleId].setPosition(smoothPath[trailIndex]); }
+                }, 80);
+            } catch (e) { console.error('Route animation error:', e); }
+        }
+
+        function updateMapTasks(tasks) {
+            if (!map) return;
+            const visible = tasks.filter(t => t.status === 'pending' || t.status === 'assigned'); const currentIds = new Set(visible.map(t => t.id));
+            Object.keys(taskMarkers).forEach(id => { if (!currentIds.has(parseInt(id))) { map.remove(taskMarkers[id]); delete taskMarkers[id]; } });
+            visible.forEach(task => { const node = mapNodes[task.location]; if (!node) return; const color = task.status === 'pending' ? '#ef4444' : '#0ea5e9'; const pos = node.coord;
+                if (taskMarkers[task.id]) { taskMarkers[task.id].setPosition(pos); }
+                else { const marker = new AMap.Marker({ position: pos, offset: new AMap.Pixel(-12, -12), content: createTaskIcon(color, task.id), title: `任务 #${task.id} 位置:${node.name} 重量:${task.weight.toFixed(1)}kg`, zIndex: 50, map: map }); taskMarkers[task.id] = marker; }
+            });
+        }
+    </script>
+</body>
+</html>
