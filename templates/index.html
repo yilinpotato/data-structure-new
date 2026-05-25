@@ -48,6 +48,7 @@
         .vehicle-item.idle .icon { background: #64748b; }
         .vehicle-item.moving .icon { background: #22c55e; }
         .vehicle-item.charging .icon { background: #f59e0b; }
+        .vehicle-item.waiting .icon { background: #eab308; }
         .vehicle-item.delivering .icon { background: #0ea5e9; }
         .vehicle-item.cooperative .icon { background: #2563eb; }
         .vehicle-item.returning .icon { background: #7c3aed; }
@@ -82,6 +83,12 @@
         .legend-color.task { background: #ef4444; }
         .legend-color.charging { background: #f59e0b; }
         .legend-color.depot { background: #2563eb; }
+        .detail-panel { background: rgba(255,255,255,0.06); border-radius: 8px; padding: 10px; }
+        .detail-panel summary { cursor: pointer; font-size: 13px; color: #e2e8f0; font-weight: 600; }
+        .detail-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 11px; color: #cbd5e1; }
+        .detail-table th, .detail-table td { padding: 6px 4px; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left; }
+        .detail-table th { color: #93c5fd; font-weight: 600; }
+        .detail-table .num { text-align: right; font-variant-numeric: tabular-nums; }
     </style>
 </head>
 <body>
@@ -90,10 +97,12 @@
             <h1>新能源物流调度</h1>
             <div class="section">
                 <h3>模拟参数设置</h3>
+                <div class="form-group"><label>默认规模</label><select id="scenario_preset"><option value="small">小规模</option><option value="medium">中规模</option><option value="large">大规模</option><option value="custom">自定义</option></select></div>
                 <div class="form-group"><label>车队规模 (车辆数)</label><input type="number" id="fleet_size" value="8" min="3" max="20"></div>
                 <div class="form-group"><label>模拟时间 (秒)</label><input type="number" id="simulation_time" value="3600" min="60" max="7200"></div>
                 <div class="form-group"><label>任务生成率 (每秒)</label><input type="number" id="task_rate" value="0.15" step="0.01" min="0.01" max="1"></div>
-                <div class="form-group"><label>调度策略</label><select id="strategy"><option value="nearest">最近任务优先</option><option value="max_weight">最大任务优先</option><option value="urgency">紧急任务优先</option></select></div>
+                <div class="form-group"><label>地图节点数量</label><input type="number" id="node_count" value="24" min="8" max="35"></div>
+                <div class="form-group"><label>调度策略</label><select id="strategy"><option value="balanced">平衡策略</option><option value="nearest">最近任务优先</option><option value="max_weight">最大任务优先</option><option value="urgency">紧急任务优先</option></select></div>
                 <button class="btn btn-primary" id="btn_start">▶ 开始模拟</button>
                 <button class="btn btn-secondary" id="btn_stop" disabled>■ 停止模拟</button>
             </div>
@@ -105,6 +114,28 @@
                     <div class="stat-card"><span class="value" id="stat_pending">0</span><span class="label">待处理</span></div>
                     <div class="stat-card"><span class="value" id="stat_score">0</span><span class="label">总评分</span></div>
                 </div>
+            </div>
+            <div class="section">
+                <details class="detail-panel" id="detail_panel">
+                    <summary>详细数据表</summary>
+                    <table class="detail-table">
+                        <tbody>
+                            <tr><th>充电次数</th><td class="num" id="detail_charge_count">0</td></tr>
+                            <tr><th>协调调度次数</th><td class="num" id="detail_dispatch_count">0</td></tr>
+                            <tr><th>单任务平均得分</th><td class="num" id="detail_avg_score">0</td></tr>
+                            <tr><th>单任务平均用时</th><td class="num" id="detail_avg_time">0 分钟</td></tr>
+                            <tr><th>平均充电时电量</th><td class="num" id="detail_avg_charge_battery">0%</td></tr>
+                        </tbody>
+                    </table>
+                    <table class="detail-table">
+                        <thead>
+                            <tr><th>充电站</th><th class="num">次数</th><th class="num">均队列</th><th class="num">峰队列</th><th class="num">峰负荷</th></tr>
+                        </thead>
+                        <tbody id="station_queue_table">
+                            <tr><td colspan="5">等待模拟数据...</td></tr>
+                        </tbody>
+                    </table>
+                </details>
             </div>
         </div>
         <div class="main-content">
@@ -129,6 +160,7 @@
         let updateInterval = null;
         let vehicleMarkers = {};
         let taskMarkers = {};
+        let stationMarkers = [];
         let map = null;
         let dragData = { isDragging: false, target: null, startX: 0, startY: 0, offsetX: 0, offsetY: 0 };
 
@@ -156,10 +188,8 @@
         function transformLng(x, y) { let ret = 300.0 + x + 2.0*y + 0.1*x*x + 0.1*x*y + 0.1*Math.sqrt(Math.abs(x)); ret += (20.0*Math.sin(6.0*x*PI) + 20.0*Math.sin(2.0*x*PI))*2.0/3.0; ret += (20.0*Math.sin(x*PI) + 40.0*Math.sin(x/3.0*PI))*2.0/3.0; ret += (150.0*Math.sin(x/12.0*PI) + 300.0*Math.sin(x/30.0*PI))*2.0/3.0; return ret; }
         function wgs84ToGcj02(lng, lat) { let dlat = transformLat(lng-105.0, lat-35.0); let dlng = transformLng(lng-105.0, lat-35.0); const radlat = lat/180.0*PI; let magic = Math.sin(radlat); magic = 1 - EE*magic*magic; const sqrtmagic = Math.sqrt(magic); dlat = (dlat*180.0)/((A*(1-EE))/(magic*sqrtmagic)*PI); dlng = (dlng*180.0)/(A/sqrtmagic*Math.cos(radlat)*PI); return [lng+dlng, lat+dlat]; }
 
-        const mapNodesWGS84 = { 1:{"name":"天河体育中心","coord":[113.3308,23.1349]}, 2:{"name":"广州东站","coord":[113.3215,23.1297]}, 3:{"name":"珠江新城","coord":[113.3394,23.1233]}, 4:{"name":"天河CBD","coord":[113.3366,23.1405]}, 5:{"name":"白云山南门","coord":[113.3240,23.1520]}, 6:{"name":"北京路","coord":[113.2824,23.1187]}, 7:{"name":"广州火车站","coord":[113.2658,23.1066]}, 8:{"name":"中山纪念堂","coord":[113.2878,23.1239]}, 9:{"name":"广州起义纪念馆","coord":[113.2785,23.1153]}, 10:{"name":"广州塔","coord":[113.3245,23.1060]}, 11:{"name":"琶洲会展中心","coord":[113.3350,23.0669]}, 12:{"name":"海珠广场","coord":[113.2998,23.0942]}, 13:{"name":"大学城","coord":[113.3237,23.0569]}, 14:{"name":"上下九","coord":[113.2564,23.1027]}, 15:{"name":"陈家祠","coord":[113.2518,23.1120]}, 16:{"name":"沙面","coord":[113.2527,23.0924]}, 100:{"name":"中央仓库","coord":[113.3500,23.1550]} };
-        const mapNodes = {};
-        Object.keys(mapNodesWGS84).forEach(id => { const node = mapNodesWGS84[id]; const gcj = wgs84ToGcj02(node.coord[0], node.coord[1]); mapNodes[id] = {"name": node.name, "coord": gcj}; });
-        const stationNodeIds = new Set([1, 3, 6, 10, 14, 100]);
+        let mapNodes = {};
+        let stationNodeIds = new Set();
         const routeCache = {}; const vehicleAnimState = {}; const vehicleRoutePolylines = {}; const vehicleTrailTimers = {};
 
         function createTruckIcon(color, id) { return `<div style="position:relative;width:40px;height:40px;"><div style="width:40px;height:40px;background:${color};border:3px solid white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,0.5);"><svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3 3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div><div style="position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.8);color:white;font-size:10px;padding:2px 6px;border-radius:4px;white-space:nowrap;font-weight:bold;">${id}号车</div></div>`; }
@@ -188,11 +218,40 @@
             });
         }
 
-        document.addEventListener('DOMContentLoaded', function() { setupEventListeners(); loadMap(); initDrag('vehicle_panel'); initDrag('task_panel'); });
+        document.addEventListener('DOMContentLoaded', function() { setupEventListeners(); applyPreset('small'); loadMap(); initDrag('vehicle_panel'); initDrag('task_panel'); });
+
+        async function loadGraphData() {
+            const response = await fetch('/get_graph_data');
+            const graph = await response.json();
+            mapNodes = {};
+            stationNodeIds = new Set((graph.charging_stations || []).map(s => parseInt(s.node_id)));
+            Object.entries(graph.nodes || {}).forEach(([id, node]) => {
+                const lat = node.location[0];
+                const lng = node.location[1];
+                const gcj = wgs84ToGcj02(lng, lat);
+                mapNodes[id] = { name: node.name, coord: gcj };
+            });
+            Object.keys(routeCache).forEach(key => delete routeCache[key]);
+        }
+
+        function applyPreset(name) {
+            const presets = {
+                small: { fleet_size: 6, simulation_time: 1800, task_rate: 0.12, node_count: 16, strategy: 'nearest' },
+                medium: { fleet_size: 10, simulation_time: 3600, task_rate: 0.15, node_count: 24, strategy: 'balanced' },
+                large: { fleet_size: 18, simulation_time: 7200, task_rate: 0.28, node_count: 35, strategy: 'balanced' }
+            };
+            const preset = presets[name];
+            if (!preset) return;
+            Object.entries(preset).forEach(([key, value]) => {
+                const input = document.getElementById(key);
+                if (input) input.value = value;
+            });
+        }
 
         async function loadMap() {
             try {
                 document.getElementById('map_fallback').innerHTML = '<div class="map-fallback-content"><div style="font-size:48px;margin-bottom:10px;">🗺️</div><p>正在加载高德地图...</p></div>';
+                await loadGraphData();
                 await loadAMap();
                 map = new AMap.Map('map', { center: [113.32, 23.13], zoom: 12, mapStyle: 'amap://styles/normal', showBuildingBlock: true });
                 map.addControl(new AMap.ToolBar()); map.addControl(new AMap.Scale());
@@ -223,10 +282,12 @@
 
         function drawStationMarkers() {
             if (!map) return;
+            stationMarkers.forEach(marker => map.remove(marker));
+            stationMarkers = [];
             Object.entries(mapNodes).forEach(([id, node]) => {
                 const isDepot = id === '100'; const isStation = stationNodeIds.has(parseInt(id));
-                if (isDepot) { new AMap.Marker({ position: node.coord, offset: new AMap.Pixel(-24, -24), content: createDepotIcon(), title: node.name, zIndex: 10, map: map }); }
-                else if (isStation) { new AMap.Marker({ position: node.coord, offset: new AMap.Pixel(-18, -18), content: createStationIcon(), title: node.name + ' 充电站', zIndex: 9, map: map }); }
+                if (isDepot) { stationMarkers.push(new AMap.Marker({ position: node.coord, offset: new AMap.Pixel(-24, -24), content: createDepotIcon(), title: node.name, zIndex: 10, map: map })); }
+                else if (isStation) { stationMarkers.push(new AMap.Marker({ position: node.coord, offset: new AMap.Pixel(-18, -18), content: createStationIcon(), title: node.name + ' 充电站', zIndex: 9, map: map })); }
             });
         }
 
@@ -272,14 +333,21 @@
             result.push(path[path.length - 1]); return result;
         }
 
-        function setupEventListeners() { document.getElementById('btn_start').addEventListener('click', startSimulation); document.getElementById('btn_stop').addEventListener('click', stopSimulation); }
+        function setupEventListeners() {
+            document.getElementById('btn_start').addEventListener('click', startSimulation);
+            document.getElementById('btn_stop').addEventListener('click', stopSimulation);
+            document.getElementById('scenario_preset').addEventListener('change', e => applyPreset(e.target.value));
+            ['fleet_size', 'simulation_time', 'task_rate', 'node_count', 'strategy'].forEach(id => {
+                document.getElementById(id).addEventListener('input', () => { document.getElementById('scenario_preset').value = 'custom'; });
+            });
+        }
 
         function startSimulation() {
             if (simulationRunning) return;
-            const params = { fleet_size: parseInt(document.getElementById('fleet_size').value), simulation_time: parseInt(document.getElementById('simulation_time').value), task_rate: parseFloat(document.getElementById('task_rate').value), strategy: document.getElementById('strategy').value };
+            const params = { fleet_size: parseInt(document.getElementById('fleet_size').value), simulation_time: parseInt(document.getElementById('simulation_time').value), task_rate: parseFloat(document.getElementById('task_rate').value), node_count: parseInt(document.getElementById('node_count').value), strategy: document.getElementById('strategy').value };
             document.getElementById('loading').classList.remove('hidden');
             fetch('/start_simulation', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(params) })
-            .then(r => r.json()).then(data => { document.getElementById('loading').classList.add('hidden'); if (data.status === 'success') { simulationRunning = true; document.getElementById('btn_start').disabled = true; document.getElementById('btn_stop').disabled = false; updateInterval = setInterval(updateSimulation, 200); } });
+            .then(r => r.json()).then(async data => { document.getElementById('loading').classList.add('hidden'); if (data.status === 'success') { await loadGraphData(); drawStationMarkers(); simulationRunning = true; document.getElementById('btn_start').disabled = true; document.getElementById('btn_stop').disabled = false; updateInterval = setInterval(updateSimulation, 200); } });
         }
 
         function stopSimulation() {
@@ -295,19 +363,39 @@
 
         function updateSimulation() {
             fetch('/get_state').then(r => r.json()).then(state => {
-                if (!state.current_time) return;
-                updateTimeDisplay(state.current_time); updateStatistics(state.statistics); updateVehicles(state.vehicles); updateTasks(state.tasks); updateMapVehicles(state.vehicles); updateMapTasks(state.tasks);
+                if (state.current_time === undefined) return;
+                updateTimeDisplay(state.current_time); updateStatistics(state.statistics); updateDetails(state.details); updateVehicles(state.vehicles); updateTasks(state.tasks); updateMapVehicles(state.vehicles); updateMapTasks(state.tasks);
             }).catch(e => console.error('Fetch error:', e));
         }
 
         function updateTimeDisplay(seconds) { const h = Math.floor(seconds/3600); const m = Math.floor((seconds%3600)/60); const s = seconds%60; document.getElementById('sim_time').textContent = String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0'); }
         function updateStatistics(stats) { document.getElementById('stat_completed').textContent = stats.completed_tasks; document.getElementById('stat_failed').textContent = stats.failed_tasks; document.getElementById('stat_pending').textContent = stats.total_tasks - stats.completed_tasks - stats.failed_tasks; document.getElementById('stat_score').textContent = Math.round(stats.total_score); }
+        function updateDetails(details) {
+            if (!details) return;
+            document.getElementById('detail_charge_count').textContent = details.charging_count || 0;
+            document.getElementById('detail_dispatch_count').textContent = details.coordinated_dispatch_count || 0;
+            document.getElementById('detail_avg_score').textContent = (details.average_task_score || 0).toFixed(1);
+            document.getElementById('detail_avg_time').textContent = ((details.average_task_time || 0) / 60).toFixed(1) + ' 分钟';
+            document.getElementById('detail_avg_charge_battery').textContent = (details.average_charge_start_battery || 0).toFixed(1) + '%';
+            const tbody = document.getElementById('station_queue_table');
+            tbody.innerHTML = '';
+            const rows = details.station_queue_stats || [];
+            if (!rows.length) {
+                tbody.innerHTML = '<tr><td colspan="5">暂无充电站数据</td></tr>';
+                return;
+            }
+            rows.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${row.name}</td><td class="num">${row.charging_sessions}</td><td class="num">${row.average_queue.toFixed(1)}</td><td class="num">${row.peak_queue}</td><td class="num">${(row.peak_load * 100).toFixed(0)}%</td>`;
+                tbody.appendChild(tr);
+            });
+        }
         function updateVehicles(vehicles) { const container = document.getElementById('vehicle_list'); container.innerHTML = ''; vehicles.forEach(v => { const item = document.createElement('div'); item.className = 'vehicle-item ' + v.status; const batteryClass = v.battery > 60 ? 'high' : (v.battery > 30 ? 'medium' : 'low'); item.innerHTML = `<div class="icon">${v.id}</div><div class="vehicle-info"><span class="name">车辆 ${v.id}</span><span class="status">${getStatusText(v.status)}</span></div><div class="battery-bar"><div class="battery-fill ${batteryClass}" style="width: ${v.battery}%"></div></div>`; container.appendChild(item); }); }
-        function getStatusText(status) { const m = {'idle':'空闲','moving':'配送中','charging':'充电中','delivering':'送货中','cooperative':'协同配送','returning':'回仓中'}; return m[status] || status; }
+        function getStatusText(status) { const m = {'idle':'空闲','moving':'行驶中','charging':'充电中','waiting':'排队等充电','delivering':'送货中','cooperative':'协同配送','returning':'回仓中'}; return m[status] || status; }
         function updateTasks(tasks) { const container = document.getElementById('task_list'); container.innerHTML = ''; const recent = tasks.filter(t => t.status !== 'completed').slice(0, 10); recent.forEach(task => { const locName = mapNodes[task.location] ? mapNodes[task.location].name : '未知'; const item = document.createElement('div'); item.className = 'task-item ' + task.status; item.innerHTML = `<div class="task-header"><span class="task-id">任务 #${task.id}</span><span class="status-tag" style="background:${getTaskStatusColor(task.status)}">${getTaskStatusText(task.status)}</span></div><div class="task-info">位置: <span>${locName}</span></div><div class="task-info">重量: <span>${task.weight.toFixed(1)} kg</span></div>`; container.appendChild(item); }); if (!recent.length) container.innerHTML = '<p style="color:#94a3b8;text-align:center;font-size:12px;">暂无任务</p>'; }
         function getTaskStatusText(s) { const m = {'pending':'待分配','assigned':'已分配','in_progress':'进行中','completed':'已完成','failed':'失败','cooperative':'协同配送'}; return m[s] || s; }
         function getTaskStatusColor(s) { const m = {'pending':'#ef4444','assigned':'#0ea5e9','in_progress':'#f59e0b','completed':'#22c55e','failed':'#ef4444','cooperative':'#3b82f6'}; return m[s] || '#64748b'; }
-        function getVehicleColor(status) { const m = {'idle':'#64748b','moving':'#22c55e','charging':'#f59e0b','delivering':'#0ea5e9','cooperative':'#2563eb','returning':'#7c3aed'}; return m[status] || '#64748b'; }
+        function getVehicleColor(status) { const m = {'idle':'#64748b','moving':'#22c55e','charging':'#f59e0b','waiting':'#eab308','delivering':'#0ea5e9','cooperative':'#2563eb','returning':'#7c3aed'}; return m[status] || '#64748b'; }
 
         async function updateMapVehicles(vehicles) {
             if (!map) return;
@@ -316,7 +404,7 @@
                 const color = getVehicleColor(vehicle.status); const pos = node.coord;
                 const pathKey = vehicle.path && vehicle.path.length > 1 ? vehicle.path.join(',') : '';
                 const prev = vehicleAnimState[vehicle.id]; const pathChanged = pathKey && pathKey !== (prev ? prev.pathKey : ''); const statusChanged = vehicle.status !== (prev ? prev.status : '');
-                if (vehicle.status === 'moving' && vehicle.path && vehicle.path.length > 1 && pathChanged) { await startVehicleRouteAnimation(vehicle.id, vehicle.path, color); }
+                if (vehicle.status === 'moving' && vehicle.path && vehicle.path.length > 1 && pathChanged) { await startVehicleRouteAnimation(vehicle.id, vehicle.path, color, vehicle.path_distance); }
                 else if (statusChanged || (!prev)) {
                     if (vehicleMarkers[vehicle.id]) { try { vehicleMarkers[vehicle.id].stopMove(); } catch(e) {} }
                     if (vehicleMarkers[vehicle.id]) { vehicleMarkers[vehicle.id].setPosition(pos); vehicleMarkers[vehicle.id].setContent(createTruckIcon(color, vehicle.id)); }
@@ -327,7 +415,7 @@
             }
         }
 
-        async function startVehicleRouteAnimation(vehicleId, nodePath, color) {
+        async function startVehicleRouteAnimation(vehicleId, nodePath, color, pathDistance) {
             try {
                 const routeCoords = await calcFullRoute(nodePath); if (routeCoords.length < 2) return;
                 ['_bg','_trail','_dash','_start','_end'].forEach(suffix => { const key = vehicleId + suffix; if (vehicleRoutePolylines[key]) { map.remove(vehicleRoutePolylines[key]); delete vehicleRoutePolylines[key]; } });
@@ -341,7 +429,9 @@
                 if (endNode) { const endMarker = new AMap.Marker({ position: endNode.coord, offset: new AMap.Pixel(-14, -14), content: createEndIcon(), zIndex: 90, map: map }); vehicleRoutePolylines[vehicleId + '_end'] = endMarker; }
                 if (vehicleMarkers[vehicleId]) { try { vehicleMarkers[vehicleId].stopMove(); } catch(e) {} vehicleMarkers[vehicleId].setContent(createTruckIcon(color, vehicleId)); vehicleMarkers[vehicleId].setPosition(smoothPath[0]); }
                 else { const marker = new AMap.Marker({ position: smoothPath[0], offset: new AMap.Pixel(-20, -20), content: createTruckIcon(color, vehicleId), zIndex: 100, map: map }); vehicleMarkers[vehicleId] = marker; }
-                let trailIndex = 0; let trailPoints = [smoothPath[0]]; const stepSize = Math.max(1, Math.floor(smoothPath.length / 120));
+                const expectedTicks = Math.max(2, Math.ceil((pathDistance || 3000) / 500));
+                const expectedFrames = Math.max(8, Math.min(180, Math.ceil(expectedTicks * 300 / 80)));
+                let trailIndex = 0; let trailPoints = [smoothPath[0]]; const stepSize = Math.max(1, Math.floor(smoothPath.length / expectedFrames));
                 vehicleTrailTimers[vehicleId] = setInterval(() => {
                     trailIndex += stepSize;
                     if (trailIndex >= smoothPath.length) { trailIndex = smoothPath.length - 1; clearInterval(vehicleTrailTimers[vehicleId]); delete vehicleTrailTimers[vehicleId]; }
