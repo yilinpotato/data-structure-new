@@ -1,0 +1,227 @@
+{
+  "actions": [
+    "nearest",
+    "max_weight",
+    "urgency",
+    "balanced"
+  ],
+  "state_schema": [
+    "battery_bin",
+    "pending_bin",
+    "urgent_bin",
+    "nearest_distance_bin",
+    "charge_pressure_bin"
+  ],
+  "q_table": {
+    "4|1|0|1|0": {
+      "nearest": 52.71219119999999,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|1|0|0": {
+      "nearest": 73.291660952,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|1|2|0|0": {
+      "nearest": 108.15273559999999,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|1|3|0|0": {
+      "nearest": 185.97998,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|0|1|0": {
+      "nearest": 24.134926518820357,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|1|2|1|0": {
+      "nearest": 42.24108219451044,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|1|1|0": {
+      "nearest": -6.153158443822377,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|2|2|0|0": {
+      "nearest": 65.09294,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|2|3|0|0": {
+      "nearest": 65.0831,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|1|3|1|0": {
+      "nearest": 109.47746000000001,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|0|3|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|0|0|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|1|2|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|0|2|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "3|0|0|3|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "3|0|1|0|0": {
+      "nearest": -20.7,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "3|0|1|1|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|2|0|0": {
+      "nearest": -20.7,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|1|3|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|2|3|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|1|3|2|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|1|1|0|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|1|1|3|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|1|2|2|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|1|1|1|0": {
+      "nearest": -20.7,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|2|2|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|0|2|1|0": {
+      "nearest": 27.686015999999995,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|1|1|2|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "4|1|2|3|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    },
+    "3|0|1|3|0": {
+      "nearest": 0.0,
+      "max_weight": 0.0,
+      "urgency": 0.0,
+      "balanced": 0.0
+    }
+  },
+  "meta": {
+    "config": {
+      "fleet_size": 6,
+      "simulation_time": 600,
+      "task_rate": 0.08,
+      "node_count": 12
+    },
+    "episodes": 6,
+    "seed": 99,
+    "gurobi_pretrain": {
+      "enabled": true,
+      "episodes": 2,
+      "time_limit": 8,
+      "task_limit": 12,
+      "summary": {
+        "episodes": 2,
+        "avg_score": 955.5675,
+        "avg_completed": 8,
+        "avg_failed": 1.5,
+        "avg_tasks": 9.5
+      }
+    },
+    "training_summary": {
+      "episodes": 6,
+      "avg_score": 466.77864999999997,
+      "avg_completed": 5.5,
+      "avg_failed": 2.6666666666666665,
+      "avg_tasks": 11.166666666666666
+    }
+  }
+}

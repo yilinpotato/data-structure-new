@@ -3,7 +3,9 @@ import threading
 import time
 import json
 import os
+import random
 from simulator import GuangzhouMap, Simulator
+from gurobi_optimizer import solve_static_oracle
 
 app = Flask(__name__)
 
@@ -38,7 +40,7 @@ def index():
 
 @app.route('/start_simulation', methods=['POST'])
 def start_simulation():
-    global simulation_running, simulation_thread, simulator
+    global simulation_running, simulation_thread, current_state, simulator
     
     if simulation_running:
         return jsonify({"status": "error", "message": "模拟已在运行中"})
@@ -57,6 +59,7 @@ def start_simulation():
         strategy_name=strategy,
         node_count=node_count
     )
+    current_state = build_current_state()
     
     simulation_running = True
     simulation_thread = threading.Thread(target=run_simulation, daemon=True)
@@ -81,6 +84,203 @@ def get_graph_data():
         return jsonify(map_payload(simulator.map))
     return jsonify(default_map_data)
 
+@app.route('/run_all_strategies', methods=['POST'])
+def run_all_strategies():
+    global simulation_running
+    if simulation_running:
+        return jsonify({"status": "error", "message": "请先停止实时模拟，再一键跑完所有策略"})
+
+    data = request.get_json()
+    fleet_size = int(data.get('fleet_size', 10))
+    simulation_time = int(data.get('simulation_time', 3600))
+    task_rate = float(data.get('task_rate', 0.01))
+    node_count = int(data.get('node_count', 24))
+    seed = int(data.get('seed', 42))
+
+    strategies = [
+        ("nearest", "最近任务优先"),
+        ("max_weight", "最大任务优先"),
+        ("urgency", "紧急任务优先"),
+        ("balanced", "平衡策略"),
+        ("rl", "强化学习策略")
+    ]
+    results = []
+
+    for strategy_name, label in strategies:
+        random.seed(seed)
+        sim = Simulator(
+            fleet_size=fleet_size,
+            simulation_time=simulation_time,
+            task_rate=task_rate,
+            strategy_name=strategy_name,
+            node_count=node_count
+        )
+        run_fast_simulation(sim)
+        details = sim.get_detail_statistics()
+        results.append({
+            "strategy": strategy_name,
+            "label": label,
+            "status": "success",
+            "total_tasks": sim.total_tasks,
+            "completed_tasks": sim.completed_task_count,
+            "failed_tasks": sim.failed_task_count,
+            "completion_rate": (sim.completed_task_count / max(sim.total_tasks, 1)) * 100,
+            "total_score": sim.total_score,
+            "average_task_score": details["average_task_score"],
+            "average_task_time": details["average_task_time"],
+            "charging_count": details["charging_count"],
+            "coordinated_dispatch_count": details["coordinated_dispatch_count"]
+        })
+
+    random.seed(seed)
+    oracle_sim = Simulator(
+        fleet_size=fleet_size,
+        simulation_time=simulation_time,
+        task_rate=task_rate,
+        strategy_name="balanced",
+        node_count=node_count
+    )
+    oracle_tasks = generate_static_tasks(oracle_sim)
+    oracle_result = solve_static_oracle(
+        oracle_sim.map,
+        oracle_sim.fleet,
+        oracle_tasks,
+        simulation_time,
+        task_limit=None
+    )
+    optimized_tasks = oracle_result.get("optimized_tasks") or 0
+    if oracle_result.get("status") == "optimal" and oracle_result.get("unoptimized_tasks", 0) == 0:
+        oracle_label = "Gurobi静态最优"
+    elif oracle_result.get("status") == "time_limited":
+        oracle_label = "Gurobi精确求解(未证明)"
+    else:
+        oracle_label = "Gurobi精确求解(子问题)"
+    results.append({
+        "strategy": "gurobi_oracle",
+        "label": oracle_label,
+        "status": oracle_result["status"],
+        "message": oracle_result["message"],
+        "total_tasks": optimized_tasks,
+        "generated_tasks": len(oracle_tasks),
+        "optimized_tasks": optimized_tasks,
+        "unoptimized_tasks": oracle_result.get("unoptimized_tasks"),
+        "completed_tasks": oracle_result["completed_tasks"],
+        "failed_tasks": oracle_result.get("failed_tasks", 0),
+        "completion_rate": (oracle_result["completed_tasks"] / max(optimized_tasks, 1)) * 100,
+        "total_score": oracle_result["total_score"],
+        "average_task_score": (oracle_result.get("total_task_score", 0) / oracle_result["completed_tasks"])
+            if oracle_result["completed_tasks"] else None,
+        "average_task_time": None,
+        "charging_count": None,
+        "coordinated_dispatch_count": None,
+        "mip_gap": oracle_result.get("mip_gap"),
+        "model_bound": oracle_result.get("model_bound"),
+        "plan": oracle_result.get("plan", [])[:5]
+    })
+
+    best_dynamic = max(
+        [
+            r for r in results
+            if r.get("strategy") != "gurobi_oracle" and isinstance(r.get("total_score"), (int, float))
+        ],
+        key=lambda row: row["total_score"],
+        default=None
+    )
+    best_overall = max(
+        [r for r in results if isinstance(r.get("total_score"), (int, float))],
+        key=lambda row: row["total_score"],
+        default=None
+    )
+    return jsonify({
+        "status": "success",
+        "seed": seed,
+        "best_strategy": best_dynamic["label"] if best_dynamic else None,
+        "best_overall": best_overall["label"] if best_overall else None,
+        "results": results
+    })
+
+def generate_static_tasks(sim):
+    tasks = []
+    while sim.current_time < sim.simulation_time:
+        for _ in range(3):
+            new_task = sim._generate_task()
+            if new_task:
+                tasks.append(new_task)
+        sim.current_time += sim.time_step
+    sim.current_time = 0
+    return tasks
+
+def run_fast_simulation(sim):
+    while sim.current_time < sim.simulation_time:
+        for _ in range(3):
+            new_task = sim._generate_task()
+            if new_task:
+                sim.tasks.append(new_task)
+                sim.total_tasks += 1
+
+        sim._update_vehicle_states()
+        sim._check_task_deadlines()
+        sim._allocate_tasks()
+        sim._manage_charging()
+        sim._record_station_loads()
+        sim.map.current_time = sim.current_time
+        sim.current_time += sim.time_step
+
+    return sim
+
+def build_current_state():
+    if simulator is None:
+        return {}
+
+    return {
+        'current_time': simulator.current_time,
+        'vehicles': [
+            {
+                'id': v.id,
+                'location': v.current_location,
+                'status': v.status,
+                'battery': v.get_remaining_battery(),
+                'capacity': v.capacity,
+                'current_task': v.current_task.id if v.current_task else None,
+                'path': v.current_path,
+                'path_progress': v.path_progress,
+                'path_distance': v.total_path_distance,
+                'distance_remaining': v.distance_remaining
+            }
+            for v in simulator.fleet
+        ],
+        'tasks': [
+            {
+                'id': t.id,
+                'location': t.location,
+                'weight': t.weight,
+                'status': t.status,
+                'start_time': t.start_time,
+                'deadline': t.deadline,
+                'score': t.score
+            }
+            for t in simulator.tasks
+        ],
+        'completed_tasks': simulator.completed_task_count,
+        'failed_tasks': simulator.failed_task_count,
+        'total_score': simulator.total_score,
+        'details': simulator.get_detail_statistics(),
+        'charging_stations': [
+            {'id': s.id, 'occupied': len(s.occupied), 'queue': len(s.queue), 'capacity': s.capacity}
+            for s in simulator.map.charging_stations
+        ],
+        'statistics': {
+            'total_tasks': simulator.total_tasks,
+            'completed_tasks': simulator.completed_task_count,
+            'failed_tasks': simulator.failed_task_count,
+            'completion_rate': (simulator.completed_task_count / max(simulator.total_tasks, 1)) * 100,
+            'total_score': simulator.total_score,
+            'active_vehicles': sum(1 for v in simulator.fleet if v.status != 'idle'),
+            'charging_vehicles': sum(len(s.occupied) for s in simulator.map.charging_stations),
+            'waiting_vehicles': sum(len(s.queue) for s in simulator.map.charging_stations)
+        }
+    }
+
 def run_simulation():
     global simulation_running, current_state, simulator
     
@@ -95,55 +295,9 @@ def run_simulation():
         simulator._check_task_deadlines()
         simulator._allocate_tasks()
         simulator._manage_charging()
+        simulator._record_station_loads()
         
-        current_state = {
-            'current_time': simulator.current_time,
-            'vehicles': [
-                {
-                    'id': v.id,
-                    'location': v.current_location,
-                    'status': v.status,
-                    'battery': v.get_remaining_battery(),
-                    'capacity': v.capacity,
-                    'current_task': v.current_task.id if v.current_task else None,
-                    'path': v.current_path,
-                    'path_progress': v.path_progress,
-                    'path_distance': v.total_path_distance,
-                    'distance_remaining': v.distance_remaining
-                }
-                for v in simulator.fleet
-            ],
-            'tasks': [
-                {
-                    'id': t.id,
-                    'location': t.location,
-                    'weight': t.weight,
-                    'status': t.status,
-                    'start_time': t.start_time,
-                    'deadline': t.deadline,
-                    'score': t.score
-                }
-                for t in simulator.tasks
-            ],
-            'completed_tasks': simulator.completed_task_count,
-            'failed_tasks': simulator.failed_task_count,
-            'total_score': simulator.total_score,
-            'details': simulator.get_detail_statistics(),
-            'charging_stations': [
-                {'id': s.id, 'occupied': len(s.occupied), 'queue': len(s.queue), 'capacity': s.capacity}
-                for s in simulator.map.charging_stations
-            ],
-            'statistics': {
-                'total_tasks': simulator.total_tasks,
-                'completed_tasks': simulator.completed_task_count,
-                'failed_tasks': simulator.failed_task_count,
-                'completion_rate': (simulator.completed_task_count / max(simulator.total_tasks, 1)) * 100,
-                'total_score': simulator.total_score,
-                'active_vehicles': sum(1 for v in simulator.fleet if v.status != 'idle'),
-                'charging_vehicles': sum(len(s.occupied) for s in simulator.map.charging_stations),
-                'waiting_vehicles': sum(len(s.queue) for s in simulator.map.charging_stations)
-            }
-        }
+        current_state = build_current_state()
         
         simulator.current_time += simulator.time_step
         time.sleep(0.3)

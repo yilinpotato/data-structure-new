@@ -43,7 +43,6 @@ class Vehicle:
         self.charge_start_time = None
         self.charge_start_battery = None
         self.target_charge_ratio = 0.95
-        self.target_rebalance = False
         
         self.total_distance = 0
         self.total_tasks = 0
@@ -364,7 +363,8 @@ class GuangzhouMap:
                 continue
 
             queue_pressure = (len(station.occupied) + len(station.queue)) / max(station.capacity, 1)
-            score = distance + queue_pressure * 5000 - station.charging_rate * 80
+            depot_penalty = 6000 if station.node_id == 100 and vehicle.current_location != 100 else 0
+            score = distance + depot_penalty + queue_pressure * 5000 - station.charging_rate * 80
             station_scores.append((score, station, distance))
 
         if not station_scores:
@@ -556,6 +556,10 @@ class Simulator:
             "urgency": UrgencyStrategy,
             "balanced": BalancedStrategy
         }
+
+        if strategy_name.lower() in ("rl", "reinforcement"):
+            from rl_agent import RLDispatchStrategy
+            return RLDispatchStrategy()
         
         if strategy_name.lower() in strategies:
             return strategies[strategy_name.lower()]()
@@ -574,8 +578,10 @@ class Simulator:
         weight = round(weight, 2)
         
         deadline = None
-        if random.random() < 0.7:
-            deadline_delta = random.randint(3600, 10800)
+        if random.random() < 0.8:
+            min_delta = max(120, int(self.simulation_time * 0.08))
+            max_delta = max(min_delta + self.time_step, int(self.simulation_time * 0.35))
+            deadline_delta = random.randint(min_delta, max_delta)
             deadline = self.current_time + deadline_delta
         
         task = Task(
@@ -608,14 +614,17 @@ class Simulator:
                             vehicle.distance_remaining = 0
                             continue
 
-                        task.complete(self.current_time)
-                        self.completed_tasks.append(task)
-                        if task in self.tasks:
-                            self.tasks.remove(task)
-                        self.completed_task_count += 1
-                        self.total_score += task.score
-                        self.total_task_score += task.score
-                        self.total_task_time += task.completion_time - task.start_time
+                        if task.deadline and self.current_time > task.deadline:
+                            self._fail_task(task)
+                        else:
+                            task.complete(self.current_time)
+                            self.completed_tasks.append(task)
+                            if task in self.tasks:
+                                self.tasks.remove(task)
+                            self.completed_task_count += 1
+                            self.total_score += task.score
+                            self.total_task_score += task.score
+                            self.total_task_time += task.completion_time - task.start_time
                         
                         vehicle.current_task = None
                         vehicle.status = VehicleStatus.IDLE
@@ -631,13 +640,6 @@ class Simulator:
                         vehicle.distance_remaining = 0
                         vehicle.total_path_distance = 0
                         station.add_vehicle(vehicle)
-                    elif vehicle.target_rebalance:
-                        vehicle.target_rebalance = False
-                        vehicle.status = VehicleStatus.IDLE
-                        vehicle.current_path = []
-                        vehicle.path_progress = 0
-                        vehicle.distance_remaining = 0
-                        vehicle.total_path_distance = 0
                     else:
                         vehicle.status = VehicleStatus.IDLE
                         vehicle.current_path = []
@@ -668,11 +670,28 @@ class Simulator:
     def _check_task_deadlines(self):
         for task in self.tasks[:]:
             if task.deadline and self.current_time > task.deadline:
-                task.status = TaskStatus.FAILED
-                self.failed_tasks.append(task)
-                self.tasks.remove(task)
-                self.failed_task_count += 1
-                self.total_score -= 100
+                self._fail_task(task)
+
+    def _fail_task(self, task):
+        if task.status == TaskStatus.FAILED:
+            return
+
+        task.status = TaskStatus.FAILED
+        if task not in self.failed_tasks:
+            self.failed_tasks.append(task)
+            self.failed_task_count += 1
+            self.total_score -= 100
+        if task in self.tasks:
+            self.tasks.remove(task)
+
+        for vehicle in self.fleet:
+            if vehicle.current_task == task:
+                vehicle.current_task = None
+                vehicle.status = VehicleStatus.IDLE
+                vehicle.current_path = []
+                vehicle.path_progress = 0
+                vehicle.distance_remaining = 0
+                vehicle.total_path_distance = 0
     
     def _allocate_tasks(self):
         self.map.current_time = self.current_time
@@ -703,59 +722,6 @@ class Simulator:
                         pending_tasks.remove(task)
                     self.coordinated_dispatch_count += 1
 
-    def _rebalance_idle_vehicles(self):
-        pending_tasks = [t for t in self.tasks if t.status == TaskStatus.PENDING]
-        if not pending_tasks:
-            return
-
-        task_counts = {}
-        for task in pending_tasks:
-            task_counts[task.location] = task_counts.get(task.location, 0) + 1
-
-        vehicle_counts = {}
-        for vehicle in self.fleet:
-            vehicle_counts[vehicle.current_location] = vehicle_counts.get(vehicle.current_location, 0) + 1
-
-        idle_vehicles = [
-            v for v in self.fleet
-            if v.status == VehicleStatus.IDLE and not v.is_battery_low(0.45)
-        ]
-
-        for vehicle in idle_vehicles:
-            candidates = []
-            for node_id, task_count in task_counts.items():
-                if node_id == vehicle.current_location:
-                    continue
-
-                path = self.map.shortest_path(vehicle.current_location, node_id)
-                if not path:
-                    continue
-
-                distance = self.map.calculate_distance(path)
-                reserve = self.map.distance_to_nearest_station(node_id)
-                if not vehicle.can_reach(distance + reserve):
-                    continue
-
-                local_vehicle_count = vehicle_counts.get(node_id, 0)
-                score = task_count * 10 - local_vehicle_count * 3 - distance / 3000
-                candidates.append((score, distance, node_id, path))
-
-            if not candidates:
-                continue
-
-            candidates.sort(key=lambda item: (-item[0], item[1]))
-            _, distance, node_id, path = candidates[0]
-            if distance < 1000:
-                continue
-
-            vehicle.current_path = path
-            vehicle.status = VehicleStatus.MOVING
-            vehicle.path_progress = 0
-            vehicle.total_path_distance = distance
-            vehicle.distance_remaining = distance
-            vehicle.target_rebalance = True
-            vehicle_counts[node_id] = vehicle_counts.get(node_id, 0) + 1
-    
     def _manage_charging(self):
         for vehicle in self.fleet:
             if vehicle.status == VehicleStatus.IDLE and vehicle.is_battery_low(0.35):
@@ -827,7 +793,6 @@ class Simulator:
             self._update_vehicle_states()
             self._check_task_deadlines()
             self._allocate_tasks()
-            self._rebalance_idle_vehicles()
             self._manage_charging()
             self._record_station_loads()
             self.map.current_time = self.current_time
