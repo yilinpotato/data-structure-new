@@ -1,10 +1,14 @@
 {
   "actions": [
-    "nearest",
-    "max_weight",
-    "urgency",
-    "balanced"
+    "candidate_0",
+    "candidate_1",
+    "candidate_2",
+    "candidate_3",
+    "candidate_4",
+    "candidate_5"
   ],
+  "action_mode": "top_k_candidate_task",
+  "top_k": 6,
   "state_schema": [
     "battery_bin",
     "pending_bin",
@@ -13,905 +17,1365 @@
     "charge_pressure_bin"
   ],
   "q_table": {
-    "4|0|0|3|0": {
-      "nearest": 145.1114204150089,
-      "max_weight": 126.32372067525813,
-      "urgency": 13.451026407111632,
-      "balanced": 14.352322928238552
-    },
-    "4|0|1|1|0": {
-      "nearest": 59.91827409916884,
-      "max_weight": 89.22496202781188,
-      "urgency": 70.47961055705537,
-      "balanced": 155.29225274736507
+    "4|2|1|0|0": {
+      "candidate_0": 55.67986,
+      "candidate_1": 54.82148,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 126.82875999999999,
+      "candidate_5": 65.6831
     },
     "4|0|1|2|0": {
-      "nearest": 160.61303851016763,
-      "max_weight": 93.37233034865046,
-      "urgency": 77.66919411238037,
-      "balanced": 17.597905826268565
-    },
-    "4|0|1|3|0": {
-      "nearest": 219.04370688567684,
-      "max_weight": 21.658815942462752,
-      "urgency": 56.58410709444799,
-      "balanced": 30.57330792692867
-    },
-    "4|0|2|1|0": {
-      "nearest": 190.80184308887712,
-      "max_weight": 23.87859024927445,
-      "urgency": 53.56696703613505,
-      "balanced": -20.7
-    },
-    "4|0|2|2|0": {
-      "nearest": -4.06695675517669,
-      "max_weight": 179.98515045321938,
-      "urgency": 0.0,
-      "balanced": -20.7
-    },
-    "4|0|2|0|0": {
-      "nearest": -20.7,
-      "max_weight": 123.63719413128035,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "4|0|1|0|0": {
-      "nearest": 2.8475018157758445,
-      "max_weight": 179.803344879439,
-      "urgency": 35.9372748062398,
-      "balanced": 37.25723991004677
-    },
-    "3|0|1|1|0": {
-      "nearest": 113.73699113562111,
-      "max_weight": 40.900265698412014,
-      "urgency": 203.82658812260328,
-      "balanced": 79.21709915563588
-    },
-    "3|0|1|0|0": {
-      "nearest": 249.58750709959457,
-      "max_weight": 30.106381905092363,
-      "urgency": 52.75999679902848,
-      "balanced": 0.0
-    },
-    "3|0|0|3|0": {
-      "nearest": 215.54038686261026,
-      "max_weight": 36.14569829719644,
-      "urgency": 43.234011542815566,
-      "balanced": 28.621136401907705
-    },
-    "3|0|2|0|0": {
-      "nearest": 27.70257687799931,
-      "max_weight": 0.0,
-      "urgency": 87.46772781484457,
-      "balanced": 0.0
-    },
-    "4|0|0|2|0": {
-      "nearest": 128.52113691399788,
-      "max_weight": 132.22195637444952,
-      "urgency": 154.15970704709798,
-      "balanced": 92.6193541688847
-    },
-    "4|1|3|0|0": {
-      "nearest": 58.00150416186289,
-      "max_weight": 0.0,
-      "urgency": 26.530079773951908,
-      "balanced": 19.163933427796305
-    },
-    "3|0|1|2|0": {
-      "nearest": 230.18520709575864,
-      "max_weight": -0.7887502022839961,
-      "urgency": 106.4376690852559,
-      "balanced": 61.20799974871785
-    },
-    "3|0|0|1|0": {
-      "nearest": 171.06970850991462,
-      "max_weight": 85.57887415776476,
-      "urgency": 252.20664117098292,
-      "balanced": 68.7082652539065
-    },
-    "3|0|1|3|0": {
-      "nearest": 27.988884000000034,
-      "max_weight": 18.41137526054305,
-      "urgency": 207.0303839012869,
-      "balanced": 0.0
-    },
-    "3|0|0|2|0": {
-      "nearest": 50.97155180369994,
-      "max_weight": 68.49207623648783,
-      "urgency": 139.03057122854878,
-      "balanced": 232.0059455734804
-    },
-    "3|1|2|1|0": {
-      "nearest": 226.42356795433068,
-      "max_weight": 52.03940830818013,
-      "urgency": 89.66775433740656,
-      "balanced": 30.230208379034636
-    },
-    "4|1|2|0|0": {
-      "nearest": 65.9933900990339,
-      "max_weight": -26.93188200290545,
-      "urgency": 51.41786178744202,
-      "balanced": 204.67657349836023
-    },
-    "4|0|0|0|0": {
-      "nearest": 39.20081332843783,
-      "max_weight": 72.20649677114402,
-      "urgency": 174.20708284203246,
-      "balanced": 76.09641919308888
-    },
-    "4|1|2|1|0": {
-      "nearest": 65.18853418949408,
-      "max_weight": 168.94762628490903,
-      "urgency": -16.974,
-      "balanced": 1.1248896357955116
-    },
-    "3|1|2|2|0": {
-      "nearest": 0.0,
-      "max_weight": 118.46286408701687,
-      "urgency": 3.405696931608773,
-      "balanced": 53.7746839907124
-    },
-    "4|0|0|1|0": {
-      "nearest": 46.85068980250753,
-      "max_weight": 155.7215844996571,
-      "urgency": 74.74588286563558,
-      "balanced": 146.06851385325257
-    },
-    "3|1|1|2|0": {
-      "nearest": 50.096665625346276,
-      "max_weight": 239.37883708007678,
-      "urgency": 132.54966240942431,
-      "balanced": 0.0
-    },
-    "4|1|0|2|0": {
-      "nearest": 58.1268773453482,
-      "max_weight": 61.021456770971,
-      "urgency": 200.26683521082575,
-      "balanced": 3.805560733680006
-    },
-    "3|1|0|1|0": {
-      "nearest": 247.17506873135898,
-      "max_weight": 34.02985779466415,
-      "urgency": 60.84288733668638,
-      "balanced": 26.029315498599676
-    },
-    "3|1|1|3|0": {
-      "nearest": 0.9249417475770232,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 152.19963530166606
-    },
-    "4|1|1|1|0": {
-      "nearest": 102.95991396068938,
-      "max_weight": 316.26127507937696,
-      "urgency": 48.53865818800259,
-      "balanced": 111.59516873310315
-    },
-    "3|1|1|1|0": {
-      "nearest": 45.744186579932574,
-      "max_weight": 59.944926270428695,
-      "urgency": 27.43207200000008,
-      "balanced": 198.62787741668166
-    },
-    "2|0|1|3|0": {
-      "nearest": 104.97228284530429,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "2|1|1|1|0": {
-      "nearest": 226.7133736118014,
-      "max_weight": 31.813357626272694,
-      "urgency": 41.67975996243747,
-      "balanced": -7.606666912568097
-    },
-    "2|0|0|3|0": {
-      "nearest": 54.78888396817577,
-      "max_weight": 0.0,
-      "urgency": 205.40927238626963,
-      "balanced": 0.0
-    },
-    "2|1|0|1|0": {
-      "nearest": 16.906222603911903,
-      "max_weight": 319.63331078467786,
-      "urgency": 43.53096691999706,
-      "balanced": 64.79733302002472
-    },
-    "2|0|0|2|0": {
-      "nearest": 196.29442906513756,
-      "max_weight": 65.55775150154669,
-      "urgency": 83.95371055540846,
-      "balanced": 71.93936245035462
-    },
-    "2|0|1|0|0": {
-      "nearest": 219.0008525775765,
-      "max_weight": 23.250398257846737,
-      "urgency": 32.142156509655244,
-      "balanced": 17.918463298941447
-    },
-    "1|0|0|3|0": {
-      "nearest": 162.70452379974336,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|0|0|2|0": {
-      "nearest": 82.787102732667,
-      "max_weight": 233.1948381515575,
-      "urgency": 41.079283087431975,
-      "balanced": 0.0
-    },
-    "2|0|0|1|0": {
-      "nearest": 66.09534701195606,
-      "max_weight": 265.42662858344926,
-      "urgency": 43.35355936728287,
-      "balanced": 99.31333200385288
-    },
-    "4|1|0|1|0": {
-      "nearest": 199.32489995663332,
-      "max_weight": 0.0,
-      "urgency": 49.9637353190777,
-      "balanced": 22.8318910892055
-    },
-    "4|1|0|0|0": {
-      "nearest": 33.194405287932994,
-      "max_weight": 220.90608191295968,
-      "urgency": 53.59478827871602,
-      "balanced": 0.0
-    },
-    "1|1|0|1|0": {
-      "nearest": 267.1413248734601,
-      "max_weight": 55.728431999999955,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|1|0|0|0": {
-      "nearest": 75.66699438975945,
-      "max_weight": 0.0,
-      "urgency": 289.93934564969084,
-      "balanced": 46.52765831675626
-    },
-    "2|1|0|3|0": {
-      "nearest": 96.97985155359137,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|1|0|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "4|1|0|3|0": {
-      "nearest": 147.18065157051004,
-      "max_weight": 23.80068121053558,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "2|1|0|0|0": {
-      "nearest": 164.80672069048202,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "3|1|0|3|0": {
-      "nearest": 169.80683135129982,
-      "max_weight": 4.778814787211917,
-      "urgency": 38.08708059765246,
-      "balanced": 0.0
-    },
-    "4|1|1|2|0": {
-      "nearest": 272.10496883301033,
-      "max_weight": 43.08527840513073,
-      "urgency": 20.209914343243263,
-      "balanced": 27.00564115291184
-    },
-    "4|1|1|3|0": {
-      "nearest": 28.283013393982284,
-      "max_weight": 97.19026288146392,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|1|1|3|0": {
-      "nearest": 95.85796436342508,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "2|1|1|3|0": {
-      "nearest": 225.42339106358793,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|1|1|2|0": {
-      "nearest": 182.6674698677101,
-      "max_weight": 29.778047966054523,
-      "urgency": 0.0,
-      "balanced": 69.17073710301814
-    },
-    "4|1|2|2|0": {
-      "nearest": 1.1248896357955116,
-      "max_weight": 77.64080754916708,
-      "urgency": 29.61755598438,
-      "balanced": 49.609438751597246
-    },
-    "3|1|2|3|0": {
-      "nearest": 50.432097474125925,
-      "max_weight": 0.0,
-      "urgency": 153.83981700316068,
-      "balanced": 0.0
-    },
-    "3|1|0|0|0": {
-      "nearest": 37.477689826950275,
-      "max_weight": 51.43776902701018,
-      "urgency": 270.27467517467306,
-      "balanced": 0.0
-    },
-    "3|1|0|2|0": {
-      "nearest": 30.836302999199997,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 228.7060342132808
-    },
-    "3|1|1|0|0": {
-      "nearest": 74.31115665240719,
-      "max_weight": 98.63457264671283,
-      "urgency": 42.132594610705,
-      "balanced": 258.6001729965873
-    },
-    "2|0|1|1|0": {
-      "nearest": 203.5393154925552,
-      "max_weight": 33.53062973819906,
-      "urgency": 11.408436386211324,
-      "balanced": 44.434510807248294
-    },
-    "2|1|1|0|0": {
-      "nearest": 216.39287907276577,
-      "max_weight": 27.717620907340972,
-      "urgency": 0.0,
-      "balanced": 96.17650030003833
-    },
-    "2|1|2|0|0": {
-      "nearest": 87.02661392279043,
-      "max_weight": 80.82241061740855,
-      "urgency": 0.292845126500836,
-      "balanced": 188.42963779383035
-    },
-    "1|0|0|1|0": {
-      "nearest": 87.69906740552723,
-      "max_weight": 240.88671486103806,
-      "urgency": 65.88115070236755,
-      "balanced": 138.25077665646307
-    },
-    "1|0|1|3|0": {
-      "nearest": 119.43761547830051,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "2|1|2|2|0": {
-      "nearest": 21.780730169784704,
-      "max_weight": 28.80726863181272,
-      "urgency": 126.76271802365125,
-      "balanced": 40.43563938134132
-    },
-    "1|1|2|0|0": {
-      "nearest": 0.0,
-      "max_weight": 231.4591536162132,
-      "urgency": 59.77803576429479,
-      "balanced": 0.0
-    },
-    "1|1|1|1|0": {
-      "nearest": 258.34349711939643,
-      "max_weight": -20.57458478472441,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|1|2|2|0": {
-      "nearest": 183.2720528285128,
-      "max_weight": 0.0,
-      "urgency": 31.80807000000006,
-      "balanced": 0.0
-    },
-    "4|1|1|0|0": {
-      "nearest": 251.2460556765012,
-      "max_weight": 2.012947837955959,
-      "urgency": 55.473294492802815,
-      "balanced": 9.791093580680606
-    },
-    "3|1|2|0|0": {
-      "nearest": 242.6061601076569,
-      "max_weight": 15.822253388118943,
-      "urgency": -9.59016300472688,
-      "balanced": 76.1524515667871
-    },
-    "3|1|3|0|0": {
-      "nearest": 46.279198275222505,
-      "max_weight": 2.810574935999999,
-      "urgency": 0.0,
-      "balanced": 67.04542621337916
-    },
-    "2|1|1|2|0": {
-      "nearest": 208.53646168598615,
-      "max_weight": 87.52718185222137,
-      "urgency": 11.348100163516168,
-      "balanced": 16.608792526344025
-    },
-    "4|1|2|3|0": {
-      "nearest": 163.40188255193905,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "3|1|3|1|0": {
-      "nearest": 9.278229269406701,
-      "max_weight": 38.32186656339964,
-      "urgency": 201.8588572909158,
-      "balanced": 80.2532771452199
-    },
-    "3|1|3|3|0": {
-      "nearest": 99.30974958109627,
-      "max_weight": 30.44676693600008,
-      "urgency": 42.566271857425924,
-      "balanced": 0.0
-    },
-    "3|0|0|0|0": {
-      "nearest": 224.2713578514526,
-      "max_weight": 12.283237926928676,
-      "urgency": 88.23568771189797,
-      "balanced": 79.20685717987777
-    },
-    "2|1|0|2|0": {
-      "nearest": 208.8448102941302,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "2|0|2|1|0": {
-      "nearest": 88.20826837319213,
-      "max_weight": 12.000549058102697,
-      "urgency": 32.73796563085575,
-      "balanced": 15.69706552503331
-    },
-    "4|0|2|3|0": {
-      "nearest": 0.7741679955283305,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "2|0|2|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 76.32444437597343
-    },
-    "2|1|3|1|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 91.31309869982589,
-      "balanced": 67.70296666569314
-    },
-    "3|0|2|3|0": {
-      "nearest": 148.4355360994067,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "2|1|2|1|0": {
-      "nearest": 157.5026857393804,
-      "max_weight": 0.0,
-      "urgency": 54.04203250991834,
-      "balanced": 39.13293937904554
-    },
-    "1|2|1|1|0": {
-      "nearest": 72.447372,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|1|0|2|0": {
-      "nearest": 43.97356799999998,
-      "max_weight": 0.0,
-      "urgency": 124.60728797749975,
-      "balanced": 0.0
-    },
-    "1|1|2|1|0": {
-      "nearest": 161.3571191668724,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 79.03663927576113
-    },
-    "1|1|2|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "0|1|1|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "4|1|3|1|0": {
-      "nearest": 10.888556353504761,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 126.70804096936915
-    },
-    "0|1|2|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|1|1|0|0": {
-      "nearest": 28.207256087222977,
-      "max_weight": 0.0,
-      "urgency": 209.15591457409622,
-      "balanced": 0.0
-    },
-    "2|0|0|0|0": {
-      "nearest": 167.13987014911666,
-      "max_weight": 67.46356666243754,
-      "urgency": 96.08569312850726,
-      "balanced": 34.63004006435641
-    },
-    "2|0|1|2|0": {
-      "nearest": 179.72099580161392,
-      "max_weight": 42.75594939085772,
-      "urgency": 52.97542615090122,
-      "balanced": 45.121388350642505
-    },
-    "1|0|2|0|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 74.18993210546583,
-      "balanced": 0.0
-    },
-    "1|0|0|0|0": {
-      "nearest": 227.05571858482656,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 32.21848461275699
-    },
-    "1|0|1|1|0": {
-      "nearest": 198.91864696103545,
-      "max_weight": 33.00888628068992,
-      "urgency": 60.31357494034964,
-      "balanced": 0.0
-    },
-    "1|0|1|0|0": {
-      "nearest": 180.84942861101405,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "2|1|2|3|0": {
-      "nearest": 1.8076859660545435,
-      "max_weight": 0.0,
-      "urgency": 67.46477231347318,
-      "balanced": 0.0
-    },
-    "2|1|3|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|1|3|2|0": {
-      "nearest": 89.05224453029317,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "2|1|3|2|0": {
-      "nearest": 124.76619160377065,
-      "max_weight": 0.0,
-      "urgency": -17.889425064,
-      "balanced": 0.0
-    },
-    "1|1|3|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|1|3|0|0": {
-      "nearest": 54.41405399999998,
-      "max_weight": 161.02956141394853,
-      "urgency": 32.514383844000015,
-      "balanced": 31.061215485471788
-    },
-    "0|0|1|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "3|0|2|1|0": {
-      "nearest": 128.62850807069864,
-      "max_weight": 20.95844754904248,
-      "urgency": 5.693545717648454,
-      "balanced": 0.0
-    },
-    "1|0|1|2|0": {
-      "nearest": 98.65937306053893,
-      "max_weight": 0.0,
-      "urgency": 5.020722280689954,
-      "balanced": 181.2750145262452
-    },
-    "1|1|3|1|0": {
-      "nearest": 0.0,
-      "max_weight": 150.88134290643566,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "3|0|2|2|0": {
-      "nearest": 137.40741748120607,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "4|1|3|3|0": {
-      "nearest": 2.810574935999999,
-      "max_weight": 0.0,
-      "urgency": 53.57963288933994,
-      "balanced": 0.0
-    },
-    "2|0|2|2|0": {
-      "nearest": 0.0,
-      "max_weight": 154.74581234573688,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "4|1|3|2|0": {
-      "nearest": 142.105090220199,
-      "max_weight": 8.473884428416058,
-      "urgency": 67.90012834224466,
-      "balanced": 0.0
-    },
-    "0|0|0|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "3|1|3|2|0": {
-      "nearest": 120.57962405794005,
-      "max_weight": 11.990400073685379,
-      "urgency": 33.024139547689664,
-      "balanced": 19.656076232123553
-    },
-    "3|2|3|0|0": {
-      "nearest": 152.89385612619873,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "4|2|2|1|0": {
-      "nearest": -20.7,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "3|2|2|0|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|2|3|0|0": {
-      "nearest": 59.10537065731083,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "3|2|3|1|0": {
-      "nearest": 83.52393299902425,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|2|3|1|0": {
-      "nearest": 0.0,
-      "max_weight": 88.738633449745,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|2|3|2|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "2|2|3|2|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|0|2|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|0|2|2|0": {
-      "nearest": 43.76302845110503,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|0|2|1|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 102.6275012638599,
-      "balanced": 0.0
-    },
-    "2|1|3|0|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 164.9777185985886,
-      "balanced": 0.0
-    },
-    "2|0|2|0|0": {
-      "nearest": 59.87150580756627,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "1|2|2|0|0": {
-      "nearest": 45.48543174222876,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "4|2|3|0|0": {
-      "nearest": 62.58306341964875,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "0|1|2|1|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "0|1|2|2|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "0|0|0|2|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+      "candidate_0": 314.41090750633765,
+      "candidate_1": 21.07369845958431,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
     "4|2|0|0|0": {
-      "nearest": 46.59203205923837,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+      "candidate_0": 185.28833740348435,
+      "candidate_1": 66.08832,
+      "candidate_2": 128.84792,
+      "candidate_3": 63.84514,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
-    "2|2|1|0|0": {
-      "nearest": 40.703300639999995,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "4|1|0|0|0": {
+      "candidate_0": 355.76716601245914,
+      "candidate_1": 237.75327104441354,
+      "candidate_2": 70.5993976223833,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
-    "4|2|1|0|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "2|2|2|0|0": {
-      "nearest": 124.08685793670935,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
-    },
-    "4|2|2|0|0": {
-      "nearest": 39.63724950075107,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "4|2|3|0|0": {
+      "candidate_0": 325.78742,
+      "candidate_1": 24.517743599661408,
+      "candidate_2": 378.4043278596003,
+      "candidate_3": 316.64896,
+      "candidate_4": 370.86676,
+      "candidate_5": 120.39892
     },
     "4|2|3|1|0": {
-      "nearest": 36.69272918201052,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+      "candidate_0": 0.0,
+      "candidate_1": 119.05338,
+      "candidate_2": 0.0,
+      "candidate_3": 105.88474029747847,
+      "candidate_4": 64.28412,
+      "candidate_5": 217.8083593120655
     },
-    "3|2|3|2|0": {
-      "nearest": 6.987394901169086,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "4|3|3|0|0": {
+      "candidate_0": 120.48512,
+      "candidate_1": 65.29698,
+      "candidate_2": 65.30668,
+      "candidate_3": 121.21034,
+      "candidate_4": 64.99914,
+      "candidate_5": 56.34738
     },
-    "4|2|3|2|0": {
-      "nearest": 36.07926879649992,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "4|1|0|1|0": {
+      "candidate_0": 373.76699384348416,
+      "candidate_1": 171.89393499799957,
+      "candidate_2": 141.26425794321472,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
-    "0|0|1|0|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "4|0|0|0|0": {
+      "candidate_0": 324.66165751503974,
+      "candidate_1": 162.91421910825034,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
-    "2|2|3|0|0": {
-      "nearest": 28.957427205052905,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "4|2|0|1|0": {
+      "candidate_0": 55.303399999999996,
+      "candidate_1": 77.78018740348433,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
-    "0|1|3|1|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "4|3|0|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 65.74976,
+      "candidate_5": 0.0
+    },
+    "4|0|0|1|0": {
+      "candidate_0": 309.7760766264335,
+      "candidate_1": 192.95794216088083,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|0|1|0|0": {
+      "candidate_0": 345.17916417898056,
+      "candidate_1": 57.71812837117668,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|0|0|2|0": {
+      "candidate_0": 337.2878585305243,
+      "candidate_1": 224.05857496581714,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|1|2|0": {
+      "candidate_0": 362.8795536379022,
+      "candidate_1": 47.70436802192856,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|2|1|0": {
+      "candidate_0": 333.8026195418947,
+      "candidate_1": 140.12282057550368,
+      "candidate_2": 93.8185190719776,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|3|1|0": {
+      "candidate_0": 312.8532047363576,
+      "candidate_1": 129.7420908792051,
+      "candidate_2": 232.96583234724497,
+      "candidate_3": 65.00528721631632,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|3|0|0": {
+      "candidate_0": 207.21577370616288,
+      "candidate_1": 335.3133311923193,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|2|2|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 232.70938823323803,
+      "candidate_2": 80.44584040000004,
+      "candidate_3": 0.0,
+      "candidate_4": 46.5711498097863,
+      "candidate_5": 0.0
+    },
+    "4|0|2|0|0": {
+      "candidate_0": 339.59606964871074,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|1|0|0": {
+      "candidate_0": 343.50495754237426,
+      "candidate_1": 393.3561884379504,
+      "candidate_2": 89.18903210462658,
+      "candidate_3": 63.43121455664085,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|2|0|0": {
+      "candidate_0": 449.0229808720513,
+      "candidate_1": 221.727401257506,
+      "candidate_2": 60.126214453040006,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|3|2|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 65.27102,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|3|3|1|0": {
+      "candidate_0": 55.11322,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|0|2|1|0": {
+      "candidate_0": 382.0051841274276,
+      "candidate_1": 27.59106599999999,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|0|1|3|0": {
+      "candidate_0": 387.7498002473611,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|0|0|3|0": {
+      "candidate_0": 366.21486957877426,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|0|1|1|0": {
+      "candidate_0": 328.5505236527787,
+      "candidate_1": 158.3428970545659,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|0|0|1|0": {
+      "candidate_0": 370.38149255930705,
+      "candidate_1": 225.33815831351063,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|1|0|0": {
+      "candidate_0": 387.6953536394329,
+      "candidate_1": 184.95071520723607,
+      "candidate_2": 164.85746321487247,
+      "candidate_3": 52.7971117479348,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|0|0|2|0": {
+      "candidate_0": 368.14586773704224,
+      "candidate_1": 147.94068817637472,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|0|0|3|0": {
+      "candidate_0": 347.5287470215266,
+      "candidate_1": 78.17462950771254,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|0|1|0": {
+      "candidate_0": 338.6656867837608,
+      "candidate_1": 224.76158100953762,
+      "candidate_2": 73.10810636237926,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|0|3|0": {
+      "candidate_0": 302.0437179311294,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|0|2|0": {
+      "candidate_0": 402.023106836919,
+      "candidate_1": 44.47068970824449,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|0|0|3|0": {
+      "candidate_0": 317.3819952481054,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|0|1|3|0": {
+      "candidate_0": 375.89054777667616,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|0|1|3|0": {
+      "candidate_0": 381.0154431958444,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|1|2|0": {
+      "candidate_0": 354.4564879905746,
+      "candidate_1": 70.55580487002156,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|1|3|0": {
+      "candidate_0": 351.96741750471267,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|1|1|0": {
+      "candidate_0": 370.055903272965,
+      "candidate_1": 120.06724206666405,
+      "candidate_2": 41.893081218701354,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|2|2|0": {
+      "candidate_0": 365.34013472060474,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|1|1|0": {
+      "candidate_0": 375.94061528182226,
+      "candidate_1": 199.17133911390562,
+      "candidate_2": 163.02181075799953,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|1|0|0": {
+      "candidate_0": 439.9507433914121,
+      "candidate_1": 129.72217821917673,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|2|1|0": {
+      "candidate_0": 333.9376867455804,
+      "candidate_1": 272.3468514563095,
+      "candidate_2": 55.99315800000001,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|2|0|0": {
+      "candidate_0": 335.1288257398783,
+      "candidate_1": 151.56669237831642,
+      "candidate_2": 56.21571849887324,
+      "candidate_3": 60.488881955842295,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|1|2|0": {
+      "candidate_0": 409.96124153133616,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|1|0|0": {
+      "candidate_0": 473.8954317715884,
+      "candidate_1": 0.0,
+      "candidate_2": 34.22283328935082,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|1|1|0": {
+      "candidate_0": 417.61792546793737,
+      "candidate_1": 88.2715841134728,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|0|2|0": {
+      "candidate_0": 425.8147412305548,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|0|3|0": {
+      "candidate_0": 388.4930094184043,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|0|0|0|0": {
+      "candidate_0": 368.0077467280367,
+      "candidate_1": 124.86054133355486,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|0|1|0|0": {
+      "candidate_0": 443.2876511302789,
+      "candidate_1": 48.65398333993637,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|0|1|0": {
+      "candidate_0": 385.04192014178045,
+      "candidate_1": 132.68707787674728,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|0|0|1|0": {
+      "candidate_0": 381.96260885647945,
+      "candidate_1": 140.18018556463238,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|1|1|0": {
+      "candidate_0": 343.528600935079,
+      "candidate_1": 219.7993737326065,
+      "candidate_2": 187.71983735156874,
+      "candidate_3": 0.0,
+      "candidate_4": 26.88505199999996,
+      "candidate_5": 0.0
+    },
+    "4|1|0|2|0": {
+      "candidate_0": 352.6528756537711,
+      "candidate_1": 58.67471740231568,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|0|0|0|0": {
+      "candidate_0": 443.22219710962514,
+      "candidate_1": 84.75168913705838,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|0|0|0": {
+      "candidate_0": 424.727108180628,
+      "candidate_1": 109.89252705477767,
+      "candidate_2": 105.87736968361757,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|0|1|0": {
+      "candidate_0": 420.45975167226817,
+      "candidate_1": 86.34085138853564,
+      "candidate_2": -4.245445455131533,
+      "candidate_3": 80.66131665176495,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|1|2|0": {
+      "candidate_0": 392.36750786930645,
+      "candidate_1": 70.71876102828483,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|1|3|0": {
+      "candidate_0": 332.92622116301476,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|0|1|1|0": {
+      "candidate_0": 329.8900673794497,
+      "candidate_1": 58.6050526610797,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|0|2|2|0": {
+      "candidate_0": 353.40944721040137,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|0|2|1|0": {
+      "candidate_0": 405.48061115439873,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|0|1|0|0": {
+      "candidate_0": 386.80087069891493,
+      "candidate_1": 109.82259814839662,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|0|1|2|0": {
+      "candidate_0": 375.43696407908226,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|0|1|2|0": {
+      "candidate_0": 392.33873058868323,
+      "candidate_1": 78.2994632825612,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|0|2|2|0": {
+      "candidate_0": 339.09809671454076,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|0|2|1|0": {
+      "candidate_0": 378.39481403090144,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|2|0|0": {
+      "candidate_0": 326.69871369755435,
+      "candidate_1": 459.9151514797665,
+      "candidate_2": 107.34549589838385,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|0|0|2|0": {
+      "candidate_0": 312.53055815808983,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|0|1|1|0": {
+      "candidate_0": 349.37367514283864,
+      "candidate_1": 23.226598384902754,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|1|2|0": {
+      "candidate_0": 382.6623911595353,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|1|0|0": {
+      "candidate_0": 369.8677646226377,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|2|2|0": {
+      "candidate_0": 323.5095846601137,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|2|0|0": {
+      "candidate_0": 404.03621696719676,
+      "candidate_1": 194.98974599817748,
+      "candidate_2": 111.47745196605877,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|1|1|0": {
+      "candidate_0": 417.1202002575707,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|2|1|0": {
+      "candidate_0": 413.93132056826875,
+      "candidate_1": 124.76900561126203,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|1|3|0": {
+      "candidate_0": 330.2123039988334,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|2|3|0": {
+      "candidate_0": 57.15694774848753,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|0|2|3|0": {
+      "candidate_0": 287.37906342038195,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|3|2|0": {
+      "candidate_0": 262.49937956142776,
+      "candidate_1": 84.0333340880903,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
     "0|0|2|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
-    "0|0|0|0|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "2|0|2|3|0": {
+      "candidate_0": 182.9986938759177,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
-    "0|1|1|1|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "1|1|2|2|0": {
+      "candidate_0": 383.5311490174641,
+      "candidate_1": 77.02422063201925,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
-    "0|1|1|0|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "3|0|2|0|0": {
+      "candidate_0": 401.76930951430495,
+      "candidate_1": 27.089131143622637,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|0|2|3|0": {
+      "candidate_0": 345.35996182880814,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|3|3|0": {
+      "candidate_0": 187.21472159409237,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|2|2|0": {
+      "candidate_0": 317.21476682386714,
+      "candidate_1": 72.47758779215829,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|2|1|0": {
+      "candidate_0": 293.2046752964303,
+      "candidate_1": 403.8228594188502,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|0|2|0|0": {
+      "candidate_0": 367.11609306559194,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|0|0|0": {
+      "candidate_0": 421.53286288585406,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|0|2|0": {
+      "candidate_0": 456.90306875403957,
+      "candidate_1": 142.41486612448966,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|2|2|0": {
+      "candidate_0": 324.0336835726477,
+      "candidate_1": 16.852007124057188,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|1|3|0": {
+      "candidate_0": 383.0432610830396,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|1|3|0": {
+      "candidate_0": 285.9015081629049,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|3|2|0": {
+      "candidate_0": 213.10588730332253,
+      "candidate_1": 0.0,
+      "candidate_2": 75.39874995584233,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|3|0|0": {
+      "candidate_0": 297.14826366594957,
+      "candidate_1": 76.81275964907232,
+      "candidate_2": 105.29022817409762,
+      "candidate_3": 176.25357655214773,
+      "candidate_4": 33.15538763999996,
+      "candidate_5": 0.0
+    },
+    "1|1|3|3|0": {
+      "candidate_0": 70.25240364418576,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|3|0|0": {
+      "candidate_0": 315.9472451986557,
+      "candidate_1": 45.45993600000004,
+      "candidate_2": 43.956150176048496,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|0|2|0": {
+      "candidate_0": 354.08075555304185,
+      "candidate_1": 63.43093586564365,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|2|3|0": {
+      "candidate_0": 304.4500211261172,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|2|3|0": {
+      "candidate_0": 359.7946614350575,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|2|3|0": {
+      "candidate_0": 330.3447988865688,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|3|2|0": {
+      "candidate_0": 300.4455658991186,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|3|0|0": {
+      "candidate_0": 284.7928811234543,
+      "candidate_1": 3.7299193419666934,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|2|3|0": {
+      "candidate_0": 69.3070837497857,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|0|1|0": {
+      "candidate_0": 396.0687528516394,
+      "candidate_1": 127.772298479715,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|0|0|0": {
+      "candidate_0": 364.34692051935406,
+      "candidate_1": 139.03277215056158,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|3|3|0": {
+      "candidate_0": 174.64899980422965,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|3|2|0": {
+      "candidate_0": 274.3348119038275,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|1|3|1|0": {
+      "candidate_0": 265.3401385909763,
+      "candidate_1": 151.6067961924184,
+      "candidate_2": 0.0,
+      "candidate_3": 46.328188517893985,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|3|1|0": {
+      "candidate_0": 299.6922941743664,
+      "candidate_1": 55.427156112406784,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|1|0|3|0": {
+      "candidate_0": 347.74166920012726,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|3|3|0": {
+      "candidate_0": 178.82853324083243,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|0|2|2|0": {
+      "candidate_0": 348.5849958196202,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|2|1|0": {
+      "candidate_0": 386.06704488894786,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|0|0|3|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|2|3|0|0": {
+      "candidate_0": 253.72939633447353,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|2|3|1|0": {
+      "candidate_0": 105.41209643564233,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|0|2|0|0": {
+      "candidate_0": 68.52606260485436,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
     "0|0|0|1|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|0|0|0": {
+      "candidate_0": 404.8062604953192,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|1|0|3|0": {
+      "candidate_0": 166.36980416205688,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|2|3|2|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|1|0|3|0": {
+      "candidate_0": 397.7465498178607,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|0|0|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|2|2|0|0": {
+      "candidate_0": 281.754010211539,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|2|2|1|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 222.8426005500598,
+      "candidate_5": 0.0
+    },
+    "1|1|3|1|0": {
+      "candidate_0": 328.40108772753723,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|0|1|3|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|0|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|2|2|1|0": {
+      "candidate_0": 187.56860400468366,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|0|1|1|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|1|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|0|1|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|1|3|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|1|2|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
     "0|1|0|1|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|1|1|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|2|2|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|2|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|2|3|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|0|0|2|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|0|3|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|2|1|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|2|2|0|0": {
+      "candidate_0": 162.40208736289898,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|2|3|0|0": {
+      "candidate_0": 50.9266292018119,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 87.86305239102619,
+      "candidate_5": 18.383867999999982
+    },
+    "3|2|3|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 40.08616130414247,
+      "candidate_2": 70.60052483999992,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|2|3|1|0": {
+      "candidate_0": 65.68011894682131,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|0|2|1|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|2|3|1|0": {
+      "candidate_0": 128.90637080830734,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|2|1|1|0": {
+      "candidate_0": 58.98084071358422,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|0|2|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|3|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|2|2|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|2|2|1|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "1|2|2|2|0": {
+      "candidate_0": 35.36271000000015,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
     "0|0|1|2|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
-    "4|2|2|2|0": {
-      "nearest": 46.685947982096664,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "1|2|1|1|0": {
+      "candidate_0": 53.724942000000084,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     },
-    "1|2|3|3|0": {
-      "nearest": 0.0,
-      "max_weight": 0.0,
-      "urgency": 0.0,
-      "balanced": 0.0
+    "3|2|0|2|0": {
+      "candidate_0": 54.45552600000004,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "0|1|0|2|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|2|0|1|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 117.41844507975654,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|2|1|0|0": {
+      "candidate_0": 0.0,
+      "candidate_1": 99.69964670368788,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|2|2|1|0": {
+      "candidate_0": 36.920439786920916,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "2|2|1|0|0": {
+      "candidate_0": 284.8042775331909,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|2|1|1|0": {
+      "candidate_0": 123.9693671563885,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "4|2|3|3|0": {
+      "candidate_0": 67.98125927549704,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
+    },
+    "3|2|1|2|0": {
+      "candidate_0": 97.47256390446584,
+      "candidate_1": 0.0,
+      "candidate_2": 0.0,
+      "candidate_3": 0.0,
+      "candidate_4": 0.0,
+      "candidate_5": 0.0
     }
   },
   "meta": {
@@ -921,14 +1385,29 @@
       "task_rate": 0.12,
       "node_count": 16
     },
-    "episodes": 80,
+    "episodes": 260,
     "seed": 42,
+    "fresh": true,
+    "gurobi_pretrain": {
+      "enabled": true,
+      "episodes": 6,
+      "time_limit": 10,
+      "task_limit": 18,
+      "accept_gap": 0.05,
+      "summary": {
+        "episodes": 6,
+        "avg_score": 2285.250766666667,
+        "avg_completed": 16.833333333333332,
+        "avg_failed": 1,
+        "avg_tasks": 64
+      }
+    },
     "training_summary": {
-      "episodes": 80,
-      "avg_score": 6336.567815,
-      "avg_completed": 51.1375,
-      "avg_failed": 6.6375,
-      "avg_tasks": 64.15
+      "episodes": 260,
+      "avg_score": 6367.268129615384,
+      "avg_completed": 51.25,
+      "avg_failed": 6.476923076923077,
+      "avg_tasks": 64.27307692307693
     }
   }
 }

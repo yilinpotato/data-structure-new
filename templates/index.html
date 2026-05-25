@@ -447,7 +447,7 @@
                     const score = row.total_score === null || row.total_score === undefined ? '-' : Math.round(row.total_score);
                     const avgScore = row.average_task_score === null || row.average_task_score === undefined ? '-' : row.average_task_score.toFixed(1);
                     const charge = row.charging_count === null || row.charging_count === undefined ? '-' : row.charging_count;
-                    const label = row.status === 'unavailable' || row.status === 'time_limited' ? `${row.label}*` : row.label;
+                    const label = row.status === 'unavailable' || row.status === 'time_limited' || row.status === 'gap_accepted' ? `${row.label}*` : row.label;
                     tr.innerHTML = `<td>${label}</td><td class="num">${row.completion_rate.toFixed(1)}%</td><td class="num">${score}</td><td class="num">${avgScore}</td><td class="num">${charge}</td>`;
                     table.appendChild(tr);
                 });
@@ -458,7 +458,10 @@
                         gurobiMsg = `；${gurobi.message}`;
                     } else if (gurobi.status === 'time_limited') {
                         const gap = gurobi.mip_gap === null || gurobi.mip_gap === undefined ? '' : `，gap=${(gurobi.mip_gap * 100).toFixed(2)}%`;
-                        gurobiMsg = `；Gurobi已找到可行精确模型解，但尚未证明全局最优${gap}`;
+                        gurobiMsg = `；Gurobi最多等待180秒，已找到可行解但尚未证明全局最优${gap}`;
+                    } else if (gurobi.status === 'gap_accepted') {
+                        const gap = gurobi.mip_gap === null || gurobi.mip_gap === undefined ? '' : `，gap=${(gurobi.mip_gap * 100).toFixed(2)}%`;
+                        gurobiMsg = `；Gurobi在180秒内达到5%以内gap，可作为高质量训练样本${gap}`;
                     } else if (gurobi.unoptimized_tasks > 0) {
                         gurobiMsg = `；Gurobi受license/模型规模限制，仅优化 ${gurobi.optimized_tasks}/${gurobi.generated_tasks} 个任务，不能直接和全量动态策略硬比`;
                     }

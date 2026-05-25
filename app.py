@@ -146,11 +146,15 @@ def run_all_strategies():
         oracle_sim.fleet,
         oracle_tasks,
         simulation_time,
-        task_limit=None
+        time_limit=180,
+        task_limit=None,
+        mip_gap=0.05
     )
     optimized_tasks = oracle_result.get("optimized_tasks") or 0
     if oracle_result.get("status") == "optimal" and oracle_result.get("unoptimized_tasks", 0) == 0:
         oracle_label = "Gurobi静态最优"
+    elif oracle_result.get("status") == "gap_accepted":
+        oracle_label = "Gurobi近似最优(<5%)"
     elif oracle_result.get("status") == "time_limited":
         oracle_label = "Gurobi精确求解(未证明)"
     else:

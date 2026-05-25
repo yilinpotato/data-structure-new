@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 import random
 import statistics
 
@@ -99,7 +100,44 @@ def best_action_for_oracle_task(vehicle, available_tasks, map_model, target_task
     return best_action
 
 
-def pretrain_from_gurobi(agent, config, seed, episodes, time_limit, task_limit):
+def reinforce_nearest_fallback(agent, config, seed):
+    random.seed(seed)
+    sim = Simulator(
+        fleet_size=config["fleet_size"],
+        simulation_time=config["simulation_time"],
+        task_rate=config["task_rate"],
+        strategy_name="nearest",
+        node_count=config["node_count"],
+    )
+    learned = 0
+    while sim.current_time < sim.simulation_time:
+        for _ in range(3):
+            new_task = sim._generate_task()
+            if new_task:
+                sim.tasks.append(new_task)
+                sim.total_tasks += 1
+        sim._update_vehicle_states()
+        sim._check_task_deadlines()
+
+        sim.map.current_time = sim.current_time
+        pending = [task for task in sim.tasks if task.status == "pending"]
+        for vehicle in [v for v in sim.fleet if v.status == "idle"]:
+            task = ExpertSelector.select("nearest", vehicle, pending, sim.map)
+            if task:
+                state = agent.encode_state(vehicle, pending, sim.map)
+                action = ExpertSelector.action_for_task(vehicle, pending, sim.map, task)
+                if action:
+                    agent.reinforce_action(state, action, 18)
+                    learned += 1
+
+        sim._allocate_tasks()
+        sim._manage_charging()
+        sim._record_station_loads()
+        sim.current_time += sim.time_step
+    return learned
+
+
+def pretrain_from_gurobi(agent, config, seed, episodes, time_limit, task_limit, accept_gap):
     rows = []
     for episode in range(episodes):
         random.seed(seed + episode)
@@ -117,10 +155,25 @@ def pretrain_from_gurobi(agent, config, seed, episodes, time_limit, task_limit):
             tasks,
             config["simulation_time"],
             time_limit=time_limit,
-            task_limit=task_limit,
+            task_limit=None if task_limit == 0 else task_limit,
+            mip_gap=accept_gap,
         )
-        if result.get("status") not in ("optimal", "time_limited") or not result.get("plan"):
-            print(f"gurobi pretrain {episode + 1}/{episodes} skipped: {result.get('message')}")
+        usable_status = result.get("status") in ("optimal", "gap_accepted", "time_limited")
+        has_acceptable_gap = result.get("status") != "time_limited" or result.get("plan")
+        if not usable_status or not result.get("plan") or not has_acceptable_gap:
+            learned = reinforce_nearest_fallback(agent, config, seed + episode)
+            print(
+                f"gurobi pretrain {episode + 1}/{episodes} fallback nearest | "
+                f"learned={learned} | reason={result.get('message')}"
+            )
+            rows.append({
+                "score": 0,
+                "completed": 0,
+                "failed": 0,
+                "tasks": len(tasks),
+                "learned": learned,
+                "status": "nearest_fallback",
+            })
             continue
 
         tasks_by_id = {task.id: task for task in tasks}
@@ -161,13 +214,16 @@ def pretrain_from_gurobi(agent, config, seed, episodes, time_limit, task_limit):
             "tasks": len(tasks),
             "learned": learned,
             "status": result.get("status"),
+            "mip_gap": result.get("mip_gap"),
         })
         total_score = result.get("total_score", 0) or 0
+        gap = result.get("mip_gap")
+        gap_text = f" | gap={gap:.4f}" if gap is not None else ""
         print(
             f"gurobi pretrain {episode + 1:>3}/{episodes} | "
             f"status={result.get('status')} | tasks={len(tasks)} | "
             f"completed={result.get('completed_tasks', 0)} | learned={learned} | "
-            f"score={total_score:.1f}"
+            f"score={total_score:.1f}{gap_text}"
         )
     return rows
 
@@ -194,6 +250,14 @@ def evaluate_strategy(strategy_name, config, seeds):
 
 
 def summarize(rows):
+    if not rows:
+        return {
+            "episodes": 0,
+            "avg_score": 0,
+            "avg_completed": 0,
+            "avg_failed": 0,
+            "avg_tasks": 0,
+        }
     return {
         "episodes": len(rows),
         "avg_score": statistics.mean(row.get("score", row.get("total_score", 0)) for row in rows),
@@ -214,9 +278,12 @@ def main():
     parser.add_argument("--node-count", type=int, default=16)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--gurobi-pretrain", action="store_true")
-    parser.add_argument("--gurobi-episodes", type=int, default=8)
-    parser.add_argument("--gurobi-time-limit", type=int, default=20)
-    parser.add_argument("--gurobi-task-limit", type=int, default=24)
+    parser.add_argument("--gurobi-episodes", type=int, default=3)
+    parser.add_argument("--gurobi-time-limit", type=int, default=180)
+    parser.add_argument("--gurobi-task-limit", type=int, default=80)
+    parser.add_argument("--gurobi-accept-gap", type=float, default=0.05)
+    parser.add_argument("--report-path", default=os.path.join("models", "rl_training_report.json"))
+    parser.add_argument("--fresh", action="store_true")
     args = parser.parse_args()
 
     config = {
@@ -232,13 +299,11 @@ def main():
         learning_rate=0.18,
         discount=0.9,
     )
+    if args.fresh:
+        agent.q_table = {}
     pretrain_rows = []
     if args.gurobi_pretrain:
         pretrain_config = dict(config)
-        pretrain_config["simulation_time"] = min(config["simulation_time"], 900)
-        pretrain_config["task_rate"] = min(config["task_rate"], 0.08)
-        pretrain_config["fleet_size"] = min(config["fleet_size"], 6)
-        pretrain_config["node_count"] = min(config["node_count"], 16)
         pretrain_rows = pretrain_from_gurobi(
             agent,
             pretrain_config,
@@ -246,6 +311,7 @@ def main():
             args.gurobi_episodes,
             args.gurobi_time_limit,
             args.gurobi_task_limit,
+            args.gurobi_accept_gap,
         )
 
     training_rows = []
@@ -269,11 +335,13 @@ def main():
         "config": config,
         "episodes": args.episodes,
         "seed": args.seed,
+        "fresh": args.fresh,
         "gurobi_pretrain": {
             "enabled": args.gurobi_pretrain,
             "episodes": args.gurobi_episodes,
             "time_limit": args.gurobi_time_limit,
             "task_limit": args.gurobi_task_limit,
+            "accept_gap": args.gurobi_accept_gap,
             "summary": summarize(pretrain_rows) if pretrain_rows else None,
         },
         "training_summary": summarize(training_rows),
@@ -285,8 +353,21 @@ def main():
         "nearest": evaluate_strategy("nearest", config, eval_seeds),
         "max_weight": evaluate_strategy("max_weight", config, eval_seeds),
         "urgency": evaluate_strategy("urgency", config, eval_seeds),
+        "gurobi_pretrain": {
+            "enabled": args.gurobi_pretrain,
+            "episodes": args.gurobi_episodes,
+            "time_limit": args.gurobi_time_limit,
+            "task_limit": args.gurobi_task_limit,
+            "accept_gap": args.gurobi_accept_gap,
+            "summary": summarize(pretrain_rows),
+            "rows": pretrain_rows,
+        },
         "model_path": args.model_path,
     }
+    if args.report_path:
+        os.makedirs(os.path.dirname(args.report_path), exist_ok=True)
+        with open(args.report_path, "w", encoding="utf-8") as file:
+            json.dump(report, file, ensure_ascii=False, indent=2)
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 

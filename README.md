@@ -275,18 +275,19 @@ reward =
 当前代码采用“启发式专家 + 表格 Q-learning”的混合策略，避免额外引入深度学习依赖，也便于报告解释：
 
 1. 将状态离散为电量档位、待处理任务数量、紧急任务数量、最近任务距离和充电站压力。
-2. 动作不是直接选任务编号，而是在最近/最大/紧急/平衡四个专家中选择一个。
-3. 每次模拟步根据总分变化、完成任务增量和失败任务增量更新 Q 表。
-4. 训练时使用 epsilon-greedy 探索，epsilon 从较高值逐渐下降。
-5. 部署时读取 `models/rl_q_table.json`，epsilon 设为 0，始终选择当前 Q 值最高的专家动作。
+2. 动作空间升级为 Top-K 候选任务选择：`candidate_0` 到 `candidate_5` 分别表示当前排序后第 0 到第 5 个可行任务。
+3. 小规模/中规模场景先调用 Gurobi 求静态较优计划，把 Gurobi 路线转成 Top-K 任务选择样本强化对应 Q 值。
+4. 每次模拟步根据总分变化、完成任务增量和失败任务增量更新 Q 表。
+5. 训练时使用 epsilon-greedy 探索，epsilon 从较高值逐渐下降。
+6. 部署时读取 `models/rl_q_table.json`，epsilon 设为 0，始终选择当前 Q 值最高的专家动作。
 
 训练命令示例：
 
 ```bash
-python train_rl.py --episodes 120 --eval-runs 8 --fleet-size 8 --simulation-time 1800 --task-rate 0.12 --node-count 16
+python train_rl.py --fresh --gurobi-pretrain --gurobi-episodes 6 --gurobi-time-limit 10 --gurobi-task-limit 18 --gurobi-accept-gap 0.05 --episodes 260 --eval-runs 8 --fleet-size 8 --simulation-time 1800 --task-rate 0.12 --node-count 16 --seed 42
 ```
 
-训练完成后，Web 界面的策略下拉框可以选择“强化学习策略”，一键模拟表格也会把 `rl` 纳入对比。
+训练完成后，模型会保存到 `models/rl_q_table.json`，评估报告会保存到 `models/rl_training_report.json`。Web 界面的策略下拉框可以选择“强化学习策略”，一键模拟表格也会把 `rl` 纳入对比。
 
 ### 训练与评估方案
 

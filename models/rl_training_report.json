@@ -1,0 +1,108 @@
+{
+  "rl": {
+    "episodes": 8,
+    "avg_score": 6867.6644125,
+    "avg_completed": 54.875,
+    "avg_failed": 6.5,
+    "avg_tasks": 67.875
+  },
+  "balanced": {
+    "episodes": 8,
+    "avg_score": 6372.046975000001,
+    "avg_completed": 51.875,
+    "avg_failed": 7.25,
+    "avg_tasks": 65.5
+  },
+  "nearest": {
+    "episodes": 8,
+    "avg_score": 6356.087725,
+    "avg_completed": 51.25,
+    "avg_failed": 6.875,
+    "avg_tasks": 63.875
+  },
+  "max_weight": {
+    "episodes": 8,
+    "avg_score": 6356.3731625,
+    "avg_completed": 51.25,
+    "avg_failed": 6.5,
+    "avg_tasks": 63.625
+  },
+  "urgency": {
+    "episodes": 8,
+    "avg_score": 6310.714187500001,
+    "avg_completed": 51.25,
+    "avg_failed": 6.875,
+    "avg_tasks": 66
+  },
+  "gurobi_pretrain": {
+    "enabled": true,
+    "episodes": 6,
+    "time_limit": 10,
+    "task_limit": 18,
+    "accept_gap": 0.05,
+    "summary": {
+      "episodes": 6,
+      "avg_score": 2285.250766666667,
+      "avg_completed": 16.833333333333332,
+      "avg_failed": 1,
+      "avg_tasks": 64
+    },
+    "rows": [
+      {
+        "score": 2339.0281000000004,
+        "completed": 17,
+        "failed": 0,
+        "tasks": 53,
+        "learned": 17,
+        "status": "gap_accepted",
+        "mip_gap": 0.03334718381536351
+      },
+      {
+        "score": 2307.238,
+        "completed": 17,
+        "failed": 1,
+        "tasks": 61,
+        "learned": 17,
+        "status": "gap_accepted",
+        "mip_gap": 0.02405473557561032
+      },
+      {
+        "score": 2070.3131000000003,
+        "completed": 16,
+        "failed": 2,
+        "tasks": 77,
+        "learned": 16,
+        "status": "gap_accepted",
+        "mip_gap": 0.03550187650360689
+      },
+      {
+        "score": 2638.2485999999994,
+        "completed": 18,
+        "failed": 0,
+        "tasks": 63,
+        "learned": 18,
+        "status": "gap_accepted",
+        "mip_gap": 0.01876244717802595
+      },
+      {
+        "score": 2254.9943000000003,
+        "completed": 17,
+        "failed": 1,
+        "tasks": 62,
+        "learned": 17,
+        "status": "gap_accepted",
+        "mip_gap": 0.025055495705687797
+      },
+      {
+        "score": 2101.6825000000003,
+        "completed": 16,
+        "failed": 2,
+        "tasks": 68,
+        "learned": 16,
+        "status": "gap_accepted",
+        "mip_gap": 0.02973807889631283
+      }
+    ]
+  },
+  "model_path": "models\\rl_q_table.json"
+}

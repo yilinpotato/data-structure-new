@@ -1,4 +1,4 @@
-def solve_static_oracle(map_model, fleet, tasks, simulation_time, time_limit=10, task_limit=None):
+def solve_static_oracle(map_model, fleet, tasks, simulation_time, time_limit=10, task_limit=None, mip_gap=0):
     """
     Solve a static oracle dispatch model with Gurobi.
 
@@ -37,7 +37,7 @@ def solve_static_oracle(map_model, fleet, tasks, simulation_time, time_limit=10,
     try:
         return _solve_selected_tasks(
             gp, GRB, map_model, fleet, sorted_tasks, exact_tasks,
-            simulation_time, time_limit, warm_start
+            simulation_time, time_limit, warm_start, mip_gap
         )
     except Exception as exc:
         return {
@@ -53,7 +53,7 @@ def solve_static_oracle(map_model, fleet, tasks, simulation_time, time_limit=10,
         }
 
 
-def _solve_selected_tasks(gp, GRB, map_model, fleet, all_tasks, selected_tasks, simulation_time, time_limit, warm_start=None):
+def _solve_selected_tasks(gp, GRB, map_model, fleet, all_tasks, selected_tasks, simulation_time, time_limit, warm_start=None, mip_gap=0):
     task_count = len(selected_tasks)
     vehicle_count = len(fleet)
     depot_node = 100
@@ -76,7 +76,7 @@ def _solve_selected_tasks(gp, GRB, map_model, fleet, all_tasks, selected_tasks, 
     model = gp.Model("ev_static_dispatch_oracle")
     model.Params.OutputFlag = 0
     model.Params.TimeLimit = time_limit
-    model.Params.MIPGap = 0
+    model.Params.MIPGap = mip_gap
     model.Params.MIPFocus = 1
     model.Params.Heuristics = 0.35
     model.Params.Presolve = 2
@@ -315,11 +315,15 @@ def _solve_selected_tasks(gp, GRB, map_model, fleet, all_tasks, selected_tasks, 
             report_score -= 100
             failed_count += 1
 
-    status = "optimal" if model.Status == GRB.OPTIMAL else "time_limited"
     gap = getattr(model, "MIPGap", None)
     bound = getattr(model, "ObjBound", None)
-    if len(all_tasks) == task_count and model.Status == GRB.OPTIMAL:
+    proven_exact = model.Status == GRB.OPTIMAL and (gap is None or gap <= max(mip_gap, 1e-9))
+    status = "optimal" if proven_exact and mip_gap == 0 else "gap_accepted" if proven_exact else "time_limited"
+    if len(all_tasks) == task_count and status == "optimal":
         message = "Gurobi proved the global maximum score for all generated tasks."
+    elif len(all_tasks) == task_count and status == "gap_accepted":
+        gap_text = f", gap={gap:.4f}" if gap is not None else ""
+        message = f"Gurobi accepted a high-quality incumbent within the configured gap{gap_text}."
     elif len(all_tasks) == task_count:
         gap_text = f", gap={gap:.4f}" if gap is not None else ""
         message = f"Gurobi found an incumbent but has not proved global optimality yet{gap_text}."

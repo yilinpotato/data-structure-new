@@ -5,7 +5,9 @@ import random
 
 
 MODEL_PATH = os.path.join("models", "rl_q_table.json")
-RL_ACTIONS = ("nearest", "max_weight", "urgency", "balanced")
+TOP_K = 6
+RL_ACTIONS = tuple(f"candidate_{index}" for index in range(TOP_K))
+EXPERT_ACTIONS = ("nearest", "max_weight", "urgency", "balanced")
 
 
 class ExpertSelector:
@@ -25,7 +27,46 @@ class ExpertSelector:
         return feasible
 
     @staticmethod
+    def rank_candidates(vehicle, tasks, map_model):
+        feasible = ExpertSelector.feasible_tasks(vehicle, tasks, map_model)
+        if not feasible:
+            return []
+
+        current_time = getattr(map_model, "current_time", 0)
+        ranked = []
+        for task, distance in feasible:
+            if task.deadline:
+                remaining = max(1, task.deadline - current_time)
+                urgency_score = 26000 / remaining
+            else:
+                urgency_score = 0
+            distance_score = 8000 / (distance + 1)
+            weight_score = 55 * task.weight / max(vehicle.capacity, 1)
+            battery_after = vehicle.current_battery - vehicle.battery_needed(distance)
+            battery_score = 10 * battery_after / max(vehicle.max_battery, 1)
+            score = urgency_score + distance_score + weight_score + battery_score
+            ranked.append((score, -distance, task))
+
+        ranked.sort(key=lambda item: (item[0], item[1]), reverse=True)
+        return [task for _, _, task in ranked[:TOP_K]]
+
+    @staticmethod
+    def action_for_task(vehicle, tasks, map_model, target_task):
+        for index, task in enumerate(ExpertSelector.rank_candidates(vehicle, tasks, map_model)):
+            if task.id == target_task.id:
+                return f"candidate_{index}"
+        return None
+
+    @staticmethod
     def select(action, vehicle, tasks, map_model):
+        if action.startswith("candidate_"):
+            candidates = ExpertSelector.rank_candidates(vehicle, tasks, map_model)
+            try:
+                index = int(action.split("_", 1)[1])
+            except ValueError:
+                return None
+            return candidates[index] if 0 <= index < len(candidates) else None
+
         feasible = ExpertSelector.feasible_tasks(vehicle, tasks, map_model)
         if not feasible:
             return None
@@ -78,6 +119,9 @@ class RLDispatchStrategy:
             return False
         with open(path, "r", encoding="utf-8") as file:
             payload = json.load(file)
+        if tuple(payload.get("actions", [])) != RL_ACTIONS:
+            self.q_table = {}
+            return False
         self.q_table = payload.get("q_table", {})
         return True
 
@@ -86,6 +130,8 @@ class RLDispatchStrategy:
         os.makedirs(os.path.dirname(path), exist_ok=True)
         payload = {
             "actions": list(RL_ACTIONS),
+            "action_mode": "top_k_candidate_task",
+            "top_k": TOP_K,
             "state_schema": [
                 "battery_bin",
                 "pending_bin",
@@ -167,10 +213,10 @@ class RLDispatchStrategy:
         task = ExpertSelector.select(action, vehicle, tasks, map_model)
 
         if task is None:
-            for fallback in ("balanced", "urgency", "nearest", "max_weight"):
+            for fallback in ("nearest", "balanced", "urgency", "max_weight"):
                 task = ExpertSelector.select(fallback, vehicle, tasks, map_model)
                 if task is not None:
-                    action = fallback
+                    action = ExpertSelector.action_for_task(vehicle, tasks, map_model, task) or "candidate_0"
                     break
 
         if task is not None and self.epsilon > 0:
