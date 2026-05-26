@@ -495,7 +495,7 @@ class BalancedStrategy:
         return scored_tasks[0][2]
 
 class Simulator:
-    def __init__(self, fleet_size=10, simulation_time=3600*8, task_rate=0.01, strategy_name="nearest", node_count=24):
+    def __init__(self, fleet_size=10, simulation_time=3600*8, task_rate=0.01, strategy_name="nearest", node_count=24, seed=None):
         self.map = GuangzhouMap(node_count=node_count)
         self.depot_id = 100
         self.fleet = self._create_fleet(fleet_size)
@@ -508,6 +508,7 @@ class Simulator:
         self.time_step = 10
         self.task_rate = task_rate
         self.task_id_counter = 0
+        self.task_rng = random.Random(seed) if seed is not None else random
         
         self.strategy = self._create_strategy(strategy_name)
         self.map.current_time = self.current_time
@@ -560,6 +561,9 @@ class Simulator:
         if strategy_name.lower() in ("rl", "reinforcement"):
             from rl_agent import RLDispatchStrategy
             return RLDispatchStrategy()
+        if strategy_name.lower() in ("ppo", "maskable_ppo"):
+            from ppo_agent import PPODispatchStrategy
+            return PPODispatchStrategy()
         
         if strategy_name.lower() in strategies:
             return strategies[strategy_name.lower()]()
@@ -567,21 +571,22 @@ class Simulator:
             return BalancedStrategy()
     
     def _generate_task(self):
-        if random.random() > self.task_rate:
+        rng = self.task_rng
+        if rng.random() > self.task_rate:
             return None
         
         locations = list(self.map.nodes.keys())
         locations.remove(self.depot_id)
-        location = random.choice(locations)
+        location = rng.choice(locations)
         
-        weight = random.uniform(10, 800)
+        weight = rng.uniform(10, 800)
         weight = round(weight, 2)
         
         deadline = None
-        if random.random() < 0.8:
+        if rng.random() < 0.8:
             min_delta = max(120, int(self.simulation_time * 0.08))
             max_delta = max(min_delta + self.time_step, int(self.simulation_time * 0.35))
-            deadline_delta = random.randint(min_delta, max_delta)
+            deadline_delta = rng.randint(min_delta, max_delta)
             deadline = self.current_time + deadline_delta
         
         task = Task(
@@ -695,6 +700,14 @@ class Simulator:
     
     def _allocate_tasks(self):
         self.map.current_time = self.current_time
+        self.map.simulation_time = self.simulation_time
+        self.map.completed_task_count = self.completed_task_count
+        self.map.failed_task_count = self.failed_task_count
+        self.map.total_score = self.total_score
+        self.map.idle_vehicle_count = sum(1 for v in self.fleet if v.status == VehicleStatus.IDLE)
+        self.map.charging_vehicle_count = sum(1 for v in self.fleet if v.status == VehicleStatus.CHARGING)
+        self.map.moving_vehicle_count = sum(1 for v in self.fleet if v.status == VehicleStatus.MOVING)
+        self.map.fleet_size = len(self.fleet)
         pending_tasks = [t for t in self.tasks if t.status == TaskStatus.PENDING]
         idle_vehicles = [v for v in self.fleet if v.status == VehicleStatus.IDLE]
         

@@ -4,6 +4,7 @@ import time
 import json
 import os
 import random
+import math
 from simulator import GuangzhouMap, Simulator
 from gurobi_optimizer import solve_static_oracle
 
@@ -31,6 +32,15 @@ def map_payload(map_model):
         ]
     }
 
+def clean_json_value(value):
+    if isinstance(value, float):
+        return value if math.isfinite(value) else None
+    if isinstance(value, dict):
+        return {key: clean_json_value(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [clean_json_value(item) for item in value]
+    return value
+
 # 预设地图数据（用于初始化显示）
 default_map_data = map_payload(GuangzhouMap(node_count=24))
 
@@ -51,13 +61,15 @@ def start_simulation():
     task_rate = data.get('task_rate', 0.01)
     strategy = data.get('strategy', 'nearest')
     node_count = data.get('node_count', 24)
+    seed = data.get('seed')
     
     simulator = Simulator(
         fleet_size=fleet_size,
         simulation_time=simulation_time,
         task_rate=task_rate,
         strategy_name=strategy,
-        node_count=node_count
+        node_count=node_count,
+        seed=seed
     )
     current_state = build_current_state()
     
@@ -96,13 +108,15 @@ def run_all_strategies():
     task_rate = float(data.get('task_rate', 0.01))
     node_count = int(data.get('node_count', 24))
     seed = int(data.get('seed', 42))
+    gurobi_time_limit = int(data.get('gurobi_time_limit', 180))
 
     strategies = [
         ("nearest", "最近任务优先"),
         ("max_weight", "最大任务优先"),
         ("urgency", "紧急任务优先"),
         ("balanced", "平衡策略"),
-        ("rl", "强化学习策略")
+        ("rl", "Q学习策略"),
+        ("ppo", "PPO强化学习策略")
     ]
     results = []
 
@@ -113,7 +127,8 @@ def run_all_strategies():
             simulation_time=simulation_time,
             task_rate=task_rate,
             strategy_name=strategy_name,
-            node_count=node_count
+            node_count=node_count,
+            seed=seed
         )
         run_fast_simulation(sim)
         details = sim.get_detail_statistics()
@@ -138,7 +153,8 @@ def run_all_strategies():
         simulation_time=simulation_time,
         task_rate=task_rate,
         strategy_name="balanced",
-        node_count=node_count
+        node_count=node_count,
+        seed=seed
     )
     oracle_tasks = generate_static_tasks(oracle_sim)
     oracle_result = solve_static_oracle(
@@ -146,7 +162,7 @@ def run_all_strategies():
         oracle_sim.fleet,
         oracle_tasks,
         simulation_time,
-        time_limit=180,
+        time_limit=gurobi_time_limit,
         task_limit=None,
         mip_gap=0.05
     )
@@ -179,6 +195,7 @@ def run_all_strategies():
         "coordinated_dispatch_count": None,
         "mip_gap": oracle_result.get("mip_gap"),
         "model_bound": oracle_result.get("model_bound"),
+        "gurobi_time_limit": gurobi_time_limit,
         "plan": oracle_result.get("plan", [])[:5]
     })
 
@@ -195,13 +212,14 @@ def run_all_strategies():
         key=lambda row: row["total_score"],
         default=None
     )
-    return jsonify({
+    payload = {
         "status": "success",
         "seed": seed,
         "best_strategy": best_dynamic["label"] if best_dynamic else None,
         "best_overall": best_overall["label"] if best_overall else None,
         "results": results
-    })
+    }
+    return jsonify(clean_json_value(payload))
 
 def generate_static_tasks(sim):
     tasks = []

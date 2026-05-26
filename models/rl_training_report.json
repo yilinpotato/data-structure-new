@@ -1,106 +1,952 @@
 {
   "rl": {
     "episodes": 8,
-    "avg_score": 6867.6644125,
-    "avg_completed": 54.875,
-    "avg_failed": 6.5,
-    "avg_tasks": 67.875
+    "avg_score": 3056.1816000000003,
+    "avg_completed": 28.375,
+    "avg_failed": 7.875,
+    "avg_tasks": 43.125
   },
   "balanced": {
     "episodes": 8,
-    "avg_score": 6372.046975000001,
-    "avg_completed": 51.875,
-    "avg_failed": 7.25,
-    "avg_tasks": 65.5
+    "avg_score": 3184.4152000000004,
+    "avg_completed": 29.375,
+    "avg_failed": 7.625,
+    "avg_tasks": 43.125
   },
   "nearest": {
     "episodes": 8,
-    "avg_score": 6356.087725,
-    "avg_completed": 51.25,
-    "avg_failed": 6.875,
-    "avg_tasks": 63.875
+    "avg_score": 3045.2008250000003,
+    "avg_completed": 28.25,
+    "avg_failed": 7.75,
+    "avg_tasks": 43.125
   },
   "max_weight": {
     "episodes": 8,
-    "avg_score": 6356.3731625,
-    "avg_completed": 51.25,
-    "avg_failed": 6.5,
-    "avg_tasks": 63.625
+    "avg_score": 3284.3001000000004,
+    "avg_completed": 29.75,
+    "avg_failed": 7.125,
+    "avg_tasks": 43.125
   },
   "urgency": {
     "episodes": 8,
-    "avg_score": 6310.714187500001,
-    "avg_completed": 51.25,
-    "avg_failed": 6.875,
-    "avg_tasks": 66
+    "avg_score": 3172.3489625,
+    "avg_completed": 29.125,
+    "avg_failed": 7.375,
+    "avg_tasks": 43.125
   },
   "gurobi_pretrain": {
     "enabled": true,
-    "episodes": 6,
+    "episodes": 100,
     "time_limit": 10,
-    "task_limit": 18,
-    "accept_gap": 0.05,
+    "task_limit": 100,
+    "accept_gap": 0.02,
     "summary": {
-      "episodes": 6,
-      "avg_score": 2285.250766666667,
-      "avg_completed": 16.833333333333332,
-      "avg_failed": 1,
-      "avg_tasks": 64
+      "episodes": 100,
+      "avg_score": 5351.345626,
+      "avg_completed": 40.05,
+      "avg_failed": 2.06,
+      "avg_tasks": 43.24
     },
     "rows": [
       {
-        "score": 2339.0281000000004,
-        "completed": 17,
+        "score": 3434.0991000000004,
+        "completed": 27,
+        "failed": 1,
+        "tasks": 29,
+        "learned": 27,
+        "status": "gap_accepted",
+        "mip_gap": 0.016601103468372035
+      },
+      {
+        "score": 5774.634299999999,
+        "completed": 40,
         "failed": 0,
+        "tasks": 42,
+        "learned": 40,
+        "status": "gap_accepted",
+        "mip_gap": 0.01723052834705048
+      },
+      {
+        "score": 5834.9498,
+        "completed": 45,
+        "failed": 5,
+        "tasks": 50,
+        "learned": 45,
+        "status": "gap_accepted",
+        "mip_gap": 0.01853427639775426
+      },
+      {
+        "score": 5063.5443,
+        "completed": 36,
+        "failed": 2,
+        "tasks": 40,
+        "learned": 36,
+        "status": "gap_accepted",
+        "mip_gap": 0.012343132852614002
+      },
+      {
+        "score": 6605.302699999999,
+        "completed": 49,
+        "failed": 2,
+        "tasks": 52,
+        "learned": 49,
+        "status": "gap_accepted",
+        "mip_gap": 0.016777766050740165
+      },
+      {
+        "score": 5569.004900000002,
+        "completed": 42,
+        "failed": 5,
+        "tasks": 51,
+        "learned": 42,
+        "status": "gap_accepted",
+        "mip_gap": 0.01913916144260071
+      },
+      {
+        "score": 6488.457800000001,
+        "completed": 46,
+        "failed": 0,
+        "tasks": 47,
+        "learned": 46,
+        "status": "gap_accepted",
+        "mip_gap": 0.01849437935775684
+      },
+      {
+        "score": 5926.313,
+        "completed": 43,
+        "failed": 1,
+        "tasks": 45,
+        "learned": 43,
+        "status": "gap_accepted",
+        "mip_gap": 0.008048038659790823
+      },
+      {
+        "score": 3813.9528,
+        "completed": 31,
+        "failed": 4,
+        "tasks": 38,
+        "learned": 31,
+        "status": "gap_accepted",
+        "mip_gap": 0.019795735280205645
+      },
+      {
+        "score": 5453.234499999999,
+        "completed": 45,
+        "failed": 3,
+        "tasks": 48,
+        "learned": 45,
+        "status": "gap_accepted",
+        "mip_gap": 0.014647004183615819
+      },
+      {
+        "score": 5311.220599999999,
+        "completed": 43,
+        "failed": 2,
+        "tasks": 48,
+        "learned": 43,
+        "status": "gap_accepted",
+        "mip_gap": 0.019179963357069917
+      },
+      {
+        "score": 5171.2363000000005,
+        "completed": 41,
+        "failed": 6,
+        "tasks": 48,
+        "learned": 41,
+        "status": "gap_accepted",
+        "mip_gap": 0.018950980832184966
+      },
+      {
+        "score": 5643.330400000001,
+        "completed": 42,
+        "failed": 1,
+        "tasks": 43,
+        "learned": 42,
+        "status": "gap_accepted",
+        "mip_gap": 0.014884827583371209
+      },
+      {
+        "score": 3753.3354000000004,
+        "completed": 27,
+        "failed": 2,
+        "tasks": 29,
+        "learned": 27,
+        "status": "gap_accepted",
+        "mip_gap": 0.011856121358085205
+      },
+      {
+        "score": 6574.891699999998,
+        "completed": 49,
+        "failed": 2,
+        "tasks": 52,
+        "learned": 49,
+        "status": "gap_accepted",
+        "mip_gap": 0.01931590751525258
+      },
+      {
+        "score": 5670.622199999999,
+        "completed": 42,
+        "failed": 0,
+        "tasks": 42,
+        "learned": 42,
+        "status": "gap_accepted",
+        "mip_gap": 0.0192218765693823
+      },
+      {
+        "score": 6605.0713,
+        "completed": 47,
+        "failed": 0,
+        "tasks": 47,
+        "learned": 47,
+        "status": "gap_accepted",
+        "mip_gap": 0.019227650123928536
+      },
+      {
+        "score": 6285.904300000002,
+        "completed": 46,
+        "failed": 1,
+        "tasks": 48,
+        "learned": 46,
+        "status": "gap_accepted",
+        "mip_gap": 0.01933946927453898
+      },
+      {
+        "score": 6583.449499999997,
+        "completed": 49,
+        "failed": 2,
         "tasks": 53,
-        "learned": 17,
+        "learned": 49,
         "status": "gap_accepted",
-        "mip_gap": 0.03334718381536351
+        "mip_gap": 0.014812710113242896
       },
       {
-        "score": 2307.238,
-        "completed": 17,
-        "failed": 1,
-        "tasks": 61,
-        "learned": 17,
+        "score": 4472.8663000000015,
+        "completed": 35,
+        "failed": 3,
+        "tasks": 39,
+        "learned": 35,
         "status": "gap_accepted",
-        "mip_gap": 0.02405473557561032
+        "mip_gap": 0.019462628942377505
       },
       {
-        "score": 2070.3131000000003,
-        "completed": 16,
-        "failed": 2,
-        "tasks": 77,
-        "learned": 16,
-        "status": "gap_accepted",
-        "mip_gap": 0.03550187650360689
-      },
-      {
-        "score": 2638.2485999999994,
-        "completed": 18,
+        "score": 5029.5869999999995,
+        "completed": 36,
         "failed": 0,
-        "tasks": 63,
-        "learned": 18,
+        "tasks": 38,
+        "learned": 36,
         "status": "gap_accepted",
-        "mip_gap": 0.01876244717802595
+        "mip_gap": 0.018391172078343974
       },
       {
-        "score": 2254.9943000000003,
-        "completed": 17,
-        "failed": 1,
-        "tasks": 62,
-        "learned": 17,
+        "score": 6197.252299999999,
+        "completed": 47,
+        "failed": 3,
+        "tasks": 51,
+        "learned": 47,
         "status": "gap_accepted",
-        "mip_gap": 0.025055495705687797
+        "mip_gap": 0.015248693360442982
       },
       {
-        "score": 2101.6825000000003,
-        "completed": 16,
+        "score": 5595.505099999999,
+        "completed": 42,
         "failed": 2,
-        "tasks": 68,
-        "learned": 16,
+        "tasks": 46,
+        "learned": 42,
         "status": "gap_accepted",
-        "mip_gap": 0.02973807889631283
+        "mip_gap": 0.017245985532208706
+      },
+      {
+        "score": 5175.2494,
+        "completed": 42,
+        "failed": 4,
+        "tasks": 47,
+        "learned": 42,
+        "status": "gap_accepted",
+        "mip_gap": 0.019613478397569904
+      },
+      {
+        "score": 5972.6394,
+        "completed": 45,
+        "failed": 1,
+        "tasks": 48,
+        "learned": 45,
+        "status": "gap_accepted",
+        "mip_gap": 0.017208332837941633
+      },
+      {
+        "score": 4832.3795,
+        "completed": 38,
+        "failed": 3,
+        "tasks": 45,
+        "learned": 38,
+        "status": "gap_accepted",
+        "mip_gap": 0.018753625912199177
+      },
+      {
+        "score": 5811.2924,
+        "completed": 42,
+        "failed": 0,
+        "tasks": 43,
+        "learned": 42,
+        "status": "gap_accepted",
+        "mip_gap": 0.019794365396335563
+      },
+      {
+        "score": 5714.3494,
+        "completed": 41,
+        "failed": 1,
+        "tasks": 42,
+        "learned": 41,
+        "status": "gap_accepted",
+        "mip_gap": 0.018724791312201148
+      },
+      {
+        "score": 5991.751900000001,
+        "completed": 44,
+        "failed": 2,
+        "tasks": 47,
+        "learned": 44,
+        "status": "gap_accepted",
+        "mip_gap": 0.014317039400442174
+      },
+      {
+        "score": 5300.788599999999,
+        "completed": 40,
+        "failed": 2,
+        "tasks": 42,
+        "learned": 40,
+        "status": "gap_accepted",
+        "mip_gap": 0.01641265226083496
+      },
+      {
+        "score": 5113.1669,
+        "completed": 36,
+        "failed": 1,
+        "tasks": 38,
+        "learned": 36,
+        "status": "gap_accepted",
+        "mip_gap": 0.015548094078446942
+      },
+      {
+        "score": 4306.1095,
+        "completed": 31,
+        "failed": 1,
+        "tasks": 33,
+        "learned": 31,
+        "status": "gap_accepted",
+        "mip_gap": 0.014978718028419852
+      },
+      {
+        "score": 6876.8171999999995,
+        "completed": 50,
+        "failed": 1,
+        "tasks": 55,
+        "learned": 50,
+        "status": "gap_accepted",
+        "mip_gap": 0.017901439639550466
+      },
+      {
+        "score": 5320.828,
+        "completed": 40,
+        "failed": 0,
+        "tasks": 41,
+        "learned": 40,
+        "status": "gap_accepted",
+        "mip_gap": 0.012216617788643155
+      },
+      {
+        "score": 5693.163199999999,
+        "completed": 42,
+        "failed": 1,
+        "tasks": 45,
+        "learned": 42,
+        "status": "gap_accepted",
+        "mip_gap": 0.01756492770135175
+      },
+      {
+        "score": 6238.5688,
+        "completed": 46,
+        "failed": 2,
+        "tasks": 50,
+        "learned": 46,
+        "status": "gap_accepted",
+        "mip_gap": 0.015388144793723146
+      },
+      {
+        "score": 5296.9684,
+        "completed": 43,
+        "failed": 5,
+        "tasks": 49,
+        "learned": 43,
+        "status": "gap_accepted",
+        "mip_gap": 0.014375493646428924
+      },
+      {
+        "score": 5988.1679,
+        "completed": 44,
+        "failed": 0,
+        "tasks": 44,
+        "learned": 44,
+        "status": "gap_accepted",
+        "mip_gap": 0.018060691968816413
+      },
+      {
+        "score": 6396.1285,
+        "completed": 46,
+        "failed": 1,
+        "tasks": 48,
+        "learned": 46,
+        "status": "gap_accepted",
+        "mip_gap": 0.01690937436323213
+      },
+      {
+        "score": 3827.5872,
+        "completed": 31,
+        "failed": 2,
+        "tasks": 35,
+        "learned": 31,
+        "status": "gap_accepted",
+        "mip_gap": 0.013846843254152618
+      },
+      {
+        "score": 5372.729899999999,
+        "completed": 41,
+        "failed": 1,
+        "tasks": 43,
+        "learned": 41,
+        "status": "gap_accepted",
+        "mip_gap": 0.01991693396014266
+      },
+      {
+        "score": 5616.851199999999,
+        "completed": 41,
+        "failed": 1,
+        "tasks": 45,
+        "learned": 41,
+        "status": "gap_accepted",
+        "mip_gap": 0.01967294415775191
+      },
+      {
+        "score": 5809.3616999999995,
+        "completed": 44,
+        "failed": 1,
+        "tasks": 45,
+        "learned": 44,
+        "status": "gap_accepted",
+        "mip_gap": 0.012147712792857548
+      },
+      {
+        "score": 4916.765600000001,
+        "completed": 35,
+        "failed": 2,
+        "tasks": 37,
+        "learned": 35,
+        "status": "gap_accepted",
+        "mip_gap": 0.009261560481131186
+      },
+      {
+        "score": 5322.867600000001,
+        "completed": 41,
+        "failed": 4,
+        "tasks": 47,
+        "learned": 41,
+        "status": "gap_accepted",
+        "mip_gap": 0.013934327668566962
+      },
+      {
+        "score": 4587.468800000001,
+        "completed": 34,
+        "failed": 2,
+        "tasks": 36,
+        "learned": 34,
+        "status": "gap_accepted",
+        "mip_gap": 0.01482298909586025
+      },
+      {
+        "score": 4607.3306999999995,
+        "completed": 34,
+        "failed": 2,
+        "tasks": 37,
+        "learned": 34,
+        "status": "gap_accepted",
+        "mip_gap": 0.014759088163565276
+      },
+      {
+        "score": 4259.639899999999,
+        "completed": 33,
+        "failed": 1,
+        "tasks": 38,
+        "learned": 33,
+        "status": "gap_accepted",
+        "mip_gap": 0.018848511607323277
+      },
+      {
+        "score": 5121.7902,
+        "completed": 39,
+        "failed": 3,
+        "tasks": 42,
+        "learned": 39,
+        "status": "gap_accepted",
+        "mip_gap": 0.01806009156720224
+      },
+      {
+        "score": 6353.423100000001,
+        "completed": 46,
+        "failed": 1,
+        "tasks": 48,
+        "learned": 46,
+        "status": "gap_accepted",
+        "mip_gap": 0.019989308530932184
+      },
+      {
+        "score": 5340.5708,
+        "completed": 40,
+        "failed": 1,
+        "tasks": 43,
+        "learned": 40,
+        "status": "gap_accepted",
+        "mip_gap": 0.01583022613719515
+      },
+      {
+        "score": 5000.260499999999,
+        "completed": 38,
+        "failed": 2,
+        "tasks": 40,
+        "learned": 38,
+        "status": "gap_accepted",
+        "mip_gap": 0.018899015361298947
+      },
+      {
+        "score": 5470.575699999999,
+        "completed": 40,
+        "failed": 1,
+        "tasks": 41,
+        "learned": 40,
+        "status": "gap_accepted",
+        "mip_gap": 0.018096815660552705
+      },
+      {
+        "score": 4765.072600000001,
+        "completed": 38,
+        "failed": 3,
+        "tasks": 42,
+        "learned": 38,
+        "status": "gap_accepted",
+        "mip_gap": 0.01983180696973965
+      },
+      {
+        "score": 5018.943100000001,
+        "completed": 37,
+        "failed": 2,
+        "tasks": 40,
+        "learned": 37,
+        "status": "gap_accepted",
+        "mip_gap": 0.018629420206019074
+      },
+      {
+        "score": 5044.814900000001,
+        "completed": 36,
+        "failed": 2,
+        "tasks": 39,
+        "learned": 36,
+        "status": "gap_accepted",
+        "mip_gap": 0.012686293009482236
+      },
+      {
+        "score": 5392.6953,
+        "completed": 37,
+        "failed": 0,
+        "tasks": 39,
+        "learned": 37,
+        "status": "gap_accepted",
+        "mip_gap": 0.016749518219224723
+      },
+      {
+        "score": 5469.286999999999,
+        "completed": 40,
+        "failed": 3,
+        "tasks": 45,
+        "learned": 40,
+        "status": "gap_accepted",
+        "mip_gap": 0.017369722963889084
+      },
+      {
+        "score": 4555.8697999999995,
+        "completed": 36,
+        "failed": 2,
+        "tasks": 39,
+        "learned": 36,
+        "status": "gap_accepted",
+        "mip_gap": 0.017270546946569192
+      },
+      {
+        "score": 5783.6990000000005,
+        "completed": 41,
+        "failed": 1,
+        "tasks": 45,
+        "learned": 41,
+        "status": "gap_accepted",
+        "mip_gap": 0.019883469039450357
+      },
+      {
+        "score": 6274.0353000000005,
+        "completed": 47,
+        "failed": 5,
+        "tasks": 53,
+        "learned": 47,
+        "status": "gap_accepted",
+        "mip_gap": 0.015180180920241914
+      },
+      {
+        "score": 4535.1738,
+        "completed": 34,
+        "failed": 2,
+        "tasks": 37,
+        "learned": 34,
+        "status": "gap_accepted",
+        "mip_gap": 0.015875907556178095
+      },
+      {
+        "score": 4677.615,
+        "completed": 35,
+        "failed": 3,
+        "tasks": 38,
+        "learned": 35,
+        "status": "gap_accepted",
+        "mip_gap": 0.01924057452355508
+      },
+      {
+        "score": 3660.4392999999995,
+        "completed": 28,
+        "failed": 3,
+        "tasks": 31,
+        "learned": 28,
+        "status": "gap_accepted",
+        "mip_gap": 0.017347644584626273
+      },
+      {
+        "score": 5077.2543000000005,
+        "completed": 40,
+        "failed": 3,
+        "tasks": 44,
+        "learned": 40,
+        "status": "gap_accepted",
+        "mip_gap": 0.01980743743664168
+      },
+      {
+        "score": 6776.261999999999,
+        "completed": 53,
+        "failed": 5,
+        "tasks": 61,
+        "learned": 53,
+        "status": "time_limited",
+        "mip_gap": 0.18419504600027806
+      },
+      {
+        "score": 6837.8490999999985,
+        "completed": 53,
+        "failed": 5,
+        "tasks": 58,
+        "learned": 53,
+        "status": "time_limited",
+        "mip_gap": 0.12138690727124085
+      },
+      {
+        "score": 6688.4407,
+        "completed": 48,
+        "failed": 1,
+        "tasks": 50,
+        "learned": 48,
+        "status": "gap_accepted",
+        "mip_gap": 0.017066262822495147
+      },
+      {
+        "score": 6429.823999999998,
+        "completed": 47,
+        "failed": 2,
+        "tasks": 50,
+        "learned": 47,
+        "status": "gap_accepted",
+        "mip_gap": 0.013801271345964157
+      },
+      {
+        "score": 6703.9677999999985,
+        "completed": 49,
+        "failed": 1,
+        "tasks": 51,
+        "learned": 49,
+        "status": "gap_accepted",
+        "mip_gap": 0.01950908622745386
+      },
+      {
+        "score": 5723.539200000001,
+        "completed": 41,
+        "failed": 0,
+        "tasks": 43,
+        "learned": 41,
+        "status": "gap_accepted",
+        "mip_gap": 0.01796191298084745
+      },
+      {
+        "score": 6465.563999999999,
+        "completed": 48,
+        "failed": 4,
+        "tasks": 54,
+        "learned": 48,
+        "status": "gap_accepted",
+        "mip_gap": 0.018714531323176423
+      },
+      {
+        "score": 5782.431500000001,
+        "completed": 46,
+        "failed": 5,
+        "tasks": 53,
+        "learned": 46,
+        "status": "gap_accepted",
+        "mip_gap": 0.019974733237437307
+      },
+      {
+        "score": 4686.6299,
+        "completed": 36,
+        "failed": 2,
+        "tasks": 39,
+        "learned": 36,
+        "status": "gap_accepted",
+        "mip_gap": 0.011714182135955086
+      },
+      {
+        "score": 5735.0779,
+        "completed": 40,
+        "failed": 0,
+        "tasks": 40,
+        "learned": 40,
+        "status": "gap_accepted",
+        "mip_gap": 0.015518533758713203
+      },
+      {
+        "score": 4974.7084,
+        "completed": 38,
+        "failed": 4,
+        "tasks": 42,
+        "learned": 38,
+        "status": "gap_accepted",
+        "mip_gap": 0.017287445430972586
+      },
+      {
+        "score": 5594.099000000001,
+        "completed": 43,
+        "failed": 4,
+        "tasks": 47,
+        "learned": 43,
+        "status": "gap_accepted",
+        "mip_gap": 0.0176459529887724
+      },
+      {
+        "score": 4848.719199999998,
+        "completed": 40,
+        "failed": 3,
+        "tasks": 43,
+        "learned": 40,
+        "status": "gap_accepted",
+        "mip_gap": 0.01533707499536216
+      },
+      {
+        "score": 4258.860500000001,
+        "completed": 32,
+        "failed": 1,
+        "tasks": 34,
+        "learned": 32,
+        "status": "gap_accepted",
+        "mip_gap": 0.015310078420489624
+      },
+      {
+        "score": 4163.368799999999,
+        "completed": 33,
+        "failed": 2,
+        "tasks": 37,
+        "learned": 33,
+        "status": "gap_accepted",
+        "mip_gap": 0.018861882199972143
+      },
+      {
+        "score": 5455.132299999999,
+        "completed": 42,
+        "failed": 1,
+        "tasks": 44,
+        "learned": 42,
+        "status": "gap_accepted",
+        "mip_gap": 0.01723147942718056
+      },
+      {
+        "score": 5216.948299999999,
+        "completed": 38,
+        "failed": 2,
+        "tasks": 40,
+        "learned": 38,
+        "status": "gap_accepted",
+        "mip_gap": 0.01868908687479229
+      },
+      {
+        "score": 7163.7304,
+        "completed": 53,
+        "failed": 2,
+        "tasks": 56,
+        "learned": 53,
+        "status": "gap_accepted",
+        "mip_gap": 0.015515093950647471
+      },
+      {
+        "score": 3351.517300000001,
+        "completed": 28,
+        "failed": 4,
+        "tasks": 32,
+        "learned": 28,
+        "status": "gap_accepted",
+        "mip_gap": 0.018797456304343114
+      },
+      {
+        "score": 5661.0454,
+        "completed": 41,
+        "failed": 1,
+        "tasks": 43,
+        "learned": 41,
+        "status": "gap_accepted",
+        "mip_gap": 0.014926571689390858
+      },
+      {
+        "score": 4790.1831999999995,
+        "completed": 35,
+        "failed": 2,
+        "tasks": 38,
+        "learned": 35,
+        "status": "gap_accepted",
+        "mip_gap": 0.011481815559789027
+      },
+      {
+        "score": 4596.084499999999,
+        "completed": 34,
+        "failed": 1,
+        "tasks": 37,
+        "learned": 34,
+        "status": "gap_accepted",
+        "mip_gap": 0.018820367641196253
+      },
+      {
+        "score": 6238.168500000001,
+        "completed": 47,
+        "failed": 4,
+        "tasks": 52,
+        "learned": 47,
+        "status": "gap_accepted",
+        "mip_gap": 0.01683186339067308
+      },
+      {
+        "score": 3690.5068,
+        "completed": 28,
+        "failed": 2,
+        "tasks": 31,
+        "learned": 28,
+        "status": "gap_accepted",
+        "mip_gap": 0.019915963845399967
+      },
+      {
+        "score": 5320.8231000000005,
+        "completed": 38,
+        "failed": 1,
+        "tasks": 40,
+        "learned": 38,
+        "status": "gap_accepted",
+        "mip_gap": 0.01907599596761636
+      },
+      {
+        "score": 4686.4895000000015,
+        "completed": 36,
+        "failed": 4,
+        "tasks": 43,
+        "learned": 36,
+        "status": "gap_accepted",
+        "mip_gap": 0.01482986358979321
+      },
+      {
+        "score": 4551.8969,
+        "completed": 34,
+        "failed": 3,
+        "tasks": 38,
+        "learned": 34,
+        "status": "gap_accepted",
+        "mip_gap": 0.012851784933880284
+      },
+      {
+        "score": 4602.4694,
+        "completed": 35,
+        "failed": 3,
+        "tasks": 39,
+        "learned": 35,
+        "status": "gap_accepted",
+        "mip_gap": 0.01998926923881321
+      },
+      {
+        "score": 5657.214599999999,
+        "completed": 41,
+        "failed": 1,
+        "tasks": 42,
+        "learned": 41,
+        "status": "gap_accepted",
+        "mip_gap": 0.015156255032007442
+      },
+      {
+        "score": 5155.957200000001,
+        "completed": 37,
+        "failed": 2,
+        "tasks": 39,
+        "learned": 37,
+        "status": "gap_accepted",
+        "mip_gap": 0.016679735045124287
+      },
+      {
+        "score": 5959.058599999998,
+        "completed": 44,
+        "failed": 2,
+        "tasks": 46,
+        "learned": 44,
+        "status": "gap_accepted",
+        "mip_gap": 0.016834298318222984
+      },
+      {
+        "score": 4823.658899999998,
+        "completed": 35,
+        "failed": 1,
+        "tasks": 37,
+        "learned": 35,
+        "status": "gap_accepted",
+        "mip_gap": 0.015755674597969792
+      },
+      {
+        "score": 5089.8682,
+        "completed": 39,
+        "failed": 2,
+        "tasks": 42,
+        "learned": 39,
+        "status": "gap_accepted",
+        "mip_gap": 0.0194609951751763
+      },
+      {
+        "score": 5448.8035,
+        "completed": 41,
+        "failed": 1,
+        "tasks": 42,
+        "learned": 41,
+        "status": "gap_accepted",
+        "mip_gap": 0.01641479751994363
+      },
+      {
+        "score": 3257.4071,
+        "completed": 26,
+        "failed": 3,
+        "tasks": 29,
+        "learned": 26,
+        "status": "gap_accepted",
+        "mip_gap": 0.018573054623722315
       }
     ]
   },

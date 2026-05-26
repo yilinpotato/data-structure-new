@@ -18,6 +18,7 @@ def run_training_episode(agent, config, seed):
         task_rate=config["task_rate"],
         strategy_name="balanced",
         node_count=config["node_count"],
+        seed=seed,
     )
     sim.strategy = agent
 
@@ -108,6 +109,7 @@ def reinforce_nearest_fallback(agent, config, seed):
         task_rate=config["task_rate"],
         strategy_name="nearest",
         node_count=config["node_count"],
+        seed=seed,
     )
     learned = 0
     while sim.current_time < sim.simulation_time:
@@ -147,6 +149,7 @@ def pretrain_from_gurobi(agent, config, seed, episodes, time_limit, task_limit, 
             task_rate=config["task_rate"],
             strategy_name="balanced",
             node_count=config["node_count"],
+            seed=seed + episode,
         )
         tasks = generate_static_tasks(sim)
         result = solve_static_oracle(
@@ -238,6 +241,7 @@ def evaluate_strategy(strategy_name, config, seeds):
             task_rate=config["task_rate"],
             strategy_name=strategy_name,
             node_count=config["node_count"],
+            seed=seed,
         )
         run_fast_simulation(sim)
         rows.append({

@@ -21,6 +21,9 @@ class ExpertSelector:
             if not path:
                 continue
             distance = map_model.calculate_distance(path)
+            current_time = getattr(map_model, "current_time", 0)
+            if task.deadline and current_time + distance / 50.0 > task.deadline:
+                continue
             reserve = map_model.distance_to_nearest_station(task.location)
             if vehicle.can_reach(distance + reserve):
                 feasible.append((task, distance))
@@ -56,6 +59,28 @@ class ExpertSelector:
             if task.id == target_task.id:
                 return f"candidate_{index}"
         return None
+
+    @staticmethod
+    def estimated_value(vehicle, task, map_model):
+        path = map_model.shortest_path(vehicle.current_location, task.location)
+        if not path:
+            return -10**9
+        distance = map_model.calculate_distance(path)
+        current_time = getattr(map_model, "current_time", 0)
+        travel_time = distance / 50.0
+        arrival = max(task.start_time, current_time + travel_time)
+        if task.deadline and arrival > task.deadline:
+            return -10**8
+        base_score = 100
+        time_bonus = 50 if task.deadline and arrival < task.deadline else 0
+        distance_penalty = min(50, distance / 1000)
+        weight_bonus = min(30, task.weight / 100)
+        reserve = map_model.distance_to_nearest_station(task.location)
+        battery_risk = 0 if vehicle.can_reach(distance + reserve) else 200
+        urgency_bonus = 0
+        if task.deadline:
+            urgency_bonus = max(0, 300 - (task.deadline - current_time)) / 6
+        return base_score + time_bonus + weight_bonus + urgency_bonus - distance_penalty - battery_risk
 
     @staticmethod
     def select(action, vehicle, tasks, map_model):
@@ -138,12 +163,15 @@ class RLDispatchStrategy:
                 "urgent_bin",
                 "nearest_distance_bin",
                 "charge_pressure_bin",
+                "top3_candidate_feature_bins",
             ],
             "q_table": self.q_table,
             "meta": meta or {},
         }
-        with open(path, "w", encoding="utf-8") as file:
+        tmp_path = f"{path}.tmp"
+        with open(tmp_path, "w", encoding="utf-8") as file:
             json.dump(payload, file, ensure_ascii=False, indent=2)
+        os.replace(tmp_path, path)
 
     def encode_state(self, vehicle, tasks, map_model):
         battery_ratio = vehicle.current_battery / max(vehicle.max_battery, 1)
@@ -188,7 +216,40 @@ class RLDispatchStrategy:
         charge_pressure = sum(pressure_values) / len(pressure_values) if pressure_values else 0
         pressure_bin = min(3, int(charge_pressure * 2))
 
-        return f"{battery_bin}|{pending_bin}|{urgent_bin}|{distance_bin}|{pressure_bin}"
+        candidate_bins = []
+        for candidate in ExpertSelector.rank_candidates(vehicle, tasks, map_model)[:3]:
+            path = map_model.shortest_path(vehicle.current_location, candidate.location)
+            distance = map_model.calculate_distance(path) if path else math.inf
+            if distance <= 3000:
+                candidate_distance_bin = 0
+            elif distance <= 8000:
+                candidate_distance_bin = 1
+            elif distance <= 15000:
+                candidate_distance_bin = 2
+            else:
+                candidate_distance_bin = 3
+
+            weight_ratio = candidate.weight / max(vehicle.capacity, 1)
+            candidate_weight_bin = min(3, int(weight_ratio * 4))
+
+            if candidate.deadline:
+                remaining = candidate.deadline - current_time
+                if remaining <= 180:
+                    candidate_urgency_bin = 0
+                elif remaining <= 420:
+                    candidate_urgency_bin = 1
+                elif remaining <= 900:
+                    candidate_urgency_bin = 2
+                else:
+                    candidate_urgency_bin = 3
+            else:
+                candidate_urgency_bin = 4
+            candidate_bins.append(f"{candidate_distance_bin}{candidate_weight_bin}{candidate_urgency_bin}")
+
+        while len(candidate_bins) < 3:
+            candidate_bins.append("999")
+
+        return f"{battery_bin}|{pending_bin}|{urgent_bin}|{distance_bin}|{pressure_bin}|{','.join(candidate_bins)}"
 
     def action_values(self, state):
         if state not in self.q_table:
@@ -209,8 +270,21 @@ class RLDispatchStrategy:
 
     def select_task(self, vehicle, tasks, map_model):
         state = self.encode_state(vehicle, tasks, map_model)
-        action = self.choose_action(state)
+        if random.random() < self.epsilon:
+            action = random.choice(RL_ACTIONS)
+        else:
+            values = self.action_values(state)
+            action = max(
+                RL_ACTIONS,
+                key=lambda candidate_action: (
+                    values.get(candidate_action, 0.0) + self._rank_prior(candidate_action),
+                    -RL_ACTIONS.index(candidate_action),
+                )
+            )
         task = ExpertSelector.select(action, vehicle, tasks, map_model)
+        task = self._safety_refine_task(vehicle, tasks, map_model, task)
+        if task is not None:
+            action = ExpertSelector.action_for_task(vehicle, tasks, map_model, task) or action
 
         if task is None:
             for fallback in ("nearest", "balanced", "urgency", "max_weight"):
@@ -222,6 +296,45 @@ class RLDispatchStrategy:
         if task is not None and self.epsilon > 0:
             self.pending_updates.append((state, action))
         return task
+
+    def _safety_refine_task(self, vehicle, tasks, map_model, selected_task):
+        candidates = []
+        if selected_task is not None:
+            candidates.append(selected_task)
+        for action in ("nearest", "max_weight", "urgency", "balanced", "candidate_0", "candidate_1"):
+            task = ExpertSelector.select(action, vehicle, tasks, map_model)
+            if task and all(existing.id != task.id for existing in candidates):
+                candidates.append(task)
+        if not candidates:
+            return selected_task
+
+        best_task = max(
+            candidates,
+            key=lambda task: ExpertSelector.estimated_value(vehicle, task, map_model)
+        )
+        if selected_task is None:
+            return best_task
+        best_value = ExpertSelector.estimated_value(vehicle, best_task, map_model)
+        nearest_task = ExpertSelector.select("nearest", vehicle, tasks, map_model)
+        if nearest_task is not None and nearest_task.id != selected_task.id:
+            selected_distance = self._distance_to_task(vehicle, selected_task, map_model)
+            nearest_distance = self._distance_to_task(vehicle, nearest_task, map_model)
+            nearest_value = ExpertSelector.estimated_value(vehicle, nearest_task, map_model)
+            if nearest_distance <= selected_distance * 0.72 or nearest_value >= best_value - 12:
+                return nearest_task
+        selected_value = ExpertSelector.estimated_value(vehicle, selected_task, map_model)
+        return best_task if best_value > selected_value else selected_task
+
+    def _distance_to_task(self, vehicle, task, map_model):
+        path = map_model.shortest_path(vehicle.current_location, task.location)
+        return map_model.calculate_distance(path) if path else float("inf")
+
+    def _rank_prior(self, action):
+        try:
+            index = int(action.split("_", 1)[1])
+        except (ValueError, IndexError):
+            return 0
+        return max(0, TOP_K - index) * 12
 
     def learn_from_step(self, reward, next_state):
         if not self.pending_updates:

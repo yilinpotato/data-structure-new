@@ -1,0 +1,288 @@
+{
+  "ppo": {
+    "episodes": 8,
+    "avg_score": 7037.824887500001,
+    "avg_completed": 54.125,
+    "avg_failed": 4,
+    "avg_tasks": 64.25
+  },
+  "q_learning": {
+    "episodes": 8,
+    "avg_score": 7064.9725,
+    "avg_completed": 54.125,
+    "avg_failed": 3.75,
+    "avg_tasks": 64.25
+  },
+  "nearest": {
+    "episodes": 8,
+    "avg_score": 6379.446112500001,
+    "avg_completed": 51.375,
+    "avg_failed": 6.5,
+    "avg_tasks": 64.25
+  },
+  "max_weight": {
+    "episodes": 8,
+    "avg_score": 6391.4048625000005,
+    "avg_completed": 51.5,
+    "avg_failed": 6.375,
+    "avg_tasks": 64.25
+  },
+  "balanced": {
+    "episodes": 8,
+    "avg_score": 6185.319075,
+    "avg_completed": 50.75,
+    "avg_failed": 7.375,
+    "avg_tasks": 64.25
+  },
+  "urgency": {
+    "episodes": 8,
+    "avg_score": 6187.39565,
+    "avg_completed": 50.75,
+    "avg_failed": 7.25,
+    "avg_tasks": 64.25
+  },
+  "expert_rows": [
+    {
+      "status": "gap_accepted",
+      "tasks": 60,
+      "completed": 56,
+      "score": 7435.3494,
+      "learned": 43,
+      "mip_gap": 0.025425673381756178
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 60,
+      "completed": 58,
+      "score": 7620.884099999999,
+      "learned": 47,
+      "mip_gap": 0.025308930719993364
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 58,
+      "completed": 57,
+      "score": 7718.259099999997,
+      "learned": 38,
+      "mip_gap": 0.01378104631216066
+    },
+    {
+      "status": "time_limited",
+      "tasks": 65,
+      "completed": 58,
+      "score": 7550.391499999997,
+      "learned": 37,
+      "mip_gap": 0.18193602263778003
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 62,
+      "completed": 56,
+      "score": 7193.1943,
+      "learned": 38,
+      "mip_gap": 0.017599970485789217
+    },
+    {
+      "status": "time_limited",
+      "tasks": 68,
+      "completed": 64,
+      "score": 8439.894999999997,
+      "learned": 36,
+      "mip_gap": 0.04744644466165413
+    },
+    {
+      "status": "time_limited",
+      "tasks": 59,
+      "completed": 57,
+      "score": 7985.6087,
+      "learned": 41,
+      "mip_gap": 0.04787772953653148
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 67,
+      "completed": 61,
+      "score": 8444.683099999998,
+      "learned": 43,
+      "mip_gap": 0.019775756890154945
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 58,
+      "completed": 51,
+      "score": 6453.805899999999,
+      "learned": 33,
+      "mip_gap": 0.022002427009409416
+    },
+    {
+      "status": "time_limited",
+      "tasks": 82,
+      "completed": 67,
+      "score": 8318.1593,
+      "learned": 49,
+      "mip_gap": 0.282507729805077
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 56,
+      "completed": 55,
+      "score": 7389.905400000001,
+      "learned": 46,
+      "mip_gap": 0.015876350711828368
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 68,
+      "completed": 65,
+      "score": 8975.9255,
+      "learned": 53,
+      "mip_gap": 0.017881164454852647
+    },
+    {
+      "status": "time_limited",
+      "tasks": 74,
+      "completed": 67,
+      "score": 8879.4005,
+      "learned": 25,
+      "mip_gap": Infinity
+    },
+    {
+      "status": "time_limited",
+      "tasks": 71,
+      "completed": 63,
+      "score": 8363.601100000002,
+      "learned": 34,
+      "mip_gap": Infinity
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 63,
+      "completed": 59,
+      "score": 8203.488000000001,
+      "learned": 35,
+      "mip_gap": 0.01798015673333077
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 59,
+      "completed": 57,
+      "score": 7704.670899999999,
+      "learned": 52,
+      "mip_gap": 0.02093698802817895
+    },
+    {
+      "status": "time_limited",
+      "tasks": 66,
+      "completed": 58,
+      "score": 7199.159899999998,
+      "learned": 47,
+      "mip_gap": 0.07851938704554762
+    },
+    {
+      "status": "time_limited",
+      "tasks": 70,
+      "completed": 61,
+      "score": 7958.861199999998,
+      "learned": 32,
+      "mip_gap": 0.07250984885522446
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 67,
+      "completed": 60,
+      "score": 8236.988099999999,
+      "learned": 44,
+      "mip_gap": 0.021427735217924883
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 62,
+      "completed": 59,
+      "score": 7836.243699999999,
+      "learned": 48,
+      "mip_gap": 0.015391674694463349
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 69,
+      "completed": 65,
+      "score": 8793.705899999999,
+      "learned": 57,
+      "mip_gap": 0.017356977011186513
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 70,
+      "completed": 66,
+      "score": 9201.821200000002,
+      "learned": 42,
+      "mip_gap": 0.010589324163744895
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 58,
+      "completed": 54,
+      "score": 6965.3979,
+      "learned": 43,
+      "mip_gap": 0.01615662882245593
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 65,
+      "completed": 62,
+      "score": 8331.3611,
+      "learned": 57,
+      "mip_gap": 0.014744231754166039
+    },
+    {
+      "status": "time_limited",
+      "tasks": 76,
+      "completed": 69,
+      "score": 8828.5611,
+      "learned": 19,
+      "mip_gap": 0.1581308759362831
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 51,
+      "completed": 47,
+      "score": 5936.676600000002,
+      "learned": 35,
+      "mip_gap": 0.016542921899306864
+    },
+    {
+      "status": "time_limited",
+      "tasks": 74,
+      "completed": 62,
+      "score": 7825.652399999999,
+      "learned": 40,
+      "mip_gap": 0.19496460852150796
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 59,
+      "completed": 57,
+      "score": 7634.949200000001,
+      "learned": 49,
+      "mip_gap": 0.02062882094880188
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 63,
+      "completed": 60,
+      "score": 8060.372000000001,
+      "learned": 55,
+      "mip_gap": 0.014505898193325402
+    },
+    {
+      "status": "gap_accepted",
+      "tasks": 54,
+      "completed": 46,
+      "score": 6191.527800000001,
+      "learned": 35,
+      "mip_gap": 0.021642477321994744
+    }
+  ],
+  "expert_path": "models\\gurobi_expert_trajectories.jsonl",
+  "model_path": "models\\ppo_dispatch_model.zip"
+}
