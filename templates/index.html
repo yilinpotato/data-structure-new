@@ -104,7 +104,7 @@
                 <div class="form-group"><label>模拟时间 (秒)</label><input type="number" id="simulation_time" value="3600" min="60" max="7200"></div>
                 <div class="form-group"><label>任务生成率 (每秒)</label><input type="number" id="task_rate" value="0.15" step="0.01" min="0.01" max="1"></div>
                 <div class="form-group"><label>地图节点数量</label><input type="number" id="node_count" value="24" min="8" max="35"></div>
-                <div class="form-group"><label>Gurobi最长计算 (秒)</label><input type="number" id="gurobi_time_limit" value="180" min="10" max="600"></div>
+                <div class="form-group"><label>Gurobi最长计算 (秒)</label><input type="number" id="gurobi_time_limit" value="3000" min="10" max="3000"></div>
                 <div class="form-group"><label>随机种子</label><input type="number" id="seed" value="42" min="0" max="999999"></div>
                 <div class="form-group"><label>调度策略</label><select id="strategy"><option value="balanced">平衡策略</option><option value="ppo">PPO强化学习策略</option><option value="rl">Q学习策略</option><option value="nearest">最近任务优先</option><option value="max_weight">最大任务优先</option><option value="urgency">紧急任务优先</option></select></div>
                 <button class="btn btn-primary" id="btn_start">▶ 开始模拟</button>
@@ -148,10 +148,10 @@
                     <div class="comparison-panel">
                         <table class="detail-table">
                             <thead>
-                                <tr><th>策略</th><th class="num">完成率</th><th class="num">总分</th><th class="num">均分</th><th class="num">充电</th></tr>
+                                <tr><th>策略</th><th class="num">完成率</th><th class="num">总分</th><th class="num">均分</th><th class="num">充电</th><th class="num">耗时(秒)</th></tr>
                             </thead>
                             <tbody id="strategy_result_table">
-                                <tr><td colspan="5">点击“一键跑完所有策略”生成结果</td></tr>
+                                <tr><td colspan="6">点击“一键跑完所有策略”生成结果</td></tr>
                             </tbody>
                         </table>
                         <div class="status-note" id="strategy_result_note"></div>
@@ -435,14 +435,14 @@
             const params = collectParams();
             const table = document.getElementById('strategy_result_table');
             const note = document.getElementById('strategy_result_note');
-            table.innerHTML = '<tr><td colspan="5">正在快速完成所有策略模拟...</td></tr>';
+            table.innerHTML = '<tr><td colspan="6">正在快速完成所有策略模拟...</td></tr>';
             note.textContent = '';
             document.getElementById('btn_run_all').disabled = true;
             requestJson('/run_all_strategies', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(params) })
             .then(data => {
                 document.getElementById('btn_run_all').disabled = false;
                 if (data.status !== 'success') {
-                    table.innerHTML = `<tr><td colspan="5">${data.message || '运行失败'}</td></tr>`;
+                    table.innerHTML = `<tr><td colspan="6">${data.message || '运行失败'}</td></tr>`;
                     return;
                 }
                 table.innerHTML = '';
@@ -452,29 +452,33 @@
                     const avgScore = row.average_task_score === null || row.average_task_score === undefined ? '-' : row.average_task_score.toFixed(1);
                     const charge = row.charging_count === null || row.charging_count === undefined ? '-' : row.charging_count;
                     const label = row.status === 'unavailable' || row.status === 'time_limited' || row.status === 'gap_accepted' ? `${row.label}*` : row.label;
-                    tr.innerHTML = `<td>${label}</td><td class="num">${row.completion_rate.toFixed(1)}%</td><td class="num">${score}</td><td class="num">${avgScore}</td><td class="num">${charge}</td>`;
+                    const solveTime = row.gurobi_solve_time_sec === null || row.gurobi_solve_time_sec === undefined ? '-' : row.gurobi_solve_time_sec.toFixed(1);
+                    tr.innerHTML = `<td>${label}</td><td class="num">${row.completion_rate.toFixed(1)}%</td><td class="num">${score}</td><td class="num">${avgScore}</td><td class="num">${charge}</td><td class="num">${solveTime}</td>`;
                     table.appendChild(tr);
                 });
                 const gurobi = data.results.find(row => row.strategy === 'gurobi_oracle');
                 let gurobiMsg = '';
                 if (gurobi) {
+                    const solveTimeNote = gurobi.gurobi_solve_time_sec === null || gurobi.gurobi_solve_time_sec === undefined ? '' : `，耗时${gurobi.gurobi_solve_time_sec.toFixed(1)}秒`;
                     if (gurobi.status === 'unavailable') {
-                        gurobiMsg = `；${gurobi.message}`;
+                        gurobiMsg = `；${gurobi.message}${solveTimeNote}`;
                     } else if (gurobi.status === 'time_limited') {
                         const gap = gurobi.mip_gap === null || gurobi.mip_gap === undefined ? '' : `，gap=${(gurobi.mip_gap * 100).toFixed(2)}%`;
-                        gurobiMsg = `；Gurobi最多等待${gurobi.gurobi_time_limit || 180}秒，已找到可行解但尚未证明全局最优${gap}`;
+                        gurobiMsg = `；Gurobi最多等待${gurobi.gurobi_time_limit || 3000}秒，已找到可行解但尚未证明全局最优${gap}${solveTimeNote}`;
                     } else if (gurobi.status === 'gap_accepted') {
                         const gap = gurobi.mip_gap === null || gurobi.mip_gap === undefined ? '' : `，gap=${(gurobi.mip_gap * 100).toFixed(2)}%`;
-                        gurobiMsg = `；Gurobi在${gurobi.gurobi_time_limit || 180}秒内达到5%以内gap，可作为高质量训练样本${gap}`;
+                        gurobiMsg = `；Gurobi在${gurobi.gurobi_time_limit || 3000}秒内达到5%以内gap，可作为高质量训练样本${gap}${solveTimeNote}`;
                     } else if (gurobi.unoptimized_tasks > 0) {
-                        gurobiMsg = `；Gurobi受license/模型规模限制，仅优化 ${gurobi.optimized_tasks}/${gurobi.generated_tasks} 个任务，不能直接和全量动态策略硬比`;
+                        gurobiMsg = `；Gurobi受license/模型规模限制，仅优化 ${gurobi.optimized_tasks}/${gurobi.generated_tasks} 个任务，不能直接和全量动态策略硬比${solveTimeNote}`;
+                    } else if (solveTimeNote) {
+                        gurobiMsg = `；Gurobi已完成求解${solveTimeNote}`;
                     }
                 }
                 note.textContent = `最佳动态策略：${data.best_strategy || '-'}。Gurobi静态最优用于上帝视角对比和后续强化学习模仿${gurobiMsg}`;
             })
             .catch(error => {
                 document.getElementById('btn_run_all').disabled = false;
-                table.innerHTML = `<tr><td colspan="5">运行失败：${error}</td></tr>`;
+                table.innerHTML = `<tr><td colspan="6">运行失败：${error}</td></tr>`;
             });
         }
 

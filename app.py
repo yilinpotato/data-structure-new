@@ -108,7 +108,7 @@ def run_all_strategies():
     task_rate = float(data.get('task_rate', 0.01))
     node_count = int(data.get('node_count', 24))
     seed = int(data.get('seed', 42))
-    gurobi_time_limit = int(data.get('gurobi_time_limit', 180))
+    gurobi_time_limit = int(data.get('gurobi_time_limit', 3000))
 
     strategies = [
         ("nearest", "最近任务优先"),
@@ -157,6 +157,7 @@ def run_all_strategies():
         seed=seed
     )
     oracle_tasks = generate_static_tasks(oracle_sim)
+    oracle_start_time = time.time()
     oracle_result = solve_static_oracle(
         oracle_sim.map,
         oracle_sim.fleet,
@@ -166,6 +167,7 @@ def run_all_strategies():
         task_limit=None,
         mip_gap=0.05
     )
+    oracle_elapsed = time.time() - oracle_start_time
     optimized_tasks = oracle_result.get("optimized_tasks") or 0
     if oracle_result.get("status") == "optimal" and oracle_result.get("unoptimized_tasks", 0) == 0:
         oracle_label = "Gurobi静态最优"
@@ -196,6 +198,7 @@ def run_all_strategies():
         "mip_gap": oracle_result.get("mip_gap"),
         "model_bound": oracle_result.get("model_bound"),
         "gurobi_time_limit": gurobi_time_limit,
+        "gurobi_solve_time_sec": oracle_elapsed,
         "plan": oracle_result.get("plan", [])[:5]
     })
 
