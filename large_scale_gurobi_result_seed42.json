@@ -1,0 +1,3199 @@
+{
+  "parameters": {
+    "fleet_size": 18,
+    "simulation_time": 7200,
+    "task_rate": 0.28,
+    "node_count": 35,
+    "seed": 42,
+    "gurobi_time_limit": 3000,
+    "mip_gap": 0.01
+  },
+  "result": {
+    "status": "time_limited",
+    "message": "Gurobi found an incumbent but has not proved global optimality yet, gap=inf.",
+    "total_score": 51097.0834,
+    "total_task_score": 61997.0834,
+    "model_objective": 51097.0834,
+    "model_bound": Infinity,
+    "mip_gap": Infinity,
+    "completed_tasks": 440,
+    "failed_tasks": 109,
+    "task_limit": 581,
+    "generated_tasks": 581,
+    "optimized_tasks": 581,
+    "unoptimized_tasks": 0,
+    "plan": [
+      {
+        "vehicle_id": 1,
+        "route": [
+          {
+            "task_id": 61,
+            "location": 27,
+            "weight": 535.29,
+            "arrival_time": 600.0,
+            "score": 152.8529
+          },
+          {
+            "task_id": 1,
+            "location": 28,
+            "weight": 35.11,
+            "arrival_time": 636.0,
+            "score": 148.5511
+          },
+          {
+            "task_id": 47,
+            "location": 29,
+            "weight": 445.83,
+            "arrival_time": 706.0,
+            "score": 150.9583
+          },
+          {
+            "task_id": 201,
+            "location": 29,
+            "weight": 725.19,
+            "arrival_time": 2300.0,
+            "score": 157.2519
+          },
+          {
+            "task_id": 271,
+            "location": 30,
+            "weight": 541.49,
+            "arrival_time": 3360.0,
+            "score": 153.61489999999998
+          },
+          {
+            "task_id": 198,
+            "location": 29,
+            "weight": 492.37,
+            "arrival_time": 3396.0,
+            "score": 153.12369999999999
+          },
+          {
+            "task_id": 402,
+            "location": 30,
+            "weight": 90.51,
+            "arrival_time": 4860.0,
+            "score": 149.1051
+          },
+          {
+            "task_id": 327,
+            "location": 24,
+            "weight": 319.0,
+            "arrival_time": 4892.0,
+            "score": 151.59
+          },
+          {
+            "task_id": 376,
+            "location": 24,
+            "weight": 110.28,
+            "arrival_time": 4892.0,
+            "score": 151.1028
+          },
+          {
+            "task_id": 304,
+            "location": 3,
+            "weight": 83.87,
+            "arrival_time": 4916.0,
+            "score": 149.6387
+          },
+          {
+            "task_id": 297,
+            "location": 10,
+            "weight": 17.22,
+            "arrival_time": 4976.0,
+            "score": 147.1722
+          },
+          {
+            "task_id": 292,
+            "location": 10,
+            "weight": 22.81,
+            "arrival_time": 4976.0,
+            "score": 150.2281
+          },
+          {
+            "task_id": 283,
+            "location": 12,
+            "weight": 504.53,
+            "arrival_time": 5076.0,
+            "score": 150.0453
+          },
+          {
+            "task_id": 315,
+            "location": 12,
+            "weight": 350.47,
+            "arrival_time": 5076.0,
+            "score": 153.5047
+          },
+          {
+            "task_id": 459,
+            "location": 12,
+            "weight": 484.9,
+            "arrival_time": 5530.0,
+            "score": 154.849
+          },
+          {
+            "task_id": 325,
+            "location": 16,
+            "weight": 529.51,
+            "arrival_time": 5570.0,
+            "score": 153.2951
+          },
+          {
+            "task_id": 291,
+            "location": 33,
+            "weight": 707.42,
+            "arrival_time": 5620.0,
+            "score": 154.5742
+          },
+          {
+            "task_id": 270,
+            "location": 14,
+            "weight": 576.37,
+            "arrival_time": 5680.0,
+            "score": 152.7637
+          },
+          {
+            "task_id": 425,
+            "location": 14,
+            "weight": 207.14,
+            "arrival_time": 5680.0,
+            "score": 152.0714
+          },
+          {
+            "task_id": 366,
+            "location": 16,
+            "weight": 400.96,
+            "arrival_time": 5720.0,
+            "score": 152.0096
+          },
+          {
+            "task_id": 373,
+            "location": 16,
+            "weight": 78.11,
+            "arrival_time": 5720.0,
+            "score": 150.7811
+          },
+          {
+            "task_id": 351,
+            "location": 6,
+            "weight": 587.44,
+            "arrival_time": 5820.0,
+            "score": 150.8744
+          },
+          {
+            "task_id": 350,
+            "location": 6,
+            "weight": 328.25,
+            "arrival_time": 5820.0,
+            "score": 153.2825
+          },
+          {
+            "task_id": 490,
+            "location": 6,
+            "weight": 304.37,
+            "arrival_time": 5940.0,
+            "score": 153.0437
+          },
+          {
+            "task_id": 457,
+            "location": 6,
+            "weight": 235.2,
+            "arrival_time": 5940.0,
+            "score": 152.352
+          },
+          {
+            "task_id": 473,
+            "location": 6,
+            "weight": 112.23,
+            "arrival_time": 5940.0,
+            "score": 151.1223
+          },
+          {
+            "task_id": 458,
+            "location": 15,
+            "weight": 521.43,
+            "arrival_time": 6040.0,
+            "score": 150.2143
+          },
+          {
+            "task_id": 355,
+            "location": 9,
+            "weight": 706.9,
+            "arrival_time": 6186.0,
+            "score": 149.76899999999998
+          },
+          {
+            "task_id": 348,
+            "location": 9,
+            "weight": 207.25,
+            "arrival_time": 6186.0,
+            "score": 152.0725
+          },
+          {
+            "task_id": 418,
+            "location": 9,
+            "weight": 279.2,
+            "arrival_time": 6186.0,
+            "score": 152.792
+          },
+          {
+            "task_id": 364,
+            "location": 7,
+            "weight": 120.61,
+            "arrival_time": 6266.0,
+            "score": 147.2061
+          },
+          {
+            "task_id": 374,
+            "location": 12,
+            "weight": 104.36,
+            "arrival_time": 6406.0,
+            "score": 144.0436
+          },
+          {
+            "task_id": 556,
+            "location": 12,
+            "weight": 134.31,
+            "arrival_time": 6890.0,
+            "score": 151.3431
+          },
+          {
+            "task_id": 484,
+            "location": 6,
+            "weight": 726.44,
+            "arrival_time": 6950.0,
+            "score": 104.2644
+          },
+          {
+            "task_id": 545,
+            "location": 6,
+            "weight": 675.02,
+            "arrival_time": 6950.0,
+            "score": 106.7502
+          },
+          {
+            "task_id": 502,
+            "location": 6,
+            "weight": 635.51,
+            "arrival_time": 6950.0,
+            "score": 106.3551
+          },
+          {
+            "task_id": 149,
+            "location": 8,
+            "weight": 759.72,
+            "arrival_time": 6990.0,
+            "score": 105.5972
+          },
+          {
+            "task_id": 352,
+            "location": 32,
+            "weight": 632.76,
+            "arrival_time": 7026.0,
+            "score": 104.5276
+          },
+          {
+            "task_id": 31,
+            "location": 32,
+            "weight": 390.27,
+            "arrival_time": 7026.0,
+            "score": 103.9027
+          },
+          {
+            "task_id": 63,
+            "location": 31,
+            "weight": 637.05,
+            "arrival_time": 7078.0,
+            "score": 103.7705
+          },
+          {
+            "task_id": 345,
+            "location": 9,
+            "weight": 630.03,
+            "arrival_time": 7114.0,
+            "score": 104.50030000000001
+          },
+          {
+            "task_id": 264,
+            "location": 9,
+            "weight": 387.19,
+            "arrival_time": 7114.0,
+            "score": 103.8719
+          },
+          {
+            "task_id": 110,
+            "location": 15,
+            "weight": 769.91,
+            "arrival_time": 7174.0,
+            "score": 104.6991
+          },
+          {
+            "task_id": 202,
+            "location": 15,
+            "weight": 655.2,
+            "arrival_time": 7174.0,
+            "score": 106.552
+          },
+          {
+            "task_id": 6,
+            "location": 15,
+            "weight": 620.72,
+            "arrival_time": 7174.0,
+            "score": 106.2072
+          },
+          {
+            "task_id": 413,
+            "location": 15,
+            "weight": 464.8,
+            "arrival_time": 7174.0,
+            "score": 104.648
+          },
+          {
+            "task_id": 303,
+            "location": 15,
+            "weight": 246.98,
+            "arrival_time": 7174.0,
+            "score": 102.4698
+          },
+          {
+            "task_id": 403,
+            "location": 15,
+            "weight": 113.27,
+            "arrival_time": 7174.0,
+            "score": 101.1327
+          },
+          {
+            "task_id": 203,
+            "location": 15,
+            "weight": 32.27,
+            "arrival_time": 7174.0,
+            "score": 100.3227
+          }
+        ]
+      },
+      {
+        "vehicle_id": 2,
+        "route": [
+          {
+            "task_id": 112,
+            "location": 28,
+            "weight": 511.48,
+            "arrival_time": 1210.0,
+            "score": 151.3148
+          },
+          {
+            "task_id": 32,
+            "location": 1,
+            "weight": 788.39,
+            "arrival_time": 1234.0,
+            "score": 156.68390000000002
+          },
+          {
+            "task_id": 14,
+            "location": 1,
+            "weight": 547.42,
+            "arrival_time": 1234.0,
+            "score": 155.4742
+          },
+          {
+            "task_id": 479,
+            "location": 2,
+            "weight": 475.86,
+            "arrival_time": 5810.0,
+            "score": 153.2586
+          },
+          {
+            "task_id": 328,
+            "location": 2,
+            "weight": 391.39,
+            "arrival_time": 5810.0,
+            "score": 153.9139
+          },
+          {
+            "task_id": 377,
+            "location": 2,
+            "weight": 274.66,
+            "arrival_time": 5810.0,
+            "score": 152.7466
+          },
+          {
+            "task_id": 434,
+            "location": 2,
+            "weight": 173.49,
+            "arrival_time": 5810.0,
+            "score": 151.7349
+          },
+          {
+            "task_id": 445,
+            "location": 7,
+            "weight": 740.69,
+            "arrival_time": 5930.0,
+            "score": 151.4069
+          },
+          {
+            "task_id": 423,
+            "location": 7,
+            "weight": 749.98,
+            "arrival_time": 5930.0,
+            "score": 157.4998
+          },
+          {
+            "task_id": 392,
+            "location": 7,
+            "weight": 409.29,
+            "arrival_time": 5930.0,
+            "score": 154.0929
+          },
+          {
+            "task_id": 375,
+            "location": 32,
+            "weight": 762.88,
+            "arrival_time": 6006.0,
+            "score": 153.8288
+          },
+          {
+            "task_id": 446,
+            "location": 32,
+            "weight": 461.9,
+            "arrival_time": 6006.0,
+            "score": 154.619
+          },
+          {
+            "task_id": 483,
+            "location": 32,
+            "weight": 729.18,
+            "arrival_time": 6006.0,
+            "score": 157.2918
+          },
+          {
+            "task_id": 501,
+            "location": 32,
+            "weight": 598.74,
+            "arrival_time": 6060.0,
+            "score": 155.9874
+          },
+          {
+            "task_id": 493,
+            "location": 31,
+            "weight": 643.79,
+            "arrival_time": 6112.0,
+            "score": 153.83790000000002
+          },
+          {
+            "task_id": 566,
+            "location": 9,
+            "weight": 722.57,
+            "arrival_time": 6980.0,
+            "score": 155.42569999999998
+          },
+          {
+            "task_id": 427,
+            "location": 31,
+            "weight": 633.1,
+            "arrival_time": 7016.0,
+            "score": 154.53099999999998
+          },
+          {
+            "task_id": 430,
+            "location": 31,
+            "weight": 566.56,
+            "arrival_time": 7016.0,
+            "score": 155.6656
+          },
+          {
+            "task_id": 485,
+            "location": 6,
+            "weight": 625.83,
+            "arrival_time": 7060.0,
+            "score": 154.0583
+          },
+          {
+            "task_id": 471,
+            "location": 12,
+            "weight": 625.36,
+            "arrival_time": 7120.0,
+            "score": 153.2536
+          },
+          {
+            "task_id": 508,
+            "location": 12,
+            "weight": 587.09,
+            "arrival_time": 7120.0,
+            "score": 155.8709
+          },
+          {
+            "task_id": 524,
+            "location": 12,
+            "weight": 421.28,
+            "arrival_time": 7120.0,
+            "score": 154.2128
+          },
+          {
+            "task_id": 512,
+            "location": 12,
+            "weight": 408.08,
+            "arrival_time": 7120.0,
+            "score": 154.0808
+          },
+          {
+            "task_id": 577,
+            "location": 12,
+            "weight": 515.83,
+            "arrival_time": 7140.0,
+            "score": 155.1583
+          },
+          {
+            "task_id": 543,
+            "location": 16,
+            "weight": 630.67,
+            "arrival_time": 7180.0,
+            "score": 154.3067
+          },
+          {
+            "task_id": 496,
+            "location": 16,
+            "weight": 390.72,
+            "arrival_time": 7180.0,
+            "score": 153.9072
+          },
+          {
+            "task_id": 51,
+            "location": 16,
+            "weight": 693.04,
+            "arrival_time": 7180.0,
+            "score": 106.9304
+          },
+          {
+            "task_id": 414,
+            "location": 16,
+            "weight": 478.09,
+            "arrival_time": 7180.0,
+            "score": 104.7809
+          },
+          {
+            "task_id": 390,
+            "location": 16,
+            "weight": 341.65,
+            "arrival_time": 7180.0,
+            "score": 103.4165
+          },
+          {
+            "task_id": 36,
+            "location": 16,
+            "weight": 328.98,
+            "arrival_time": 7180.0,
+            "score": 103.2898
+          },
+          {
+            "task_id": 412,
+            "location": 16,
+            "weight": 220.56,
+            "arrival_time": 7180.0,
+            "score": 102.2056
+          }
+        ]
+      },
+      {
+        "vehicle_id": 3,
+        "route": [
+          {
+            "task_id": 398,
+            "location": 20,
+            "weight": 662.85,
+            "arrival_time": 4840.0,
+            "score": 151.6285
+          },
+          {
+            "task_id": 357,
+            "location": 20,
+            "weight": 583.53,
+            "arrival_time": 4840.0,
+            "score": 155.8353
+          },
+          {
+            "task_id": 450,
+            "location": 20,
+            "weight": 779.63,
+            "arrival_time": 5420.0,
+            "score": 157.7963
+          },
+          {
+            "task_id": 573,
+            "location": 20,
+            "weight": 466.34,
+            "arrival_time": 7070.0,
+            "score": 154.6634
+          },
+          {
+            "task_id": 452,
+            "location": 20,
+            "weight": 570.56,
+            "arrival_time": 7070.0,
+            "score": 155.7056
+          },
+          {
+            "task_id": 561,
+            "location": 19,
+            "weight": 758.33,
+            "arrival_time": 7170.0,
+            "score": 152.5833
+          },
+          {
+            "task_id": 477,
+            "location": 19,
+            "weight": 370.18,
+            "arrival_time": 7170.0,
+            "score": 153.7018
+          },
+          {
+            "task_id": 549,
+            "location": 19,
+            "weight": 115.77,
+            "arrival_time": 7170.0,
+            "score": 151.1577
+          }
+        ]
+      },
+      {
+        "vehicle_id": 4,
+        "route": [
+          {
+            "task_id": 86,
+            "location": 27,
+            "weight": 659.64,
+            "arrival_time": 920.0,
+            "score": 154.0964
+          },
+          {
+            "task_id": 363,
+            "location": 27,
+            "weight": 496.7,
+            "arrival_time": 4520.0,
+            "score": 154.967
+          },
+          {
+            "task_id": 238,
+            "location": 4,
+            "weight": 239.27,
+            "arrival_time": 4560.0,
+            "score": 150.3927
+          },
+          {
+            "task_id": 333,
+            "location": 28,
+            "weight": 317.18,
+            "arrival_time": 4596.0,
+            "score": 151.37179999999998
+          },
+          {
+            "task_id": 305,
+            "location": 28,
+            "weight": 519.48,
+            "arrival_time": 4596.0,
+            "score": 155.1948
+          },
+          {
+            "task_id": 310,
+            "location": 28,
+            "weight": 193.39,
+            "arrival_time": 4596.0,
+            "score": 151.9339
+          },
+          {
+            "task_id": 218,
+            "location": 29,
+            "weight": 287.72,
+            "arrival_time": 4666.0,
+            "score": 149.3772
+          },
+          {
+            "task_id": 220,
+            "location": 29,
+            "weight": 37.49,
+            "arrival_time": 4666.0,
+            "score": 150.3749
+          },
+          {
+            "task_id": 387,
+            "location": 35,
+            "weight": 610.78,
+            "arrival_time": 4772.0,
+            "score": 150.8078
+          },
+          {
+            "task_id": 571,
+            "location": 35,
+            "weight": 344.61,
+            "arrival_time": 7060.0,
+            "score": 153.4461
+          },
+          {
+            "task_id": 470,
+            "location": 10,
+            "weight": 118.52,
+            "arrival_time": 7110.0,
+            "score": 148.6852
+          },
+          {
+            "task_id": 531,
+            "location": 10,
+            "weight": 28.76,
+            "arrival_time": 7110.0,
+            "score": 150.2876
+          },
+          {
+            "task_id": 537,
+            "location": 10,
+            "weight": 107.36,
+            "arrival_time": 7110.0,
+            "score": 151.0736
+          },
+          {
+            "task_id": 433,
+            "location": 24,
+            "weight": 13.01,
+            "arrival_time": 7146.0,
+            "score": 148.3301
+          },
+          {
+            "task_id": 18,
+            "location": 24,
+            "weight": 704.19,
+            "arrival_time": 7146.0,
+            "score": 107.0419
+          },
+          {
+            "task_id": 324,
+            "location": 24,
+            "weight": 564.29,
+            "arrival_time": 7146.0,
+            "score": 105.6429
+          },
+          {
+            "task_id": 75,
+            "location": 30,
+            "weight": 736.44,
+            "arrival_time": 7178.0,
+            "score": 105.76440000000001
+          },
+          {
+            "task_id": 54,
+            "location": 30,
+            "weight": 286.23,
+            "arrival_time": 7178.0,
+            "score": 102.8623
+          },
+          {
+            "task_id": 437,
+            "location": 30,
+            "weight": 218.09,
+            "arrival_time": 7178.0,
+            "score": 102.1809
+          },
+          {
+            "task_id": 353,
+            "location": 30,
+            "weight": 22.86,
+            "arrival_time": 7178.0,
+            "score": 100.2286
+          },
+          {
+            "task_id": 354,
+            "location": 30,
+            "weight": 10.53,
+            "arrival_time": 7178.0,
+            "score": 100.1053
+          }
+        ]
+      },
+      {
+        "vehicle_id": 5,
+        "route": [
+          {
+            "task_id": 9,
+            "location": 3,
+            "weight": 645.99,
+            "arrival_time": 120.0,
+            "score": 152.9599
+          },
+          {
+            "task_id": 24,
+            "location": 3,
+            "weight": 689.11,
+            "arrival_time": 270.0,
+            "score": 156.8911
+          },
+          {
+            "task_id": 280,
+            "location": 3,
+            "weight": 327.79,
+            "arrival_time": 3450.0,
+            "score": 153.2779
+          },
+          {
+            "task_id": 172,
+            "location": 4,
+            "weight": 542.44,
+            "arrival_time": 3480.0,
+            "score": 153.9244
+          },
+          {
+            "task_id": 185,
+            "location": 4,
+            "weight": 288.03,
+            "arrival_time": 3480.0,
+            "score": 152.8803
+          },
+          {
+            "task_id": 155,
+            "location": 1,
+            "weight": 293.01,
+            "arrival_time": 3500.0,
+            "score": 151.9301
+          },
+          {
+            "task_id": 248,
+            "location": 4,
+            "weight": 470.98,
+            "arrival_time": 3520.0,
+            "score": 153.7098
+          },
+          {
+            "task_id": 214,
+            "location": 3,
+            "weight": 259.32,
+            "arrival_time": 3550.0,
+            "score": 151.0932
+          },
+          {
+            "task_id": 282,
+            "location": 10,
+            "weight": 788.7,
+            "arrival_time": 3610.0,
+            "score": 154.887
+          },
+          {
+            "task_id": 323,
+            "location": 10,
+            "weight": 575.04,
+            "arrival_time": 4010.0,
+            "score": 155.7504
+          },
+          {
+            "task_id": 266,
+            "location": 24,
+            "weight": 557.29,
+            "arrival_time": 4046.0,
+            "score": 153.7729
+          },
+          {
+            "task_id": 385,
+            "location": 30,
+            "weight": 694.17,
+            "arrival_time": 4730.0,
+            "score": 155.3417
+          },
+          {
+            "task_id": 455,
+            "location": 30,
+            "weight": 409.05,
+            "arrival_time": 5470.0,
+            "score": 154.0905
+          },
+          {
+            "task_id": 277,
+            "location": 30,
+            "weight": 283.47,
+            "arrival_time": 5470.0,
+            "score": 152.8347
+          },
+          {
+            "task_id": 500,
+            "location": 30,
+            "weight": 360.91,
+            "arrival_time": 6050.0,
+            "score": 153.6091
+          },
+          {
+            "task_id": 407,
+            "location": 29,
+            "weight": 707.9,
+            "arrival_time": 6086.0,
+            "score": 155.279
+          },
+          {
+            "task_id": 472,
+            "location": 29,
+            "weight": 226.09,
+            "arrival_time": 6086.0,
+            "score": 152.2609
+          },
+          {
+            "task_id": 481,
+            "location": 29,
+            "weight": 310.4,
+            "arrival_time": 6086.0,
+            "score": 153.104
+          },
+          {
+            "task_id": 454,
+            "location": 30,
+            "weight": 49.94,
+            "arrival_time": 6122.0,
+            "score": 148.6994
+          },
+          {
+            "task_id": 447,
+            "location": 10,
+            "weight": 498.41,
+            "arrival_time": 6190.0,
+            "score": 151.5841
+          },
+          {
+            "task_id": 329,
+            "location": 10,
+            "weight": 285.18,
+            "arrival_time": 6190.0,
+            "score": 152.8518
+          },
+          {
+            "task_id": 362,
+            "location": 10,
+            "weight": 64.05,
+            "arrival_time": 6190.0,
+            "score": 150.6405
+          },
+          {
+            "task_id": 436,
+            "location": 35,
+            "weight": 316.15,
+            "arrival_time": 6240.0,
+            "score": 150.6615
+          },
+          {
+            "task_id": 546,
+            "location": 35,
+            "weight": 165.18,
+            "arrival_time": 6740.0,
+            "score": 151.6518
+          },
+          {
+            "task_id": 356,
+            "location": 24,
+            "weight": 207.81,
+            "arrival_time": 6826.0,
+            "score": 147.7781
+          },
+          {
+            "task_id": 521,
+            "location": 12,
+            "weight": 590.71,
+            "arrival_time": 6962.0,
+            "score": 149.1071
+          },
+          {
+            "task_id": 511,
+            "location": 14,
+            "weight": 503.09,
+            "arrival_time": 7042.0,
+            "score": 151.0309
+          },
+          {
+            "task_id": 525,
+            "location": 15,
+            "weight": 707.88,
+            "arrival_time": 7082.0,
+            "score": 155.0788
+          },
+          {
+            "task_id": 465,
+            "location": 15,
+            "weight": 552.19,
+            "arrival_time": 7082.0,
+            "score": 155.5219
+          },
+          {
+            "task_id": 568,
+            "location": 15,
+            "weight": 728.97,
+            "arrival_time": 7082.0,
+            "score": 157.2897
+          },
+          {
+            "task_id": 503,
+            "location": 15,
+            "weight": 11.74,
+            "arrival_time": 7082.0,
+            "score": 150.1174
+          },
+          {
+            "task_id": 480,
+            "location": 7,
+            "weight": 526.32,
+            "arrival_time": 7182.0,
+            "score": 150.2632
+          },
+          {
+            "task_id": 513,
+            "location": 7,
+            "weight": 29.96,
+            "arrival_time": 7182.0,
+            "score": 150.2996
+          },
+          {
+            "task_id": 565,
+            "location": 7,
+            "weight": 150.16,
+            "arrival_time": 7182.0,
+            "score": 101.5016
+          }
+        ]
+      },
+      {
+        "vehicle_id": 6,
+        "route": [
+          {
+            "task_id": 234,
+            "location": 3,
+            "weight": 759.35,
+            "arrival_time": 2730.0,
+            "score": 154.0935
+          },
+          {
+            "task_id": 111,
+            "location": 3,
+            "weight": 612.86,
+            "arrival_time": 2730.0,
+            "score": 156.1286
+          },
+          {
+            "task_id": 137,
+            "location": 4,
+            "weight": 729.39,
+            "arrival_time": 2760.0,
+            "score": 155.7939
+          },
+          {
+            "task_id": 406,
+            "location": 28,
+            "weight": 659.13,
+            "arrival_time": 4890.0,
+            "score": 154.79129999999998
+          },
+          {
+            "task_id": 320,
+            "location": 1,
+            "weight": 759.57,
+            "arrival_time": 4914.0,
+            "score": 156.3957
+          },
+          {
+            "task_id": 258,
+            "location": 3,
+            "weight": 731.45,
+            "arrival_time": 4954.0,
+            "score": 155.3145
+          },
+          {
+            "task_id": 296,
+            "location": 3,
+            "weight": 672.86,
+            "arrival_time": 4954.0,
+            "score": 156.7286
+          },
+          {
+            "task_id": 381,
+            "location": 3,
+            "weight": 382.69,
+            "arrival_time": 4954.0,
+            "score": 153.8269
+          },
+          {
+            "task_id": 337,
+            "location": 10,
+            "weight": 413.55,
+            "arrival_time": 5014.0,
+            "score": 151.1355
+          },
+          {
+            "task_id": 339,
+            "location": 25,
+            "weight": 771.42,
+            "arrival_time": 5058.0,
+            "score": 155.51420000000002
+          },
+          {
+            "task_id": 389,
+            "location": 25,
+            "weight": 680.71,
+            "arrival_time": 5058.0,
+            "score": 156.8071
+          },
+          {
+            "task_id": 460,
+            "location": 25,
+            "weight": 682.75,
+            "arrival_time": 5540.0,
+            "score": 156.8275
+          },
+          {
+            "task_id": 313,
+            "location": 25,
+            "weight": 572.22,
+            "arrival_time": 5540.0,
+            "score": 155.7222
+          },
+          {
+            "task_id": 321,
+            "location": 26,
+            "weight": 775.29,
+            "arrival_time": 5610.0,
+            "score": 154.2529
+          },
+          {
+            "task_id": 401,
+            "location": 26,
+            "weight": 685.14,
+            "arrival_time": 5610.0,
+            "score": 156.8514
+          },
+          {
+            "task_id": 370,
+            "location": 26,
+            "weight": 410.22,
+            "arrival_time": 5610.0,
+            "score": 154.1022
+          },
+          {
+            "task_id": 429,
+            "location": 11,
+            "weight": 711.47,
+            "arrival_time": 5680.0,
+            "score": 153.6147
+          },
+          {
+            "task_id": 308,
+            "location": 11,
+            "weight": 455.53,
+            "arrival_time": 5680.0,
+            "score": 154.5553
+          },
+          {
+            "task_id": 558,
+            "location": 11,
+            "weight": 521.33,
+            "arrival_time": 6910.0,
+            "score": 155.2133
+          },
+          {
+            "task_id": 497,
+            "location": 11,
+            "weight": 409.4,
+            "arrival_time": 6910.0,
+            "score": 154.094
+          },
+          {
+            "task_id": 536,
+            "location": 11,
+            "weight": 431.44,
+            "arrival_time": 6910.0,
+            "score": 154.3144
+          },
+          {
+            "task_id": 529,
+            "location": 35,
+            "weight": 431.23,
+            "arrival_time": 6950.0,
+            "score": 152.3123
+          },
+          {
+            "task_id": 491,
+            "location": 25,
+            "weight": 555.02,
+            "arrival_time": 6990.0,
+            "score": 153.5502
+          },
+          {
+            "task_id": 408,
+            "location": 25,
+            "weight": 118.42,
+            "arrival_time": 6990.0,
+            "score": 151.1842
+          },
+          {
+            "task_id": 523,
+            "location": 10,
+            "weight": 743.62,
+            "arrival_time": 7034.0,
+            "score": 155.23620000000003
+          },
+          {
+            "task_id": 444,
+            "location": 30,
+            "weight": 734.56,
+            "arrival_time": 7102.0,
+            "score": 153.94559999999998
+          },
+          {
+            "task_id": 519,
+            "location": 24,
+            "weight": 606.54,
+            "arrival_time": 7134.0,
+            "score": 154.46540000000002
+          },
+          {
+            "task_id": 548,
+            "location": 3,
+            "weight": 445.76,
+            "arrival_time": 7158.0,
+            "score": 153.25760000000002
+          },
+          {
+            "task_id": 535,
+            "location": 3,
+            "weight": 563.7,
+            "arrival_time": 7158.0,
+            "score": 155.637
+          },
+          {
+            "task_id": 488,
+            "location": 3,
+            "weight": 17.64,
+            "arrival_time": 7158.0,
+            "score": 150.1764
+          },
+          {
+            "task_id": 367,
+            "location": 1,
+            "weight": 789.64,
+            "arrival_time": 7198.0,
+            "score": 105.8964
+          },
+          {
+            "task_id": 421,
+            "location": 1,
+            "weight": 759.54,
+            "arrival_time": 7198.0,
+            "score": 107.5954
+          },
+          {
+            "task_id": 66,
+            "location": 1,
+            "weight": 715.2,
+            "arrival_time": 7198.0,
+            "score": 107.152
+          },
+          {
+            "task_id": 575,
+            "location": 1,
+            "weight": 645.45,
+            "arrival_time": 7198.0,
+            "score": 106.4545
+          }
+        ]
+      },
+      {
+        "vehicle_id": 7,
+        "route": [
+          {
+            "task_id": 80,
+            "location": 2,
+            "weight": 760.19,
+            "arrival_time": 860.0,
+            "score": 153.1019
+          },
+          {
+            "task_id": 340,
+            "location": 2,
+            "weight": 638.75,
+            "arrival_time": 4270.0,
+            "score": 156.3875
+          },
+          {
+            "task_id": 178,
+            "location": 2,
+            "weight": 773.3,
+            "arrival_time": 4270.0,
+            "score": 157.733
+          },
+          {
+            "task_id": 580,
+            "location": 1,
+            "weight": 592.17,
+            "arrival_time": 7180.0,
+            "score": 154.4217
+          },
+          {
+            "task_id": 475,
+            "location": 1,
+            "weight": 505.08,
+            "arrival_time": 7180.0,
+            "score": 155.0508
+          },
+          {
+            "task_id": 569,
+            "location": 1,
+            "weight": 466.61,
+            "arrival_time": 7180.0,
+            "score": 154.6661
+          },
+          {
+            "task_id": 482,
+            "location": 1,
+            "weight": 247.88,
+            "arrival_time": 7180.0,
+            "score": 152.4788
+          },
+          {
+            "task_id": 515,
+            "location": 4,
+            "weight": 555.57,
+            "arrival_time": 7200.0,
+            "score": 154.5557
+          },
+          {
+            "task_id": 532,
+            "location": 4,
+            "weight": 150.61,
+            "arrival_time": 7200.0,
+            "score": 151.5061
+          },
+          {
+            "task_id": 492,
+            "location": 4,
+            "weight": 785.44,
+            "arrival_time": 7200.0,
+            "score": 107.8544
+          },
+          {
+            "task_id": 540,
+            "location": 4,
+            "weight": 682.6,
+            "arrival_time": 7200.0,
+            "score": 106.826
+          },
+          {
+            "task_id": 439,
+            "location": 4,
+            "weight": 674.23,
+            "arrival_time": 7200.0,
+            "score": 106.7423
+          },
+          {
+            "task_id": 187,
+            "location": 4,
+            "weight": 365.91,
+            "arrival_time": 7200.0,
+            "score": 103.6591
+          },
+          {
+            "task_id": 393,
+            "location": 4,
+            "weight": 353.64,
+            "arrival_time": 7200.0,
+            "score": 103.5364
+          },
+          {
+            "task_id": 98,
+            "location": 4,
+            "weight": 209.46,
+            "arrival_time": 7200.0,
+            "score": 102.0946
+          }
+        ]
+      },
+      {
+        "vehicle_id": 8,
+        "route": [
+          {
+            "task_id": 19,
+            "location": 6,
+            "weight": 77.67,
+            "arrival_time": 220.0,
+            "score": 142.7767
+          },
+          {
+            "task_id": 205,
+            "location": 31,
+            "weight": 364.4,
+            "arrival_time": 2340.0,
+            "score": 149.144
+          },
+          {
+            "task_id": 154,
+            "location": 9,
+            "weight": 436.77,
+            "arrival_time": 2376.0,
+            "score": 152.5677
+          },
+          {
+            "task_id": 49,
+            "location": 9,
+            "weight": 43.04,
+            "arrival_time": 2376.0,
+            "score": 150.4304
+          },
+          {
+            "task_id": 25,
+            "location": 32,
+            "weight": 179.25,
+            "arrival_time": 2452.0,
+            "score": 147.99249999999998
+          },
+          {
+            "task_id": 147,
+            "location": 24,
+            "weight": 181.64,
+            "arrival_time": 2724.0,
+            "score": 138.2164
+          },
+          {
+            "task_id": 82,
+            "location": 24,
+            "weight": 142.55,
+            "arrival_time": 2724.0,
+            "score": 151.4255
+          },
+          {
+            "task_id": 67,
+            "location": 34,
+            "weight": 376.99,
+            "arrival_time": 2964.0,
+            "score": 141.7699
+          },
+          {
+            "task_id": 170,
+            "location": 34,
+            "weight": 179.95,
+            "arrival_time": 2964.0,
+            "score": 151.7995
+          },
+          {
+            "task_id": 192,
+            "location": 34,
+            "weight": 83.83,
+            "arrival_time": 2964.0,
+            "score": 150.8383
+          },
+          {
+            "task_id": 93,
+            "location": 13,
+            "weight": 259.28,
+            "arrival_time": 3054.0,
+            "score": 148.0928
+          },
+          {
+            "task_id": 395,
+            "location": 13,
+            "weight": 117.53,
+            "arrival_time": 4830.0,
+            "score": 151.1753
+          },
+          {
+            "task_id": 287,
+            "location": 13,
+            "weight": 50.71,
+            "arrival_time": 4830.0,
+            "score": 150.5071
+          },
+          {
+            "task_id": 361,
+            "location": 21,
+            "weight": 300.37,
+            "arrival_time": 5100.0,
+            "score": 139.5037
+          },
+          {
+            "task_id": 335,
+            "location": 21,
+            "weight": 165.69,
+            "arrival_time": 5100.0,
+            "score": 151.6569
+          },
+          {
+            "task_id": 399,
+            "location": 21,
+            "weight": 127.18,
+            "arrival_time": 5100.0,
+            "score": 151.2718
+          },
+          {
+            "task_id": 553,
+            "location": 21,
+            "weight": 91.55,
+            "arrival_time": 6830.0,
+            "score": 100.9155
+          },
+          {
+            "task_id": 494,
+            "location": 21,
+            "weight": 19.76,
+            "arrival_time": 6830.0,
+            "score": 100.1976
+          },
+          {
+            "task_id": 469,
+            "location": 13,
+            "weight": 405.38,
+            "arrival_time": 7030.0,
+            "score": 94.0538
+          },
+          {
+            "task_id": 215,
+            "location": 13,
+            "weight": 236.03,
+            "arrival_time": 7030.0,
+            "score": 102.3603
+          },
+          {
+            "task_id": 505,
+            "location": 13,
+            "weight": 158.16,
+            "arrival_time": 7030.0,
+            "score": 101.5816
+          },
+          {
+            "task_id": 275,
+            "location": 35,
+            "weight": 115.06,
+            "arrival_time": 7190.0,
+            "score": 93.1506
+          }
+        ]
+      },
+      {
+        "vehicle_id": 9,
+        "route": [
+          {
+            "task_id": 123,
+            "location": 25,
+            "weight": 194.51,
+            "arrival_time": 1350.0,
+            "score": 143.2451
+          },
+          {
+            "task_id": 96,
+            "location": 35,
+            "weight": 110.0,
+            "arrival_time": 1390.0,
+            "score": 149.1
+          },
+          {
+            "task_id": 146,
+            "location": 35,
+            "weight": 117.17,
+            "arrival_time": 1650.0,
+            "score": 151.1717
+          },
+          {
+            "task_id": 142,
+            "location": 35,
+            "weight": 107.64,
+            "arrival_time": 1650.0,
+            "score": 151.0764
+          },
+          {
+            "task_id": 349,
+            "location": 26,
+            "weight": 396.67,
+            "arrival_time": 4380.0,
+            "score": 148.4667
+          },
+          {
+            "task_id": 478,
+            "location": 26,
+            "weight": 25.11,
+            "arrival_time": 5800.0,
+            "score": 150.2511
+          },
+          {
+            "task_id": 386,
+            "location": 13,
+            "weight": 240.36,
+            "arrival_time": 5980.0,
+            "score": 143.4036
+          },
+          {
+            "task_id": 410,
+            "location": 21,
+            "weight": 481.72,
+            "arrival_time": 6250.0,
+            "score": 141.3172
+          },
+          {
+            "task_id": 372,
+            "location": 21,
+            "weight": 318.68,
+            "arrival_time": 6250.0,
+            "score": 153.1868
+          },
+          {
+            "task_id": 570,
+            "location": 21,
+            "weight": 332.99,
+            "arrival_time": 7050.0,
+            "score": 153.3299
+          },
+          {
+            "task_id": 495,
+            "location": 22,
+            "weight": 420.09,
+            "arrival_time": 7150.0,
+            "score": 149.2009
+          }
+        ]
+      },
+      {
+        "vehicle_id": 10,
+        "route": [
+          {
+            "task_id": 129,
+            "location": 5,
+            "weight": 195.47,
+            "arrival_time": 1410.0,
+            "score": 144.4547
+          },
+          {
+            "task_id": 99,
+            "location": 5,
+            "weight": 326.56,
+            "arrival_time": 1410.0,
+            "score": 153.2656
+          },
+          {
+            "task_id": 121,
+            "location": 5,
+            "weight": 228.24,
+            "arrival_time": 1410.0,
+            "score": 152.2824
+          },
+          {
+            "task_id": 184,
+            "location": 5,
+            "weight": 380.45,
+            "arrival_time": 2080.0,
+            "score": 153.8045
+          },
+          {
+            "task_id": 58,
+            "location": 7,
+            "weight": 481.29,
+            "arrival_time": 2260.0,
+            "score": 145.8129
+          },
+          {
+            "task_id": 27,
+            "location": 7,
+            "weight": 57.88,
+            "arrival_time": 2260.0,
+            "score": 150.5788
+          },
+          {
+            "task_id": 193,
+            "location": 14,
+            "weight": 279.97,
+            "arrival_time": 2320.0,
+            "score": 149.7997
+          },
+          {
+            "task_id": 244,
+            "location": 33,
+            "weight": 327.1,
+            "arrival_time": 2910.0,
+            "score": 150.271
+          },
+          {
+            "task_id": 173,
+            "location": 33,
+            "weight": 99.92,
+            "arrival_time": 2910.0,
+            "score": 150.9992
+          },
+          {
+            "task_id": 157,
+            "location": 33,
+            "weight": 185.02,
+            "arrival_time": 2910.0,
+            "score": 151.8502
+          },
+          {
+            "task_id": 84,
+            "location": 16,
+            "weight": 90.5,
+            "arrival_time": 2960.0,
+            "score": 148.405
+          },
+          {
+            "task_id": 188,
+            "location": 12,
+            "weight": 40.92,
+            "arrival_time": 3000.0,
+            "score": 148.4092
+          },
+          {
+            "task_id": 114,
+            "location": 6,
+            "weight": 258.47,
+            "arrival_time": 3060.0,
+            "score": 149.5847
+          },
+          {
+            "task_id": 94,
+            "location": 31,
+            "weight": 228.43,
+            "arrival_time": 3150.0,
+            "score": 147.7843
+          },
+          {
+            "task_id": 166,
+            "location": 31,
+            "weight": 187.15,
+            "arrival_time": 3150.0,
+            "score": 151.8715
+          },
+          {
+            "task_id": 210,
+            "location": 31,
+            "weight": 44.39,
+            "arrival_time": 3150.0,
+            "score": 150.4439
+          },
+          {
+            "task_id": 222,
+            "location": 8,
+            "weight": 30.47,
+            "arrival_time": 3200.0,
+            "score": 147.8047
+          },
+          {
+            "task_id": 319,
+            "location": 18,
+            "weight": 342.67,
+            "arrival_time": 3870.0,
+            "score": 133.4267
+          },
+          {
+            "task_id": 318,
+            "location": 18,
+            "weight": 247.89,
+            "arrival_time": 3870.0,
+            "score": 152.4789
+          },
+          {
+            "task_id": 168,
+            "location": 18,
+            "weight": 32.87,
+            "arrival_time": 3870.0,
+            "score": 150.3287
+          },
+          {
+            "task_id": 232,
+            "location": 18,
+            "weight": 108.88,
+            "arrival_time": 3870.0,
+            "score": 151.0888
+          },
+          {
+            "task_id": 554,
+            "location": 17,
+            "weight": 467.12,
+            "arrival_time": 6840.0,
+            "score": 144.6712
+          },
+          {
+            "task_id": 533,
+            "location": 17,
+            "weight": 332.03,
+            "arrival_time": 6840.0,
+            "score": 153.3203
+          },
+          {
+            "task_id": 576,
+            "location": 17,
+            "weight": 185.2,
+            "arrival_time": 7120.0,
+            "score": 151.852
+          },
+          {
+            "task_id": 522,
+            "location": 17,
+            "weight": 14.46,
+            "arrival_time": 7120.0,
+            "score": 150.1446
+          },
+          {
+            "task_id": 518,
+            "location": 17,
+            "weight": 170.44,
+            "arrival_time": 7120.0,
+            "score": 101.7044
+          },
+          {
+            "task_id": 57,
+            "location": 17,
+            "weight": 151.07,
+            "arrival_time": 7120.0,
+            "score": 101.5107
+          }
+        ]
+      },
+      {
+        "vehicle_id": 11,
+        "route": [
+          {
+            "task_id": 159,
+            "location": 6,
+            "weight": 264.47,
+            "arrival_time": 1780.0,
+            "score": 144.6447
+          },
+          {
+            "task_id": 37,
+            "location": 6,
+            "weight": 341.19,
+            "arrival_time": 1780.0,
+            "score": 153.4119
+          },
+          {
+            "task_id": 103,
+            "location": 6,
+            "weight": 134.08,
+            "arrival_time": 1780.0,
+            "score": 151.3408
+          },
+          {
+            "task_id": 217,
+            "location": 12,
+            "weight": 440.92,
+            "arrival_time": 2500.0,
+            "score": 151.4092
+          },
+          {
+            "task_id": 317,
+            "location": 16,
+            "weight": 461.85,
+            "arrival_time": 3870.0,
+            "score": 152.6185
+          },
+          {
+            "task_id": 237,
+            "location": 16,
+            "weight": 378.51,
+            "arrival_time": 3870.0,
+            "score": 153.7851
+          },
+          {
+            "task_id": 286,
+            "location": 16,
+            "weight": 211.45,
+            "arrival_time": 3870.0,
+            "score": 152.1145
+          },
+          {
+            "task_id": 254,
+            "location": 16,
+            "weight": 201.54,
+            "arrival_time": 3870.0,
+            "score": 152.0154
+          },
+          {
+            "task_id": 290,
+            "location": 14,
+            "weight": 323.34,
+            "arrival_time": 3910.0,
+            "score": 151.2334
+          },
+          {
+            "task_id": 143,
+            "location": 15,
+            "weight": 382.47,
+            "arrival_time": 3950.0,
+            "score": 151.8247
+          },
+          {
+            "task_id": 255,
+            "location": 15,
+            "weight": 51.47,
+            "arrival_time": 3950.0,
+            "score": 150.5147
+          },
+          {
+            "task_id": 250,
+            "location": 14,
+            "weight": 334.2,
+            "arrival_time": 3990.0,
+            "score": 151.342
+          },
+          {
+            "task_id": 269,
+            "location": 33,
+            "weight": 169.7,
+            "arrival_time": 4050.0,
+            "score": 148.697
+          },
+          {
+            "task_id": 262,
+            "location": 12,
+            "weight": 21.13,
+            "arrival_time": 4140.0,
+            "score": 145.7113
+          },
+          {
+            "task_id": 191,
+            "location": 6,
+            "weight": 254.57,
+            "arrival_time": 4200.0,
+            "score": 149.5457
+          },
+          {
+            "task_id": 228,
+            "location": 6,
+            "weight": 61.94,
+            "arrival_time": 4200.0,
+            "score": 150.6194
+          },
+          {
+            "task_id": 249,
+            "location": 8,
+            "weight": 160.72,
+            "arrival_time": 4240.0,
+            "score": 149.6072
+          },
+          {
+            "task_id": 261,
+            "location": 8,
+            "weight": 271.24,
+            "arrival_time": 4240.0,
+            "score": 152.7124
+          },
+          {
+            "task_id": 207,
+            "location": 8,
+            "weight": 47.72,
+            "arrival_time": 4240.0,
+            "score": 150.4772
+          },
+          {
+            "task_id": 251,
+            "location": 31,
+            "weight": 161.89,
+            "arrival_time": 4290.0,
+            "score": 149.1189
+          },
+          {
+            "task_id": 247,
+            "location": 31,
+            "weight": 219.77,
+            "arrival_time": 4290.0,
+            "score": 152.1977
+          },
+          {
+            "task_id": 268,
+            "location": 9,
+            "weight": 387.76,
+            "arrival_time": 4326.0,
+            "score": 152.0776
+          },
+          {
+            "task_id": 194,
+            "location": 9,
+            "weight": 132.41,
+            "arrival_time": 4326.0,
+            "score": 151.3241
+          },
+          {
+            "task_id": 336,
+            "location": 9,
+            "weight": 257.42,
+            "arrival_time": 4326.0,
+            "score": 152.5742
+          },
+          {
+            "task_id": 273,
+            "location": 31,
+            "weight": 35.07,
+            "arrival_time": 4362.0,
+            "score": 148.55069999999998
+          },
+          {
+            "task_id": 326,
+            "location": 7,
+            "weight": 214.4,
+            "arrival_time": 4450.0,
+            "score": 147.744
+          },
+          {
+            "task_id": 316,
+            "location": 23,
+            "weight": 447.83,
+            "arrival_time": 5130.0,
+            "score": 120.4783
+          },
+          {
+            "task_id": 527,
+            "location": 23,
+            "weight": 362.08,
+            "arrival_time": 6450.0,
+            "score": 103.6208
+          },
+          {
+            "task_id": 176,
+            "location": 23,
+            "weight": 66.94,
+            "arrival_time": 6450.0,
+            "score": 100.6694
+          },
+          {
+            "task_id": 167,
+            "location": 18,
+            "weight": 463.54,
+            "arrival_time": 6770.0,
+            "score": 88.6354
+          },
+          {
+            "task_id": 391,
+            "location": 18,
+            "weight": 83.49,
+            "arrival_time": 6770.0,
+            "score": 100.8349
+          },
+          {
+            "task_id": 152,
+            "location": 14,
+            "weight": 473.24,
+            "arrival_time": 7070.0,
+            "score": 89.7324
+          },
+          {
+            "task_id": 288,
+            "location": 14,
+            "weight": 388.72,
+            "arrival_time": 7070.0,
+            "score": 103.8872
+          }
+        ]
+      },
+      {
+        "vehicle_id": 12,
+        "route": [
+          {
+            "task_id": 109,
+            "location": 35,
+            "weight": 400.1,
+            "arrival_time": 1170.0,
+            "score": 145.001
+          },
+          {
+            "task_id": 8,
+            "location": 11,
+            "weight": 431.97,
+            "arrival_time": 1210.0,
+            "score": 152.3197
+          },
+          {
+            "task_id": 17,
+            "location": 11,
+            "weight": 436.11,
+            "arrival_time": 1210.0,
+            "score": 154.3611
+          },
+          {
+            "task_id": 113,
+            "location": 11,
+            "weight": 270.54,
+            "arrival_time": 1220.0,
+            "score": 152.7054
+          },
+          {
+            "task_id": 322,
+            "location": 35,
+            "weight": 152.14,
+            "arrival_time": 3970.0,
+            "score": 149.5214
+          },
+          {
+            "task_id": 253,
+            "location": 35,
+            "weight": 224.19,
+            "arrival_time": 3970.0,
+            "score": 152.2419
+          },
+          {
+            "task_id": 212,
+            "location": 35,
+            "weight": 277.45,
+            "arrival_time": 3970.0,
+            "score": 152.7745
+          },
+          {
+            "task_id": 265,
+            "location": 25,
+            "weight": 196.06,
+            "arrival_time": 4010.0,
+            "score": 149.9606
+          },
+          {
+            "task_id": 236,
+            "location": 10,
+            "weight": 256.94,
+            "arrival_time": 4054.0,
+            "score": 150.3694
+          },
+          {
+            "task_id": 213,
+            "location": 30,
+            "weight": 39.22,
+            "arrival_time": 4122.0,
+            "score": 146.9922
+          },
+          {
+            "task_id": 341,
+            "location": 35,
+            "weight": 238.05,
+            "arrival_time": 4270.0,
+            "score": 148.8805
+          },
+          {
+            "task_id": 564,
+            "location": 25,
+            "weight": 114.45,
+            "arrival_time": 6950.0,
+            "score": 149.1445
+          },
+          {
+            "task_id": 516,
+            "location": 25,
+            "weight": 197.7,
+            "arrival_time": 6950.0,
+            "score": 151.977
+          },
+          {
+            "task_id": 517,
+            "location": 25,
+            "weight": 316.17,
+            "arrival_time": 6950.0,
+            "score": 103.1617
+          },
+          {
+            "task_id": 48,
+            "location": 10,
+            "weight": 441.02,
+            "arrival_time": 6994.0,
+            "score": 102.2102
+          },
+          {
+            "task_id": 148,
+            "location": 24,
+            "weight": 440.13,
+            "arrival_time": 7030.0,
+            "score": 102.60130000000001
+          },
+          {
+            "task_id": 227,
+            "location": 24,
+            "weight": 379.25,
+            "arrival_time": 7030.0,
+            "score": 103.7925
+          },
+          {
+            "task_id": 382,
+            "location": 3,
+            "weight": 446.76,
+            "arrival_time": 7054.0,
+            "score": 103.2676
+          },
+          {
+            "task_id": 440,
+            "location": 3,
+            "weight": 406.66,
+            "arrival_time": 7054.0,
+            "score": 104.0666
+          },
+          {
+            "task_id": 124,
+            "location": 3,
+            "weight": 109.73,
+            "arrival_time": 7054.0,
+            "score": 101.0973
+          },
+          {
+            "task_id": 224,
+            "location": 5,
+            "weight": 367.11,
+            "arrival_time": 7184.0,
+            "score": 97.1711
+          },
+          {
+            "task_id": 141,
+            "location": 5,
+            "weight": 121.2,
+            "arrival_time": 7184.0,
+            "score": 101.212
+          }
+        ]
+      },
+      {
+        "vehicle_id": 13,
+        "route": [
+          {
+            "task_id": 83,
+            "location": 20,
+            "weight": 95.4,
+            "arrival_time": 880.0,
+            "score": 145.954
+          },
+          {
+            "task_id": 100,
+            "location": 20,
+            "weight": 77.29,
+            "arrival_time": 1090.0,
+            "score": 150.7729
+          },
+          {
+            "task_id": 165,
+            "location": 19,
+            "weight": 484.32,
+            "arrival_time": 1870.0,
+            "score": 149.8432
+          },
+          {
+            "task_id": 92,
+            "location": 19,
+            "weight": 185.06,
+            "arrival_time": 1870.0,
+            "score": 151.8506
+          },
+          {
+            "task_id": 138,
+            "location": 19,
+            "weight": 268.11,
+            "arrival_time": 1870.0,
+            "score": 152.6811
+          },
+          {
+            "task_id": 62,
+            "location": 19,
+            "weight": 176.04,
+            "arrival_time": 1870.0,
+            "score": 151.7604
+          },
+          {
+            "task_id": 119,
+            "location": 19,
+            "weight": 412.01,
+            "arrival_time": 1870.0,
+            "score": 154.1201
+          },
+          {
+            "task_id": 257,
+            "location": 19,
+            "weight": 263.72,
+            "arrival_time": 3160.0,
+            "score": 152.6372
+          },
+          {
+            "task_id": 242,
+            "location": 19,
+            "weight": 68.09,
+            "arrival_time": 3160.0,
+            "score": 150.6809
+          },
+          {
+            "task_id": 307,
+            "location": 21,
+            "weight": 22.37,
+            "arrival_time": 3760.0,
+            "score": 130.2237
+          },
+          {
+            "task_id": 216,
+            "location": 22,
+            "weight": 225.84,
+            "arrival_time": 3860.0,
+            "score": 147.2584
+          },
+          {
+            "task_id": 189,
+            "location": 22,
+            "weight": 62.07,
+            "arrival_time": 3860.0,
+            "score": 150.6207
+          },
+          {
+            "task_id": 293,
+            "location": 22,
+            "weight": 191.71,
+            "arrival_time": 3860.0,
+            "score": 151.9171
+          },
+          {
+            "task_id": 405,
+            "location": 22,
+            "weight": 106.8,
+            "arrival_time": 4890.0,
+            "score": 101.068
+          },
+          {
+            "task_id": 417,
+            "location": 31,
+            "weight": 10.54,
+            "arrival_time": 5450.0,
+            "score": 72.1054
+          }
+        ]
+      },
+      {
+        "vehicle_id": 14,
+        "route": [
+          {
+            "task_id": 235,
+            "location": 4,
+            "weight": 134.88,
+            "arrival_time": 2780.0,
+            "score": 149.3488
+          },
+          {
+            "task_id": 72,
+            "location": 27,
+            "weight": 317.69,
+            "arrival_time": 2820.0,
+            "score": 151.1769
+          },
+          {
+            "task_id": 378,
+            "location": 5,
+            "weight": 401.96,
+            "arrival_time": 4670.0,
+            "score": 146.5196
+          },
+          {
+            "task_id": 334,
+            "location": 5,
+            "weight": 466.1,
+            "arrival_time": 4670.0,
+            "score": 154.661
+          },
+          {
+            "task_id": 279,
+            "location": 5,
+            "weight": 89.71,
+            "arrival_time": 4670.0,
+            "score": 150.8971
+          },
+          {
+            "task_id": 383,
+            "location": 5,
+            "weight": 461.51,
+            "arrival_time": 4720.0,
+            "score": 154.6151
+          },
+          {
+            "task_id": 360,
+            "location": 5,
+            "weight": 190.87,
+            "arrival_time": 4720.0,
+            "score": 151.9087
+          },
+          {
+            "task_id": 443,
+            "location": 5,
+            "weight": 78.75,
+            "arrival_time": 5350.0,
+            "score": 150.7875
+          },
+          {
+            "task_id": 369,
+            "location": 5,
+            "weight": 20.9,
+            "arrival_time": 5350.0,
+            "score": 150.209
+          },
+          {
+            "task_id": 404,
+            "location": 5,
+            "weight": 27.22,
+            "arrival_time": 5350.0,
+            "score": 150.2722
+          },
+          {
+            "task_id": 342,
+            "location": 8,
+            "weight": 221.63,
+            "arrival_time": 5490.0,
+            "score": 145.2163
+          },
+          {
+            "task_id": 371,
+            "location": 6,
+            "weight": 254.83,
+            "arrival_time": 5530.0,
+            "score": 150.5483
+          },
+          {
+            "task_id": 411,
+            "location": 31,
+            "weight": 428.25,
+            "arrival_time": 5620.0,
+            "score": 149.7825
+          },
+          {
+            "task_id": 330,
+            "location": 31,
+            "weight": 285.16,
+            "arrival_time": 5620.0,
+            "score": 152.8516
+          },
+          {
+            "task_id": 358,
+            "location": 31,
+            "weight": 71.57,
+            "arrival_time": 5620.0,
+            "score": 150.7157
+          },
+          {
+            "task_id": 572,
+            "location": 31,
+            "weight": 151.19,
+            "arrival_time": 7070.0,
+            "score": 151.5119
+          },
+          {
+            "task_id": 306,
+            "location": 31,
+            "weight": 224.17,
+            "arrival_time": 7070.0,
+            "score": 102.2417
+          },
+          {
+            "task_id": 309,
+            "location": 6,
+            "weight": 405.63,
+            "arrival_time": 7114.0,
+            "score": 101.8563
+          }
+        ]
+      },
+      {
+        "vehicle_id": 15,
+        "route": [
+          {
+            "task_id": 314,
+            "location": 20,
+            "weight": 361.34,
+            "arrival_time": 3840.0,
+            "score": 148.6134
+          },
+          {
+            "task_id": 246,
+            "location": 20,
+            "weight": 479.04,
+            "arrival_time": 3840.0,
+            "score": 154.7904
+          },
+          {
+            "task_id": 468,
+            "location": 19,
+            "weight": 376.37,
+            "arrival_time": 5690.0,
+            "score": 148.7637
+          },
+          {
+            "task_id": 346,
+            "location": 19,
+            "weight": 238.57,
+            "arrival_time": 5690.0,
+            "score": 152.38569999999999
+          },
+          {
+            "task_id": 542,
+            "location": 19,
+            "weight": 499.42,
+            "arrival_time": 6680.0,
+            "score": 104.9942
+          },
+          {
+            "task_id": 281,
+            "location": 19,
+            "weight": 194.99,
+            "arrival_time": 6680.0,
+            "score": 101.9499
+          },
+          {
+            "task_id": 186,
+            "location": 19,
+            "weight": 70.62,
+            "arrival_time": 6680.0,
+            "score": 100.7062
+          },
+          {
+            "task_id": 397,
+            "location": 20,
+            "weight": 376.04,
+            "arrival_time": 6780.0,
+            "score": 98.7604
+          },
+          {
+            "task_id": 420,
+            "location": 20,
+            "weight": 264.86,
+            "arrival_time": 6780.0,
+            "score": 102.6486
+          },
+          {
+            "task_id": 449,
+            "location": 20,
+            "weight": 255.65,
+            "arrival_time": 6780.0,
+            "score": 102.5565
+          },
+          {
+            "task_id": 400,
+            "location": 20,
+            "weight": 215.53,
+            "arrival_time": 6780.0,
+            "score": 102.1553
+          },
+          {
+            "task_id": 432,
+            "location": 26,
+            "weight": 461.7,
+            "arrival_time": 7124.0,
+            "score": 87.417
+          },
+          {
+            "task_id": 240,
+            "location": 26,
+            "weight": 409.3,
+            "arrival_time": 7124.0,
+            "score": 104.093
+          },
+          {
+            "task_id": 435,
+            "location": 26,
+            "weight": 382.05,
+            "arrival_time": 7124.0,
+            "score": 103.8205
+          },
+          {
+            "task_id": 219,
+            "location": 26,
+            "weight": 297.02,
+            "arrival_time": 7124.0,
+            "score": 102.9702
+          },
+          {
+            "task_id": 302,
+            "location": 26,
+            "weight": 72.43,
+            "arrival_time": 7124.0,
+            "score": 100.7243
+          }
+        ]
+      },
+      {
+        "vehicle_id": 16,
+        "route": [
+          {
+            "task_id": 45,
+            "location": 4,
+            "weight": 82.92,
+            "arrival_time": 440.0,
+            "score": 148.8292
+          },
+          {
+            "task_id": 174,
+            "location": 4,
+            "weight": 16.07,
+            "arrival_time": 1960.0,
+            "score": 150.1607
+          },
+          {
+            "task_id": 122,
+            "location": 1,
+            "weight": 233.44,
+            "arrival_time": 1980.0,
+            "score": 151.3344
+          },
+          {
+            "task_id": 65,
+            "location": 3,
+            "weight": 203.43,
+            "arrival_time": 2020.0,
+            "score": 150.0343
+          },
+          {
+            "task_id": 126,
+            "location": 10,
+            "weight": 333.88,
+            "arrival_time": 2080.0,
+            "score": 150.3388
+          },
+          {
+            "task_id": 169,
+            "location": 10,
+            "weight": 457.39,
+            "arrival_time": 2080.0,
+            "score": 154.5739
+          },
+          {
+            "task_id": 190,
+            "location": 10,
+            "weight": 273.36,
+            "arrival_time": 2180.0,
+            "score": 152.7336
+          },
+          {
+            "task_id": 108,
+            "location": 10,
+            "weight": 66.41,
+            "arrival_time": 2180.0,
+            "score": 150.6641
+          },
+          {
+            "task_id": 182,
+            "location": 10,
+            "weight": 212.21,
+            "arrival_time": 2180.0,
+            "score": 152.1221
+          },
+          {
+            "task_id": 85,
+            "location": 35,
+            "weight": 348.42,
+            "arrival_time": 2230.0,
+            "score": 150.9842
+          },
+          {
+            "task_id": 276,
+            "location": 35,
+            "weight": 320.52,
+            "arrival_time": 3400.0,
+            "score": 153.2052
+          },
+          {
+            "task_id": 136,
+            "location": 25,
+            "weight": 461.82,
+            "arrival_time": 3440.0,
+            "score": 152.6182
+          },
+          {
+            "task_id": 133,
+            "location": 25,
+            "weight": 499.57,
+            "arrival_time": 3440.0,
+            "score": 154.9957
+          },
+          {
+            "task_id": 233,
+            "location": 11,
+            "weight": 477.53,
+            "arrival_time": 3520.0,
+            "score": 150.7753
+          },
+          {
+            "task_id": 239,
+            "location": 11,
+            "weight": 403.63,
+            "arrival_time": 3520.0,
+            "score": 154.0363
+          },
+          {
+            "task_id": 396,
+            "location": 11,
+            "weight": 365.16,
+            "arrival_time": 4830.0,
+            "score": 153.6516
+          },
+          {
+            "task_id": 338,
+            "location": 11,
+            "weight": 396.82,
+            "arrival_time": 4830.0,
+            "score": 153.9682
+          },
+          {
+            "task_id": 555,
+            "location": 11,
+            "weight": 191.69,
+            "arrival_time": 6890.0,
+            "score": 151.9169
+          },
+          {
+            "task_id": 559,
+            "location": 11,
+            "weight": 116.43,
+            "arrival_time": 6910.0,
+            "score": 151.1643
+          },
+          {
+            "task_id": 528,
+            "location": 13,
+            "weight": 263.05,
+            "arrival_time": 7030.0,
+            "score": 146.6305
+          },
+          {
+            "task_id": 520,
+            "location": 13,
+            "weight": 242.4,
+            "arrival_time": 7030.0,
+            "score": 152.424
+          },
+          {
+            "task_id": 526,
+            "location": 34,
+            "weight": 385.14,
+            "arrival_time": 7120.0,
+            "score": 149.3514
+          },
+          {
+            "task_id": 567,
+            "location": 34,
+            "weight": 348.88,
+            "arrival_time": 7120.0,
+            "score": 103.4888
+          },
+          {
+            "task_id": 101,
+            "location": 34,
+            "weight": 310.5,
+            "arrival_time": 7120.0,
+            "score": 103.105
+          }
+        ]
+      },
+      {
+        "vehicle_id": 17,
+        "route": [
+          {
+            "task_id": 156,
+            "location": 4,
+            "weight": 110.14,
+            "arrival_time": 1740.0,
+            "score": 149.1014
+          },
+          {
+            "task_id": 145,
+            "location": 3,
+            "weight": 250.45,
+            "arrival_time": 1770.0,
+            "score": 151.0045
+          },
+          {
+            "task_id": 252,
+            "location": 3,
+            "weight": 237.23,
+            "arrival_time": 3120.0,
+            "score": 152.3723
+          },
+          {
+            "task_id": 177,
+            "location": 2,
+            "weight": 373.21,
+            "arrival_time": 3190.0,
+            "score": 150.2321
+          },
+          {
+            "task_id": 211,
+            "location": 2,
+            "weight": 292.1,
+            "arrival_time": 3190.0,
+            "score": 152.921
+          },
+          {
+            "task_id": 107,
+            "location": 8,
+            "weight": 440.2,
+            "arrival_time": 3270.0,
+            "score": 150.402
+          },
+          {
+            "task_id": 231,
+            "location": 8,
+            "weight": 419.3,
+            "arrival_time": 3270.0,
+            "score": 154.193
+          },
+          {
+            "task_id": 118,
+            "location": 8,
+            "weight": 374.54,
+            "arrival_time": 3270.0,
+            "score": 153.7454
+          },
+          {
+            "task_id": 208,
+            "location": 32,
+            "weight": 481.42,
+            "arrival_time": 3306.0,
+            "score": 153.0142
+          },
+          {
+            "task_id": 183,
+            "location": 32,
+            "weight": 376.52,
+            "arrival_time": 3306.0,
+            "score": 153.7652
+          },
+          {
+            "task_id": 130,
+            "location": 7,
+            "weight": 360.51,
+            "arrival_time": 3342.0,
+            "score": 151.80509999999998
+          },
+          {
+            "task_id": 179,
+            "location": 7,
+            "weight": 202.22,
+            "arrival_time": 3342.0,
+            "score": 152.0222
+          },
+          {
+            "task_id": 243,
+            "location": 7,
+            "weight": 321.18,
+            "arrival_time": 3342.0,
+            "score": 153.2118
+          },
+          {
+            "task_id": 301,
+            "location": 7,
+            "weight": 424.26,
+            "arrival_time": 3690.0,
+            "score": 154.2426
+          },
+          {
+            "task_id": 541,
+            "location": 7,
+            "weight": 165.96,
+            "arrival_time": 6670.0,
+            "score": 151.6596
+          },
+          {
+            "task_id": 466,
+            "location": 7,
+            "weight": 381.92,
+            "arrival_time": 6670.0,
+            "score": 153.8192
+          },
+          {
+            "task_id": 438,
+            "location": 7,
+            "weight": 77.71,
+            "arrival_time": 6670.0,
+            "score": 150.7771
+          },
+          {
+            "task_id": 534,
+            "location": 8,
+            "weight": 432.52,
+            "arrival_time": 6710.0,
+            "score": 152.3252
+          },
+          {
+            "task_id": 456,
+            "location": 32,
+            "weight": 479.29,
+            "arrival_time": 6746.0,
+            "score": 152.9929
+          },
+          {
+            "task_id": 498,
+            "location": 32,
+            "weight": 263.3,
+            "arrival_time": 6746.0,
+            "score": 152.633
+          },
+          {
+            "task_id": 551,
+            "location": 32,
+            "weight": 193.08,
+            "arrival_time": 6820.0,
+            "score": 151.9308
+          },
+          {
+            "task_id": 507,
+            "location": 32,
+            "weight": 13.43,
+            "arrival_time": 6820.0,
+            "score": 150.1343
+          },
+          {
+            "task_id": 539,
+            "location": 15,
+            "weight": 497.34,
+            "arrival_time": 6916.0,
+            "score": 150.1734
+          },
+          {
+            "task_id": 557,
+            "location": 15,
+            "weight": 337.54,
+            "arrival_time": 6916.0,
+            "score": 153.3754
+          },
+          {
+            "task_id": 499,
+            "location": 15,
+            "weight": 444.89,
+            "arrival_time": 6916.0,
+            "score": 154.4489
+          },
+          {
+            "task_id": 552,
+            "location": 14,
+            "weight": 419.13,
+            "arrival_time": 6956.0,
+            "score": 152.1913
+          },
+          {
+            "task_id": 574,
+            "location": 14,
+            "weight": 411.59,
+            "arrival_time": 7090.0,
+            "score": 154.1159
+          },
+          {
+            "task_id": 476,
+            "location": 33,
+            "weight": 475.05,
+            "arrival_time": 7150.0,
+            "score": 151.7505
+          },
+          {
+            "task_id": 578,
+            "location": 33,
+            "weight": 417.49,
+            "arrival_time": 7150.0,
+            "score": 154.1749
+          },
+          {
+            "task_id": 550,
+            "location": 33,
+            "weight": 120.89,
+            "arrival_time": 7150.0,
+            "score": 151.2089
+          },
+          {
+            "task_id": 56,
+            "location": 33,
+            "weight": 325.75,
+            "arrival_time": 7150.0,
+            "score": 103.2575
+          },
+          {
+            "task_id": 380,
+            "location": 33,
+            "weight": 12.03,
+            "arrival_time": 7150.0,
+            "score": 100.1203
+          }
+        ]
+      },
+      {
+        "vehicle_id": 18,
+        "route": [
+          {
+            "task_id": 132,
+            "location": 27,
+            "weight": 457.08,
+            "arrival_time": 1440.0,
+            "score": 152.0708
+          },
+          {
+            "task_id": 71,
+            "location": 27,
+            "weight": 271.4,
+            "arrival_time": 1440.0,
+            "score": 152.714
+          },
+          {
+            "task_id": 78,
+            "location": 27,
+            "weight": 209.29,
+            "arrival_time": 1440.0,
+            "score": 152.0929
+          },
+          {
+            "task_id": 104,
+            "location": 27,
+            "weight": 365.9,
+            "arrival_time": 1440.0,
+            "score": 153.659
+          },
+          {
+            "task_id": 76,
+            "location": 28,
+            "weight": 117.2,
+            "arrival_time": 1476.0,
+            "score": 149.37199999999999
+          },
+          {
+            "task_id": 4,
+            "location": 28,
+            "weight": 278.8,
+            "arrival_time": 1476.0,
+            "score": 152.788
+          },
+          {
+            "task_id": 431,
+            "location": 28,
+            "weight": 134.11,
+            "arrival_time": 5210.0,
+            "score": 151.3411
+          },
+          {
+            "task_id": 332,
+            "location": 28,
+            "weight": 322.51,
+            "arrival_time": 5210.0,
+            "score": 153.2251
+          },
+          {
+            "task_id": 442,
+            "location": 28,
+            "weight": 71.91,
+            "arrival_time": 5340.0,
+            "score": 150.7191
+          },
+          {
+            "task_id": 487,
+            "location": 4,
+            "weight": 88.85,
+            "arrival_time": 5920.0,
+            "score": 149.08849999999998
+          },
+          {
+            "task_id": 416,
+            "location": 3,
+            "weight": 81.3,
+            "arrival_time": 5950.0,
+            "score": 149.313
+          },
+          {
+            "task_id": 368,
+            "location": 27,
+            "weight": 298.68,
+            "arrival_time": 6020.0,
+            "score": 149.4868
+          },
+          {
+            "task_id": 464,
+            "location": 27,
+            "weight": 329.63,
+            "arrival_time": 6020.0,
+            "score": 153.2963
+          },
+          {
+            "task_id": 562,
+            "location": 27,
+            "weight": 484.66,
+            "arrival_time": 6940.0,
+            "score": 154.8466
+          },
+          {
+            "task_id": 506,
+            "location": 27,
+            "weight": 46.74,
+            "arrival_time": 6940.0,
+            "score": 150.4674
+          },
+          {
+            "task_id": 278,
+            "location": 27,
+            "weight": 495.79,
+            "arrival_time": 6940.0,
+            "score": 104.9579
+          },
+          {
+            "task_id": 510,
+            "location": 27,
+            "weight": 485.99,
+            "arrival_time": 6940.0,
+            "score": 104.8599
+          },
+          {
+            "task_id": 274,
+            "location": 27,
+            "weight": 305.82,
+            "arrival_time": 6940.0,
+            "score": 103.0582
+          },
+          {
+            "task_id": 343,
+            "location": 28,
+            "weight": 90.91,
+            "arrival_time": 6976.0,
+            "score": 99.1091
+          },
+          {
+            "task_id": 59,
+            "location": 28,
+            "weight": 11.34,
+            "arrival_time": 6976.0,
+            "score": 100.1134
+          },
+          {
+            "task_id": 451,
+            "location": 29,
+            "weight": 177.0,
+            "arrival_time": 7046.0,
+            "score": 98.27
+          },
+          {
+            "task_id": 441,
+            "location": 29,
+            "weight": 146.57,
+            "arrival_time": 7046.0,
+            "score": 101.4657
+          },
+          {
+            "task_id": 125,
+            "location": 29,
+            "weight": 88.77,
+            "arrival_time": 7046.0,
+            "score": 100.8877
+          },
+          {
+            "task_id": 295,
+            "location": 35,
+            "weight": 395.77,
+            "arrival_time": 7152.0,
+            "score": 98.6577
+          },
+          {
+            "task_id": 285,
+            "location": 35,
+            "weight": 384.08,
+            "arrival_time": 7152.0,
+            "score": 103.8408
+          },
+          {
+            "task_id": 388,
+            "location": 35,
+            "weight": 283.67,
+            "arrival_time": 7152.0,
+            "score": 102.8367
+          },
+          {
+            "task_id": 504,
+            "location": 11,
+            "weight": 399.01,
+            "arrival_time": 7192.0,
+            "score": 101.9901
+          },
+          {
+            "task_id": 256,
+            "location": 11,
+            "weight": 331.46,
+            "arrival_time": 7192.0,
+            "score": 103.3146
+          }
+        ]
+      }
+    ]
+  },
+  "elapsed_time": 5368.763261318207
+}

@@ -77,11 +77,26 @@ def _solve_selected_tasks(gp, GRB, map_model, fleet, all_tasks, selected_tasks, 
     model.Params.OutputFlag = 0
     model.Params.TimeLimit = time_limit
     model.Params.MIPGap = mip_gap
-    model.Params.MIPFocus = 1
-    model.Params.Heuristics = 0.35
-    model.Params.Presolve = 2
-    model.Params.Cuts = 2
-    model.Params.Symmetry = 2
+
+    # 针对大规模问题优化参数
+    if task_count >= 50 or time_limit >= 1000:
+        # 大规模问题：专注于找到高质量解
+        model.Params.MIPFocus = 1  # 平衡找解和证明最优性
+        model.Params.Heuristics = 0.5  # 增加启发式搜索
+        model.Params.Cuts = 3  # 更激进的切割平面
+        model.Params.Presolve = 2  # 强预处理
+        model.Params.Symmetry = 2  # 对称性检测
+        model.Params.Method = 2  # 使用barrier方法求解LP松弛
+        model.Params.NodeMethod = 2  # 节点LP使用barrier
+        model.Params.ImproveStartTime = max(60, time_limit * 0.1)  # 前10%时间专注改进解
+        model.Params.ImproveStartGap = 0.5  # gap<50%后开始改进
+    else:
+        # 小规模问题：快速求解
+        model.Params.MIPFocus = 1
+        model.Params.Heuristics = 0.35
+        model.Params.Presolve = 2
+        model.Params.Cuts = 2
+        model.Params.Symmetry = 2
 
     candidate_arcs = set()
     for j in range(1, task_count + 1):
